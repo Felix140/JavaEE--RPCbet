@@ -120,5 +120,46 @@ public class ConnessioneDB {
 		conn.close();
 		return false;
 	}	
+	
+	
+//	LOGIN USER
+	public boolean login_user(String username_utente, String password_user) throws SQLException {
+		
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+		} catch (ClassNotFoundException e1) {
+			e1.printStackTrace();
+			System.out.println("Non trovo la classe Driver");
+		}
+		
+		
+		Connection conn = DriverManager.getConnection(url, usernameDb, passwordDb);
+		Statement query = conn.createStatement();
+		ResultSet result = query.executeQuery("SELECT * FROM rpcbet.utente;");
+		
+		
+		
+		while (result.next()) {
+
+			String user = result.getString("Username_Utente");
+			String password = result.getString("Password");
+
+			if (username_utente.equals(user) && password_user.equals(password)) {
+				System.out.println("Accesso effettuato come Amministratore");
+				System.out.println("Nome: " + user);
+				System.out.println("Password: " + password);
+				
+				return true;
+
+			} else {
+				System.out.println("Credenziali errate");
+			}
+		}
+
+		conn.close();
+		return false;
+	}	
+	
+	
 
 }
