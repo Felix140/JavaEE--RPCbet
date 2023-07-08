@@ -23,8 +23,8 @@ public class ConnessioneDB {
 	
 	
 	// credenziali database
-
-	String url = "jdbc:mysql://localhost:3306/rpcbet ";
+	String driver ="com.mysql.cj.jdbc.Driver";
+	String url = "jdbc:mysql://localhost:3306/rpcbet";
 	String usernameDb = "root";
 	String passwordDb = "root";
 
@@ -43,8 +43,9 @@ public class ConnessioneDB {
 		
 		try 
 		{
+			Class.forName(driver);
 			  Connection conn = DriverManager.getConnection(url,usernameDb,passwordDb);
-			  String query = "INSERT INTO utente VALUES(0,?,?,?,?,?,?,?)";
+			  String query = "INSERT INTO utente VALUES(0,?,?,?,?,?,?,?,?,?)";
 			  PreparedStatement stat = conn.prepareStatement(query);
 			
 			stat.setString(1, this.nome);
@@ -63,10 +64,11 @@ public class ConnessioneDB {
 		   System.out.println("inserimento eseguito con successo");
 			conn.close();
 		}
-		catch(SQLException e)
+		catch(SQLException | ClassNotFoundException e)
 		{
 			e.printStackTrace();
-			
+			   System.out.println("ERRORE PD!");
+
 			
 		}
 		

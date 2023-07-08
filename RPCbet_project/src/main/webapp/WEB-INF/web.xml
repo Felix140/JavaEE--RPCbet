@@ -11,13 +11,13 @@
   </welcome-file-list>
   <servlet>
     <description></description>
-    <display-name>Servlet_RegistazioneUtente</display-name>
-    <servlet-name>Servlet_RegistazioneUtente</servlet-name>
-    <servlet-class>Servlet.Servlet_RegistazioneUtente</servlet-class>
+    <display-name>Servlet_RegistrazioneUtente</display-name>
+    <servlet-name>Servlet_RegistrazioneUtente</servlet-name>
+    <servlet-class>Servlet.Servlet_RegistrazioneUtente</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>Servlet_RegistazioneUtente</servlet-name>
-    <url-pattern>/Servlet_RegistazioneUtente</url-pattern>
+    <servlet-name>Servlet_RegistrazioneUtente</servlet-name>
+    <url-pattern>/Servlet_RegistrazioneUtente</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
