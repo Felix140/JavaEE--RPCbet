@@ -10,6 +10,14 @@ public class Utente {
 	private String email;
 	private String password;
 	private float saldo;
+	private String data_nascita;
+	
+	public String getData_nascita() {
+		return data_nascita;
+	}
+	public void setData_nascita(String data_nascita) {
+		this.data_nascita = data_nascita;
+	}
 	public String getNome() {
 		return nome;
 	}
