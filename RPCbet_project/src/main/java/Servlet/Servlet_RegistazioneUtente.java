@@ -7,6 +7,9 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import Classi.Utente;
+import Connessione.ConnessioneDB;
+
 /**
  * Servlet implementation class Servlet_RegistazioneUtente
  */
@@ -28,6 +31,10 @@ public class Servlet_RegistazioneUtente extends HttpServlet {
 		String saldo = request.getParameter("saldo");
 		String data_nascita = request.getParameter("data_nascita");
 
+		
+		ConnessioneDB OgConnessione = new ConnessioneDB();
+	
+		
 		
 		// TODO Auto-generated method stub
 	}
