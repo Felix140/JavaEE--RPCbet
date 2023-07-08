@@ -68,5 +68,21 @@ public class Utente {
 	}
 	
 	
+	public void inserimento()
+	{
+		
+		
+		
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 	
 }
