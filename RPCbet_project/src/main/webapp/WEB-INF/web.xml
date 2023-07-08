@@ -9,4 +9,14 @@
     <welcome-file>default.jsp</welcome-file>
     <welcome-file>default.htm</welcome-file>
   </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>Servlet_RegistazioneUtente</display-name>
+    <servlet-name>Servlet_RegistazioneUtente</servlet-name>
+    <servlet-class>Servlet.Servlet_RegistazioneUtente</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Servlet_RegistazioneUtente</servlet-name>
+    <url-pattern>/Servlet_RegistazioneUtente</url-pattern>
+  </servlet-mapping>
 </web-app>
