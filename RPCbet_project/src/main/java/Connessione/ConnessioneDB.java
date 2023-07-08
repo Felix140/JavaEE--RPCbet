@@ -3,7 +3,11 @@ package Connessione;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.*;
+
+
 
 public class ConnessioneDB {
 	// user
@@ -26,7 +30,8 @@ public class ConnessioneDB {
 	String driver ="com.mysql.cj.jdbc.Driver";
 	String url = "jdbc:mysql://localhost:3306/rpcbet";
 	String usernameDb = "root";
-	String passwordDb = "root";
+	// INSERISCI LA TUA PASSWORD
+	String passwordDb = "";
 
 	public void inserimento_user(String a, String b, String c, String d, String f, String g, String h, float i,	String l)
 	{
@@ -76,5 +81,44 @@ public class ConnessioneDB {
 		
 
 	}
+	
+	
+//	LOGIN ADMIN
+	public boolean login_admin(String nome_admin, String password_admin) throws SQLException {
+		
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+		} catch (ClassNotFoundException e1) {
+			e1.printStackTrace();
+			System.out.println("Non trovo la classe Driver");
+		}
+		
+		
+		Connection conn = DriverManager.getConnection(url, usernameDb, passwordDb);
+		Statement query = conn.createStatement();
+		ResultSet result = query.executeQuery("SELECT * FROM rpcbet.admin;");
+		
+		
+		
+		while (result.next()) {
+
+			String admin = result.getString("Nome_Admin");
+			String password = result.getString("Password");
+
+			if (nome_admin.equals(admin) && password_admin.equals(password)) {
+				System.out.println("Accesso effettuato come Amministratore");
+				System.out.println("Nome: " + admin);
+				System.out.println("Password: " + password);
+				
+				return true;
+
+			} else {
+				System.out.println("Credenziali errate");
+			}
+		}
+
+		conn.close();
+		return false;
+	}	
 
 }

@@ -1,13 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8" import="java.util.*" import="java.Servlet.*"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Admin Page</title>
 </head>
 <body>
-    <h1>admin</h1>
+	<%
+	// faccio prima il cast
+	String adminName = (String) session.getAttribute("NomeAdmin");
+	%>
+	<h1>admin</h1>
+	
+	<h2>Benvenuta/o <%= adminName %></h2>
 
 </body>
 </html>
