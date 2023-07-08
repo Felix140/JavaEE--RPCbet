@@ -31,7 +31,7 @@ public class ConnessioneDB {
 	String url = "jdbc:mysql://localhost:3306/rpcbet";
 	String usernameDb = "root";
 	// INSERISCI LA TUA PASSWORD
-	String passwordDb = "Zinni.17";
+	String passwordDb = "";
 
 	public void inserimento_user(String a, String b, String c, String d, String f, String g, String h, float i,	String l)
 	{
@@ -145,7 +145,7 @@ public class ConnessioneDB {
 			String password = result.getString("Password");
 
 			if (username_utente.equals(user) && password_user.equals(password)) {
-				System.out.println("Accesso effettuato come Amministratore");
+				System.out.println("Accesso effettuato come scommettitore di freccette");
 				System.out.println("Nome: " + user);
 				System.out.println("Password: " + password);
 				
