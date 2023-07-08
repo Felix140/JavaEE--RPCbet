@@ -4,7 +4,7 @@ public class Utente {
 
 	private String nome;
 	private String cognome;
-	private String user_utente;
+	private String username_utente;
 	private String codice_fiscale;
 	private String numero_documento;
 	private String email;
@@ -31,10 +31,10 @@ public class Utente {
 		this.cognome = cognome;
 	}
 	public String getUser_utente() {
-		return user_utente;
+		return username_utente;
 	}
 	public void setUser_utente(String user_utente) {
-		this.user_utente = user_utente;
+		this.username_utente = user_utente;
 	}
 	public String getCodice_fiscale() {
 		return codice_fiscale;
@@ -66,6 +66,13 @@ public class Utente {
 	public void setSaldo(float saldo) {
 		this.saldo = saldo;
 	}
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
