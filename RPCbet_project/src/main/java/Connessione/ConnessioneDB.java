@@ -31,7 +31,7 @@ public class ConnessioneDB {
 	String url = "jdbc:mysql://localhost:3306/rpcbet";
 	String usernameDb = "root";
 	// INSERISCI LA TUA PASSWORD
-	String passwordDb = "";
+	String passwordDb = "user_mysql_14";
 
 	public void inserimento_user(String a, String b, String c, String d, String f, String g, String h, float i,	String l)
 	{
@@ -66,7 +66,7 @@ public class ConnessioneDB {
 			
 		   stat.executeUpdate();
 			
-		   System.out.println("inserimento eseguito con successo");
+		   System.out.println("Registrazione eseguita con successo");
 			conn.close();
 		}
 		catch(SQLException | ClassNotFoundException e)
@@ -87,7 +87,7 @@ public class ConnessioneDB {
 	public boolean login_admin(String nome_admin, String password_admin) throws SQLException {
 		
 		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
+			Class.forName(driver);
 		} catch (ClassNotFoundException e1) {
 			e1.printStackTrace();
 			System.out.println("Non trovo la classe Driver");
@@ -126,7 +126,7 @@ public class ConnessioneDB {
 	public boolean login_user(String username_utente, String password_user) throws SQLException {
 		
 		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
+			Class.forName(driver);
 		} catch (ClassNotFoundException e1) {
 			e1.printStackTrace();
 			System.out.println("Non trovo la classe Driver");
