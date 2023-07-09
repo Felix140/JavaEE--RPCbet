@@ -4,7 +4,7 @@
 	import = "Connessione.ConnessioneDB" 
 	import = "Classi.Calcio"
 	import = "Classi.Evento_Sportivo"
-	import = "Servlet.Servlet_EventoCalcio"
+	import = "Servlet.Servlet_GenerazioneEventi"
 	import = "java.util.*"
  %>
  

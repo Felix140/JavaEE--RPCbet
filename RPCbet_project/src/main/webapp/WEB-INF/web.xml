@@ -61,12 +61,12 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>Servlet_EventoCalcio</display-name>
-    <servlet-name>Servlet_EventoCalcio</servlet-name>
-    <servlet-class>Servlet.Servlet_EventoCalcio</servlet-class>
+    <display-name>Servlet_GenerazioneEventi</display-name>
+    <servlet-name>Servlet_GenerazioneEventi</servlet-name>
+    <servlet-class>Servlet.Servlet_GenerazioneEventi</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>Servlet_EventoCalcio</servlet-name>
-    <url-pattern>/Servlet_EventoCalcio</url-pattern>
+    <servlet-name>Servlet_GenerazioneEventi</servlet-name>
+    <url-pattern>/Servlet_GenerazioneEventi</url-pattern>
   </servlet-mapping>
 </web-app>

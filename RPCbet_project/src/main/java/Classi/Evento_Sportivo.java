@@ -22,6 +22,8 @@ public class Evento_Sportivo {
 	private ArrayList<Calcio> squadreCalcio = new ArrayList<>();
 	private  ArrayList<Evento_Sportivo> eventosportivo = new ArrayList<>();
 	
+	
+	
     private static final String ALLOWED_CHARACTERS = "0123456789";
 	private static final int CODE_LENGTH = 6;
 	
@@ -127,7 +129,7 @@ public class Evento_Sportivo {
 //	}
 	
 	// genera il codice dell'evento in modo randomico
-    public static int GeneraCodiceEvento() {
+    public  int GeneraCodiceEvento() {
         Random random = new Random();
         return random.nextInt(1000000); // Genera un intero compreso tra 0 e 999999 (massimo 6 cifre)
     }
@@ -161,7 +163,7 @@ public class Evento_Sportivo {
 			        
 			        for (int i = 0; i < squadreCalcio.size(); i+=2) {
 
-			        	this.codice_partita =GeneraCodiceEvento();
+			        	this.codice_partita = GeneraCodiceEvento();
 						this.sport = "Calcio";
 						this.sq1 = squadreCalcio.get(i).getNome_squadra();
 						this.sq2 = squadreCalcio.get(i+1).getNome_squadra();
@@ -180,10 +182,10 @@ public class Evento_Sportivo {
 						  insert.setString(3, this.sq1);
 						  insert.setString(4, this.sq2);
 						  insert.setFloat(5, this.quota_1);
-						insert.setFloat(6, this.quota_x);
-						insert.setFloat(7, this.quota_2);
-						insert.setBoolean (8, this.evento_concluso);
-						insert.setString(9, this.risultato_partita);
+						  insert.setFloat(6, this.quota_x);
+						  insert.setFloat(7, this.quota_2);
+						  insert.setBoolean (8, this.evento_concluso);
+						  insert.setString(9, this.risultato_partita);
 
 						
 						insert.executeUpdate();
@@ -191,11 +193,8 @@ public class Evento_Sportivo {
 					   System.out.println("Evento Inserito con successo");
 						conn.close();
 						
-						return true;
-						
-			        			        
+						return true;			        
 			        }   
-			        
 			        System.out.println(eventosportivo);
 			} catch(SQLException | ClassNotFoundException e) {
 				e.printStackTrace();
@@ -204,6 +203,10 @@ public class Evento_Sportivo {
 							
 			return false;
 		}
+		
+		
+		
+		
 		
 		public boolean inserimento_eventoboxe()
 		{
