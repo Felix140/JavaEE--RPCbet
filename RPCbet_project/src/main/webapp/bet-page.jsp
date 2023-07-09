@@ -36,6 +36,116 @@
 	</table>
 
 
+	<h3>Tabella Eventi Sport</h3>
+
+		<table>
+			<caption>CALCIO</caption>
+			<thead>
+				<tr>
+					<th>Evento</th>
+					<th>1</th>
+					<th>X</th>
+					<th>2</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr>
+					<td>Sq1 - Sq2</td>
+					<td>Quota_1</td>
+					<td>Quota_x</td>
+					<td>Quota_2</td>
+				</tr>
+
+				<tr>
+					<td>Sq1 - Sq2</td>
+					<td>Quota_1</td>
+					<td>Quota_x</td>
+					<td>Quota_2</td>
+				</tr>
+
+				<tr>
+					<td>Sq1 - Sq2</td>
+					<td>Quota_1</td>
+					<td>Quota_x</td>
+					<td>Quota_2</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<table>
+			<caption>TENNIS</caption>
+			<thead>
+				<tr>
+					<th>Evento</th>
+					<th>1</th>
+					<th>X</th>
+					<th>2</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr>
+					<td>Sq1 - Sq2</td>
+					<td>Quota_1</td>
+					<td>Quota_x</td>
+					<td>Quota_2</td>
+				</tr>
+
+				<tr>
+					<td>Sq1 - Sq2</td>
+					<td>Quota_1</td>
+					<td>Quota_x</td>
+					<td>Quota_2</td>
+				</tr>
+
+				<tr>
+					<td>Sq1 - Sq2</td>
+					<td>Quota_1</td>
+					<td>Quota_x</td>
+					<td>Quota_2</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<table>
+			<caption>BOXE</caption>
+			<thead>
+				<tr>
+					<th>Evento</th>
+					<th>1</th>
+					<th>X</th>
+					<th>2</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr>
+					<td>Sq1 - Sq2</td>
+					<td>Quota_1</td>
+					<td>Quota_x</td>
+					<td>Quota_2</td>
+				</tr>
+
+				<tr>
+					<td>Sq1 - Sq2</td>
+					<td>Quota_1</td>
+					<td>Quota_x</td>
+					<td>Quota_2</td>
+				</tr>
+
+				<tr>
+					<td>Sq1 - Sq2</td>
+					<td>Quota_1</td>
+					<td>Quota_x</td>
+					<td>Quota_2</td>
+				</tr>
+			</tbody>
+		</table>
+
+
+
+
 
 
 
