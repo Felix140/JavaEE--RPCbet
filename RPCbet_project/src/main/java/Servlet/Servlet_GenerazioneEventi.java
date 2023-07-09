@@ -21,7 +21,7 @@ public class Servlet_GenerazioneEventi extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 
 		boolean generazioneEventiCalcio;
@@ -44,9 +44,9 @@ public class Servlet_GenerazioneEventi extends HttpServlet {
 	    	
 		}
 		
-
-		RequestDispatcher disp = request.getRequestDispatcher("bet-page.jsp");
-		disp.forward(request,  response);
+		// Spedisci verso Servlet_MostraEventi
+		RequestDispatcher dispatch = request.getRequestDispatcher("Servlet_MostraEventi");
+		dispatch.forward(request, response);
 		
 		
 		

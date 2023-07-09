@@ -69,4 +69,14 @@
     <servlet-name>Servlet_GenerazioneEventi</servlet-name>
     <url-pattern>/Servlet_GenerazioneEventi</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Servlet_MostraEventi</display-name>
+    <servlet-name>Servlet_MostraEventi</servlet-name>
+    <servlet-class>Servlet.Servlet_MostraEventi</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Servlet_MostraEventi</servlet-name>
+    <url-pattern>/Servlet_MostraEventi</url-pattern>
+  </servlet-mapping>
 </web-app>

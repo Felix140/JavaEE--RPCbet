@@ -5,6 +5,7 @@
 	import = "Classi.Calcio"
 	import = "Classi.Evento_Sportivo"
 	import = "Servlet.Servlet_GenerazioneEventi"
+	import = "Servlet.Servlet_MostraEventi"
 	import = "java.util.*"
  %>
  
@@ -36,10 +37,13 @@
 	</table>
 
 
+
+
 	<h3>Tabella Eventi Sport</h3>
-
-		<table>
-			<caption>CALCIO</caption>
+	
+	
+	<table>
+			<caption>Eventi sportivi</caption>
 			<thead>
 				<tr>
 					<th>Evento</th>
@@ -48,119 +52,26 @@
 					<th>2</th>
 				</tr>
 			</thead>
+	
+			<% 
+			ArrayList<Evento_Sportivo> event = (ArrayList<Evento_Sportivo>) request.getAttribute("table");
+			
+			for (int i = 0; i < event.size(); i++) {
+				out.println("<tbody>");
+				
+					out.println("<tr>");
+						out.println("<td>" + event.get(i).getSq1() + "-" + event.get(i).getSq2() + "</td>");
+						out.println("<td>" + event.get(i).getQuota_1() + "</td>");
+						out.println("<td>" + event.get(i).getQuota_x() + "</td>");
+						out.println("<td>" + event.get(i).getQuota_2() + "</td>");
+					out.println("</tr>");
+				
+				out.println("</tbody>");
+			}
+			
+			%>
 
-			<tbody>
-				<tr>
-					<td>Sq1 - Sq2</td>
-					<td>Quota_1</td>
-					<td>Quota_x</td>
-					<td>Quota_2</td>
-				</tr>
-
-				<tr>
-					<td>Sq1 - Sq2</td>
-					<td>Quota_1</td>
-					<td>Quota_x</td>
-					<td>Quota_2</td>
-				</tr>
-
-				<tr>
-					<td>Sq1 - Sq2</td>
-					<td>Quota_1</td>
-					<td>Quota_x</td>
-					<td>Quota_2</td>
-				</tr>
-			</tbody>
 		</table>
-
-		<table>
-			<caption>TENNIS</caption>
-			<thead>
-				<tr>
-					<th>Evento</th>
-					<th>1</th>
-					<th>X</th>
-					<th>2</th>
-				</tr>
-			</thead>
-
-			<tbody>
-				<tr>
-					<td>Sq1 - Sq2</td>
-					<td>Quota_1</td>
-					<td>Quota_x</td>
-					<td>Quota_2</td>
-				</tr>
-
-				<tr>
-					<td>Sq1 - Sq2</td>
-					<td>Quota_1</td>
-					<td>Quota_x</td>
-					<td>Quota_2</td>
-				</tr>
-
-				<tr>
-					<td>Sq1 - Sq2</td>
-					<td>Quota_1</td>
-					<td>Quota_x</td>
-					<td>Quota_2</td>
-				</tr>
-			</tbody>
-		</table>
-
-		<table>
-			<caption>BOXE</caption>
-			<thead>
-				<tr>
-					<th>Evento</th>
-					<th>1</th>
-					<th>X</th>
-					<th>2</th>
-				</tr>
-			</thead>
-
-			<tbody>
-				<tr>
-					<td>Sq1 - Sq2</td>
-					<td>Quota_1</td>
-					<td>Quota_x</td>
-					<td>Quota_2</td>
-				</tr>
-
-				<tr>
-					<td>Sq1 - Sq2</td>
-					<td>Quota_1</td>
-					<td>Quota_x</td>
-					<td>Quota_2</td>
-				</tr>
-
-				<tr>
-					<td>Sq1 - Sq2</td>
-					<td>Quota_1</td>
-					<td>Quota_x</td>
-					<td>Quota_2</td>
-				</tr>
-			</tbody>
-		</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

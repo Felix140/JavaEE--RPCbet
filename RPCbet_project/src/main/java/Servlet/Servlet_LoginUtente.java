@@ -33,7 +33,9 @@ public class Servlet_LoginUtente extends HttpServlet {
 			if (checkLogin) {
 				
 				session.setAttribute("NomeUser", usernameUtente);
-				response.sendRedirect("Servlet_GenerazioneEventi");	// rimanda alla Servlet che poi rimanda alla bet-page
+				// Spedisci verso Servlet_GenerazioneEventi 
+				RequestDispatcher dispatch = request.getRequestDispatcher("Servlet_GenerazioneEventi");
+				dispatch.forward(request, response);
 			
 			} else {
 				

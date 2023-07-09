@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.Random;
 
 public class Evento_Sportivo {
@@ -342,7 +343,37 @@ public class Evento_Sportivo {
 		}
 	 
 	 
-	 
+		// Prendi gli eventi sportivi dalla table "evento_sportivo"
+		public ArrayList<Evento_Sportivo> estrai_eventi() {
+		    ArrayList<Evento_Sportivo> lastNineElements = new ArrayList<>();
+
+		    try {
+		        Class.forName(driver);
+		        Connection conn = DriverManager.getConnection(url, usernameDb, passwordDb);
+		        Statement stat = conn.createStatement();
+		        String query = "SELECT Sq1, Sq2, Quota_1, Quota_x, Quota_2 FROM rpcbet.evento_sportivo ORDER BY codice_partita DESC LIMIT 9";
+		        ResultSet rs = stat.executeQuery(query);
+
+		        while (rs.next()) {
+		            Evento_Sportivo evento = new Evento_Sportivo();
+		            evento.setSq1(rs.getString("Sq1"));
+		            evento.setSq2(rs.getString("Sq2"));
+		            evento.setQuota_1(rs.getFloat("Quota_1"));
+		            evento.setQuota_x(rs.getFloat("Quota_x"));
+		            evento.setQuota_2(rs.getFloat("Quota_2"));
+
+		            lastNineElements.add(evento);
+		        }
+
+		        conn.close();
+		    } catch (ClassNotFoundException | SQLException e) {
+		        e.printStackTrace();
+		        System.out.println("Driver non trovato");
+		    }
+
+		    return lastNineElements;
+		}
+
 	 
 	
 	
