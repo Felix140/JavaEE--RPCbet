@@ -15,7 +15,7 @@ import Classi.Evento_Sportivo;
 /**
  * Servlet implementation class Servlet_EventoCalcio
  */
-public class Servlet_EventoCalcio extends HttpServlet {
+public class Servlet_GenerazioneEventi extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -25,6 +25,9 @@ public class Servlet_EventoCalcio extends HttpServlet {
 		
 
 		boolean generazioneEventiCalcio;
+		boolean generazioneEventiTennis;
+		boolean generazioneEventiBoxe;
+
 
 
 		
@@ -32,7 +35,13 @@ public class Servlet_EventoCalcio extends HttpServlet {
 			
 			Evento_Sportivo eventosportivo = new Evento_Sportivo();
 	     	generazioneEventiCalcio = eventosportivo.inserimento_eventocalcio();
+	     	generazioneEventiTennis = eventosportivo.inserimento_eventotennis();
+	     	generazioneEventiBoxe = eventosportivo.inserimento_eventoboxe();
 	    	request.setAttribute("ForzaMagggggica", generazioneEventiCalcio);
+	    	
+	    	
+	    	
+	    	
 		}
 		
 
