@@ -2,9 +2,9 @@
     
 <%@ page 
 	import = "Connessione.ConnessioneDB" 
-	import = "Classi.Partite_Calcio"
 	import = "Classi.Calcio"
-	import = "Servlet.Servlet_SquadreCalcio"
+	import = "Classi.Evento_Sportivo"
+	import = "Servlet.Servlet_EventoCalcio"
 	import = "java.util.*"
  %>
  
@@ -23,13 +23,15 @@
 <table class="table table-striped">
     <tbody>
     <%  
+    
 
-
-        	ArrayList<Calcio> squadreCalcio = (ArrayList<Calcio>) request.getAttribute("ForzaRoma");
-				for (int i = 0; i < squadreCalcio.size(); i++) {
+  
+				ArrayList<Evento_Sportivo> EventoSportivoRandom = (ArrayList<Evento_Sportivo>) request.getAttribute("ForzaMagggggica");
+				for (int i = 0; i < EventoSportivoRandom.size(); i++) {
 					
 					out.println("<tr>");
-			        out.println("<td>" + squadreCalcio.get(i).getNome_squadra()+ "</td>");
+			        out.println("<td>" + EventoSportivoRandom.get(i).getSq1().toString()+ "</td>");
+			        out.println("<td>" + EventoSportivoRandom.get(i).getSq2().toString()+ "</td>");
 			       /*  out.println("<td>"+userr.get(i).getPassword()+"</td>"); */
 			        out.println("<td>Giuseppesnitch</td>");
 			        out.println("</tr>");

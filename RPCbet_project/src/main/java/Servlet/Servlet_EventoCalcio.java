@@ -8,25 +8,31 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
+
 import Classi.Calcio;
-import Classi.Partite_Calcio;
+import Classi.Evento_Sportivo;
 
 /**
- * Servlet implementation class Servlet_SquadreCalcio
+ * Servlet implementation class Servlet_EventoCalcio
  */
-public class Servlet_SquadreCalcio extends HttpServlet {
+public class Servlet_EventoCalcio extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		ArrayList<Calcio> squadreCalcio;
-		Partite_Calcio partiteCalcio = new Partite_Calcio();
-		squadreCalcio = partiteCalcio.getAll();
+		ArrayList<Evento_Sportivo> Eventosportivorandom;
+
+
+		Evento_Sportivo eventosportivo = new Evento_Sportivo();
 		
-		request.setAttribute("ForzaRoma", squadreCalcio);
+		Eventosportivorandom = eventosportivo.PartiteCalcio();
+		
+		request.setAttribute("ForzaMagggggica", Eventosportivorandom);
+
 		RequestDispatcher disp = request.getRequestDispatcher("bet-page.jsp");
 		disp.forward(request,  response);
 		

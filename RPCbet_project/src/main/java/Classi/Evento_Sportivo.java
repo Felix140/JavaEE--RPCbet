@@ -1,7 +1,25 @@
 package Classi;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Collections;
+
 public class Evento_Sportivo {
 
+	String driver ="com.mysql.cj.jdbc.Driver";
+	String url = "jdbc:mysql://localhost:3306/rpcbet";
+	String usernameDb = "root";
+	// INSERISCI LA TUA PASSWORD
+	String passwordDb = "root";
+	
+	private ArrayList<Calcio> squadreCalcio = new ArrayList<>();
+	private  ArrayList<Evento_Sportivo> eventosportivo = new ArrayList<>();
+	
+	
 	private int codice_partita;
 	private String sport;
 	private String sq1;
@@ -68,6 +86,46 @@ public class Evento_Sportivo {
 	public void setRisultato_partita(String risultato_partita) {
 		this.risultato_partita = risultato_partita;
 	}
+	
+	
+	public ArrayList<Evento_Sportivo> PartiteCalcio() 
+	{
+try {	
+			Class.forName(driver);
+			Connection conn = DriverManager.getConnection(url, usernameDb, passwordDb);
+			Statement stat = conn.createStatement();
+			ResultSet rs = stat.executeQuery("SELECT Nome_Squadra FROM calcio");
+			
+			while(rs.next() ) {
+				Calcio calcio = new Calcio();
+				calcio.setNome_squadra(rs.getString("Nome_Squadra"));
+				squadreCalcio.add(calcio);
+			}
+			
+			   Collections.shuffle(squadreCalcio);
+		        
+		        for (int i = 0; i < squadreCalcio.size(); i+=2) {
+		        	Evento_Sportivo evento = new Evento_Sportivo();
+		        	evento.setSq1(squadreCalcio.get(i).getNome_squadra());
+		        	 System.out.println(squadreCalcio.get(i).getNome_squadra());
+		        	evento.setSq2(squadreCalcio.get(i+1).getNome_squadra());
+		        	 System.out.println(squadreCalcio.get(i+1).getNome_squadra());
+		        	eventosportivo.add(evento);
+		        }   
+		        
+		        System.out.println(eventosportivo);
+		} catch(SQLException | ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+	
+     
+        return eventosportivo;
+		
+		
+		
+	}
+	
+	
 	
 	
 }
