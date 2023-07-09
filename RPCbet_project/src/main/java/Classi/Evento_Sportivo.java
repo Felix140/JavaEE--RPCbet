@@ -1,12 +1,15 @@
 package Classi;
 
+import java.security.SecureRandom;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Random;
 
 public class Evento_Sportivo {
 
@@ -19,6 +22,8 @@ public class Evento_Sportivo {
 	private ArrayList<Calcio> squadreCalcio = new ArrayList<>();
 	private  ArrayList<Evento_Sportivo> eventosportivo = new ArrayList<>();
 	
+    private static final String ALLOWED_CHARACTERS = "0123456789";
+	private static final int CODE_LENGTH = 6;
 	
 	private int codice_partita;
 	private String sport;
@@ -106,10 +111,8 @@ try {
 		        
 		        for (int i = 0; i < squadreCalcio.size(); i+=2) {
 		        	Evento_Sportivo evento = new Evento_Sportivo();
-		        	evento.setSq1(squadreCalcio.get(i).getNome_squadra());
-		        	 System.out.println(squadreCalcio.get(i).getNome_squadra());
+		        	evento.setSq1(squadreCalcio.get(i).getNome_squadra());	        	
 		        	evento.setSq2(squadreCalcio.get(i+1).getNome_squadra());
-		        	 System.out.println(squadreCalcio.get(i+1).getNome_squadra());
 		        	eventosportivo.add(evento);
 		        }   
 		        
@@ -121,10 +124,90 @@ try {
      
         return eventosportivo;
 		
-		
-		
 	}
 	
+	// genera il codice dell'evento in modo randomico
+    public static int GeneraCodiceEvento() {
+        Random random = new Random();
+        return random.nextInt(1000000); // Genera un intero compreso tra 0 e 999999 (massimo 6 cifre)
+    }
+
+	// genera in modo randomico le varie quote
+	 public  double generateRandomDouble() 
+	 {
+	        Random random = new Random();
+	        return 0.0 + (10.0 - 0.0) * random.nextDouble();
+	 }
+	
+
+	 
+		public boolean inserimento_eventocalcio()
+		{
+			
+			
+			try {	
+				Class.forName(driver);
+				Connection conn = DriverManager.getConnection(url, usernameDb, passwordDb);
+				Statement stat = conn.createStatement();
+				ResultSet rs = stat.executeQuery("SELECT Nome_Squadra FROM calcio");
+				
+				while(rs.next() ) {
+					Calcio calcio = new Calcio();
+					calcio.setNome_squadra(rs.getString("Nome_Squadra"));
+					squadreCalcio.add(calcio);
+				}
+				
+				   Collections.shuffle(squadreCalcio);
+			        
+			        for (int i = 0; i < squadreCalcio.size(); i+=2) {
+
+			        	this.codice_partita =GeneraCodiceEvento();
+						this.sport = "Calcio";
+						this.sq1 = squadreCalcio.get(i).getNome_squadra();
+						this.sq2 = squadreCalcio.get(i+1).getNome_squadra();
+						this.quota_1 = (float)generateRandomDouble() ;
+						this.quota_x = (float)generateRandomDouble();
+						this.quota_2 = (float)generateRandomDouble();
+						this.evento_concluso = false;
+						this.risultato_partita = "-";
+			        	
+					
+						  String query = "INSERT INTO evento_sportivo VALUES(0,?,?,?,?,?,?,?,?,?)";
+						  PreparedStatement insert = conn.prepareStatement(query);
+						
+						  insert.setInt(1, this.codice_partita);
+						  insert.setString(2, this.sport);
+						  insert.setString(3, this.sq1);
+						  insert.setString(4, this.sq2);
+						  insert.setFloat(5, this.quota_1);
+						insert.setFloat(6, this.quota_x);
+						insert.setFloat(7, this.quota_2);
+						insert.setBoolean (8, this.evento_concluso);
+						insert.setString(9, this.risultato_partita);
+
+						
+						insert.executeUpdate();
+						
+					   System.out.println("Evento Inserito con successo");
+						conn.close();
+						
+						return true;
+						
+			        			        
+			        }   
+			        
+			        System.out.println(eventosportivo);
+			} catch(SQLException | ClassNotFoundException e) {
+				e.printStackTrace();
+				 System.out.println("ERRORE PD!");
+			}
+							
+			return false;
+
+		}
+	 
+	 
+	 
 	
 	
 	

@@ -26,16 +26,11 @@
     
 
   
-				ArrayList<Evento_Sportivo> EventoSportivoRandom = (ArrayList<Evento_Sportivo>) request.getAttribute("ForzaMagggggica");
-				for (int i = 0; i < EventoSportivoRandom.size(); i++) {
+				boolean  ciccio = (boolean)request.getAttribute("ForzaMagggggica");
+			
 					
-					out.println("<tr>");
-			        out.println("<td>" + EventoSportivoRandom.get(i).getSq1().toString()+ "</td>");
-			        out.println("<td>" + EventoSportivoRandom.get(i).getSq2().toString()+ "</td>");
-			       /*  out.println("<td>"+userr.get(i).getPassword()+"</td>"); */
-			        out.println("<td>Giuseppesnitch</td>");
-			        out.println("</tr>");
-			        }
+					out.println(ciccio);
+			       
  %>
     </tbody>
   </table>

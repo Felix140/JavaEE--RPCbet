@@ -23,15 +23,18 @@ public class Servlet_EventoCalcio extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		ArrayList<Calcio> squadreCalcio;
-		ArrayList<Evento_Sportivo> Eventosportivorandom;
+
+		boolean generazioneEventiCalcio;
 
 
-		Evento_Sportivo eventosportivo = new Evento_Sportivo();
 		
-		Eventosportivorandom = eventosportivo.PartiteCalcio();
+		for (int i = 0; i < 3; i++) {
+			
+			Evento_Sportivo eventosportivo = new Evento_Sportivo();
+	     	generazioneEventiCalcio = eventosportivo.inserimento_eventocalcio();
+	    	request.setAttribute("ForzaMagggggica", generazioneEventiCalcio);
+		}
 		
-		request.setAttribute("ForzaMagggggica", Eventosportivorandom);
 
 		RequestDispatcher disp = request.getRequestDispatcher("bet-page.jsp");
 		disp.forward(request,  response);
