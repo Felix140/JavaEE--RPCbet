@@ -31,10 +31,9 @@ public class Servlet_LoginUtente extends HttpServlet {
 		try {
 			boolean checkLogin = connect.login_user(usernameUtente, passwordUtente);
 			if (checkLogin) {
-				//Spedisci
-				RequestDispatcher dispatch = request.getRequestDispatcher("bet-page.jsp");
+				
 				session.setAttribute("NomeUser", usernameUtente);
-				dispatch.forward(request, response);
+				response.sendRedirect("Servlet_GenerazioneEventi");	// rimanda alla Servlet che poi rimanda alla bet-page
 			
 			} else {
 				
