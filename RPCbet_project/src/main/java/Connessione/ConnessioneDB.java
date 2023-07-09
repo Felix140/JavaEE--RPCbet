@@ -31,9 +31,12 @@ public class ConnessioneDB {
 	String url = "jdbc:mysql://localhost:3306/rpcbet";
 	String usernameDb = "root";
 	// INSERISCI LA TUA PASSWORD
-	String passwordDb = "user_mysql_14";
-
-	public void inserimento_user(String a, String b, String c, String d, String f, String g, String h, float i,	String l)
+	String passwordDb = "";
+	
+	
+	
+// 	REGISTRAZIONE USER
+	public boolean inserimento_user(String a, String b, String c, String d, String f, String g, String h, float i,	String l)
 	{
 
 		this.nome = a;
@@ -68,6 +71,8 @@ public class ConnessioneDB {
 			
 		   System.out.println("Registrazione eseguita con successo");
 			conn.close();
+			
+			return true;
 		}
 		catch(SQLException | ClassNotFoundException e)
 		{
@@ -78,7 +83,7 @@ public class ConnessioneDB {
 		}
 		
 		
-		
+		return false;
 
 	}
 	

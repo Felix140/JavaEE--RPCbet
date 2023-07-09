@@ -1,5 +1,6 @@
 package Servlet;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -33,10 +34,15 @@ public class Servlet_RegistrazioneUtente extends HttpServlet {
 
 		
 		ConnessioneDB OgConnessione = new ConnessioneDB();
-		OgConnessione.inserimento_user(nome, cognome, username_utente, codice_fiscale, numero_documento, email, password, saldo, data_nascita);
+		boolean check_Registrazione = OgConnessione.inserimento_user(nome, cognome, username_utente, codice_fiscale, numero_documento, email, password, saldo, data_nascita);
 		
+		// rimando l'utente al login una volta registrato
+		if (check_Registrazione) {
+			RequestDispatcher dispatch = request.getRequestDispatcher("loginUtente.html");
+			dispatch.forward(request, response);
+		} else {
+			response.sendRedirect("registrazioneUtente.html");
+		}
 		
-		// TODO Auto-generated method stub
 	}
-
 }
