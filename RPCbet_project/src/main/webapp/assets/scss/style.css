@@ -12119,12 +12119,15 @@ textarea.form-control-lg {
 }
 .hero__imgboxe {
   width: 800px;
+  border-radius: 300px;
 }
 .hero__imgcalcio {
   width: 800px;
+  border-radius: 300px;
 }
 .hero__imgtennis {
   width: 800px;
+  border-radius: 300px;
 }
 
 .container__index {

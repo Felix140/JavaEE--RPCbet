@@ -13431,7 +13431,6 @@ textarea.form-control-lg {
 }
 .hero__logo {
   width: 480px;
-  border: 2px solid red;
 }
 
 .hero {
@@ -13449,9 +13448,10 @@ textarea.form-control-lg {
       -ms-flex-align: start;
           align-items: start;
   row-gap: 80px;
-  border: 2px solid green;
   padding-left: 190px;
   width: 100%;
+  height: 100%;
+  z-index: 1;
 }
 .hero__button {
   display: -webkit-box;
@@ -13462,7 +13462,6 @@ textarea.form-control-lg {
       -ms-flex-direction: row;
           flex-direction: row;
   font-family: Orbitron;
-  border: 1px solid yellow;
   -webkit-column-gap: 30px;
      -moz-column-gap: 30px;
           column-gap: 30px;
@@ -13483,10 +13482,23 @@ textarea.form-control-lg {
   padding: 12px 24px;
   border-radius: 10px;
   border: 2px solid #6DD338;
+  -webkit-transition: background-color 0.3s ease, color 0.3s ease, -webkit-transform 0.5s ease;
+  transition: background-color 0.3s ease, color 0.3s ease, -webkit-transform 0.5s ease;
+  transition: transform 0.5s ease, background-color 0.3s ease, color 0.3s ease;
+  transition: transform 0.5s ease, background-color 0.3s ease, color 0.3s ease, -webkit-transform 0.5s ease;
 }
 .hero__loginBtn a {
   text-decoration: none;
   color: #6DD338;
+  font-weight: 600;
+}
+.hero__loginBtn:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  background-color: #6DD338;
+}
+.hero__loginBtn:hover a {
+  color: #1C1E2E;
 }
 .hero__registrazioneBtn {
   display: -webkit-box;
@@ -13503,22 +13515,26 @@ textarea.form-control-lg {
   height: 45;
   padding: 12px 24px;
   border-radius: 10px;
+  -webkit-transition: background-color 0.3s ease, color 0.3s ease, -webkit-transform 0.5s ease;
+  transition: background-color 0.3s ease, color 0.3s ease, -webkit-transform 0.5s ease;
+  transition: transform 0.5s ease, background-color 0.3s ease, color 0.3s ease;
+  transition: transform 0.5s ease, background-color 0.3s ease, color 0.3s ease, -webkit-transform 0.5s ease;
 }
 .hero__registrazioneBtn a {
   text-decoration: none;
   color: #1C1E2E;
+  font-weight: 600;
 }
-.hero__imgboxe {
-  width: 800px;
+.hero__registrazioneBtn:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  background-color: #FDFEFF;
 }
-.hero__imgcalcio {
-  width: 800px;
-}
-.hero__imgtennis {
-  width: 800px;
+.hero__registrazioneBtn:hover a {
+  color: #6DD338;
 }
 
-.container__index {
+.index {
   min-height: 800px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -13529,9 +13545,33 @@ textarea.form-control-lg {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  border: 2px solid wheat;
   background-color: #1C1E2E;
   background-image: url(../img/texture/unique-texture.svg);
   background-repeat: no-repeat;
   background-size: 1300px 1800px;
+  position: relative;
+}
+.index__imgboxe {
+  width: 700px;
+  border-radius: 300px 0 0 300px;
+  position: absolute;
+  left: 1150px;
+  top: 450px;
+}
+.index__imgcalcio {
+  width: 700px;
+  border-radius: 300px 0 0 300px;
+  position: absolute;
+  left: 1050px;
+}
+.index__imgtennis {
+  width: 700px;
+  border-radius: 300px 0 0 300px;
+  position: absolute;
+  left: 950px;
+  bottom: 450px;
+}
+.index__star {
+  position: absolute;
+  z-index: 0;
 }

@@ -1,14 +1,44 @@
-.container__index {
+.index {
     min-height: 800px;
 
     display: flex;
     justify-content: start;
     align-items: center;
 
-    border: 2px solid wheat;
+    // border: 2px solid wheat;
 
     background-color: $backgorund-1;
     background-image: url(../img/texture/unique-texture.svg);
     background-repeat: no-repeat;
     background-size: 1300px 1800px;
+
+    position: relative;
+
+    &__imgboxe {
+        width: 700px;
+        border-radius: 300px 0 0 300px;
+        position: absolute;
+
+        left: 1150px;
+        top: 450px;
+    }
+    &__imgcalcio {
+        width: 700px;
+        border-radius: 300px 0 0 300px;
+        position: absolute;
+
+        left: 1050px;
+    }
+    &__imgtennis {
+        width: 700px;
+        border-radius: 300px 0 0 300px;
+        position: absolute;
+        left: 950px;
+        bottom: 450px;
+    }
+
+    &__star {
+        position: absolute;
+        z-index: 0;
+    }
 }
