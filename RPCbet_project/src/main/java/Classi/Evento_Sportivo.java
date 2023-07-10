@@ -18,9 +18,8 @@ public class Evento_Sportivo {
 	String url = "jdbc:mysql://localhost:3306/rpcbet";
 	String usernameDb = "root";
 	// INSERISCI LA TUA PASSWORD
-	String passwordDb = "user_mysql_14";
+	String passwordDb = "root";
 
-	private ArrayList<Calcio> squadreCalcio = new ArrayList<>();
 	private ArrayList<Evento_Sportivo> eventosportivo = new ArrayList<>();
 
 	private static final String ALLOWED_CHARACTERS = "0123456789";
@@ -154,6 +153,7 @@ public class Evento_Sportivo {
 	}
 
 	public boolean inserimento_eventocalcio() {
+		 ArrayList<Calcio> squadreCalcio = new ArrayList<>();
 
 		try {
 			Class.forName(driver);
@@ -211,6 +211,7 @@ public class Evento_Sportivo {
 	}
 
 	public boolean inserimento_eventoboxe() {
+		 ArrayList<Calcio> squadreCalcio = new ArrayList<>();
 
 		try {
 			Class.forName(driver);
@@ -271,6 +272,7 @@ public class Evento_Sportivo {
 	}
 
 	public boolean inserimento_eventotennis() {
+		 ArrayList<Calcio> squadreCalcio = new ArrayList<>();
 
 		try {
 			Class.forName(driver);

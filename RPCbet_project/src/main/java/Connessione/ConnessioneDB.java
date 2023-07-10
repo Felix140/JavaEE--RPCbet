@@ -31,7 +31,7 @@ public class ConnessioneDB {
 	String url = "jdbc:mysql://localhost:3306/rpcbet";
 	String usernameDb = "root";
 	// INSERISCI LA TUA PASSWORD
-	String passwordDb = "user_mysql_14";
+	String passwordDb = "root";
 	
 	
 	
