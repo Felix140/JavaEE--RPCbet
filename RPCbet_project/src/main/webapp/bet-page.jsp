@@ -159,9 +159,14 @@
 				<td><%=evento.getSq1() + " - " + evento.getSq2()%></td>
 				<div class="classe-prova">
 					<button
-						onclick="returnResult_X('<%=evento.getSq1() + " - " + evento.getSq2()%>','<%=evento.getQuota_1()%>')"><%=evento.getQuota_1()%></button>
-					<button><%=evento.getQuota_x()%></button>
-					<button><%=evento.getQuota_2()%></button>
+						onclick="returnQuota('<%=evento.getSq1() + " - " + evento.getSq2()%>','<%=evento.getQuota_1()%>', '1')"><%=evento.getQuota_1()%></button>
+
+					<button
+						onclick="returnQuota('<%=evento.getSq1() + " - " + evento.getSq2()%>','<%=evento.getQuota_x()%>', 'x')"><%=evento.getQuota_x()%></button>
+
+					<button
+						onclick="returnQuota('<%=evento.getSq1() + " - " + evento.getSq2()%>','<%=evento.getQuota_2()%>', '2')"><%=evento.getQuota_2()%></button>
+
 				</div>
 			</tr>
 			˙
@@ -177,10 +182,11 @@
 
 
 	<script>
-		function returnResult_X(evento, quota) {
-			console.log("Evento: " + evento + ", Quota: " + quota);
+		function returnQuota(evento, quota, colonna) {
+			console.log("Evento: " + evento + ", Scelta selezionata: " + colonna);
 		}
 	</script>
+
 	˙
 
 
