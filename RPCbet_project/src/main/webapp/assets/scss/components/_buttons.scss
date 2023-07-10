@@ -1,0 +1,43 @@
+// index.html
+.button {
+    display: flex;
+    flex-direction: row;
+    font-family: Orbitron;
+
+    &__login {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        background-color: $primary;
+        width: 156px;
+        height: 45;
+        padding: 12px 24px;
+        border-radius: 10px;
+
+        border: 2px solid red;
+        a {
+            text-decoration: none;
+            color: $backgorund-1;
+        }
+    }
+
+    &__registrazione {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        background-color: $primary;
+        width: 156px;
+        height: 45;
+        padding: 12px 24px;
+
+        border: 2px solid red;
+        border-radius: 10px;
+
+        a {
+            text-decoration: none;
+            color: $backgorund-1;
+        }
+    }
+}
