@@ -18,6 +18,14 @@
 	flex-direction: row;
 	border: 2px solid red;
 }
+
+#quoteForm {
+	margin-top: 20px;
+}
+
+#quoteForm input {
+	margin-right: 10px;
+}
 </style>
 </head>
 <body>
@@ -154,7 +162,7 @@
 
 				if (evento.getSport().equals("Calcio")) {
 			%>
-			˙
+
 			<tr>
 				<td><%=evento.getSq1() + " - " + evento.getSq2()%></td>
 				<div class="classe-prova">
@@ -169,7 +177,7 @@
 
 				</div>
 			</tr>
-			˙
+
 
 			<%
 			}
@@ -180,14 +188,41 @@
 	<!-- --------------------------------------- -->
 
 
+	<!-- CARD SCHEDINA -->
+	<form id="quoteForm" action="" method="post">
+		  <input type="text" name="evento1" id="eventoInput1" readonly> <br>
+		  <input type="text" name="evento2" id="eventoInput2" readonly>	<br>
+		  <input type="text" name="evento3" id="eventoInput3" readonly>	<br>
+		  <input type="text" name="evento4" id="eventoInput4" readonly>	<br>
+		  <input type="text" name="evento5" id="eventoInput5" readonly>	<br>
+		  <input type="text" name="evento6" id="eventoInput6" readonly>	<br>
+		  <input type="text" name="evento7" id="eventoInput7" readonly>	<br>
+		  <input type="text" name="evento8" id="eventoInput8" readonly>	<br>
+		  <input type="text" name="evento9" id="eventoInput9" readonly>	<br>
+		  <input type="submit" value="Gioca schedina">
+		  
+	</form>
 
 	<script>
-		function returnQuota(evento, quota, colonna) {
-			console.log("Evento: " + evento + ", Scelta selezionata: " + colonna);
-		}
-	</script>
+		var eventiSelezionati = []; // Dichiarazione dell'array eventiSelezionati
+	
+		  function returnQuota(evento, quota, colonna) {
+		    if (eventiSelezionati.length < 9) {
+		      var valoreEvento = evento + ' - ' + colonna;
+		      eventiSelezionati.push(valoreEvento);
+		      updateInputValues();
+		    }
+		  }
+	
+		  function updateInputValues() {
+		    var inputElements = document.querySelectorAll('#quoteForm input[type="text"]');
+		    for (var i = 0; i < inputElements.length; i++) {
+		      var inputValue = (i < eventiSelezionati.length) ? eventiSelezionati[i] : '';
+		      inputElements[i].value = inputValue;
+		    }
+		  }
 
-	˙
+	</script>
 
 
 	<script

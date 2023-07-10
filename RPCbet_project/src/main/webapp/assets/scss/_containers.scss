@@ -1,0 +1,14 @@
+.container__index {
+    min-height: 800px;
+
+    display: flex;
+    justify-content: start;
+    align-items: center;
+
+    border: 2px solid wheat;
+
+    background-color: $backgorund-1;
+    background-image: url(../img/texture/unique-texture.svg);
+    background-repeat: no-repeat;
+    background-size: 1300px 1800px;
+}
