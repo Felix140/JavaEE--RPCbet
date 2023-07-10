@@ -59,9 +59,14 @@
 	padding: 40px 40px;
 }
 
+.schedina__rowInput {
+	display: flex; 
+	flex-direction: row;
+}
+
 input {
 	width: 100%;
-	border: none;
+	border: solid 1px grey;
 }
 </style>
 </head>
@@ -251,15 +256,43 @@ input {
 		<div class="schedina">
 			<form id="quoteForm" action="" method="post" class="schedina__form">
 				<div class="schedina__input">
-					<input type="text" name="evento1" id="eventoInput1" name="" readonly> 
-					<input type="text" name="evento2" id="eventoInput2" name="" readonly>
-					<input type="text" name="evento3" id="eventoInput3" name="" readonly>
-					<input type="text" name="evento4" id="eventoInput4" name="" readonly>
-					<input type="text" name="evento5" id="eventoInput5" name="" readonly>
-					<input type="text" name="evento6" id="eventoInput6" name="" readonly>
-					<input type="text" name="evento7" id="eventoInput7" name="" readonly>
-					<input type="text" name="evento8" id="eventoInput8" name="" readonly>
-					<input type="text" name="evento9" id="eventoInput9" name="" readonly>
+					<div class="schedina__rowInput">
+						<input type="text" name="evento1_codice" id="eventoCodiceInput1" readonly>
+						<input type="text" name="evento1_colonna" id="eventoColonnaInput1" readonly>
+					</div>
+					<div class="schedina__rowInput">
+						<input type="text" name="evento2_codice" id="eventoCodiceInput2" readonly>
+						<input type="text" name="evento2_colonna" id="eventoColonnaInput2" readonly>
+					</div>
+					<div class="schedina__rowInput">
+						<input type="text" name="evento3_codice" id="eventoCodiceInput3" readonly>
+						<input type="text" name="evento3_colonna" id="eventoColonnaInput3" readonly>
+					</div>
+					<div class="schedina__rowInput">
+						<input type="text" name="evento4_codice" id="eventoCodiceInput4" readonly>
+						<input type="text" name="evento4_colonna" id="eventoColonnaInput4" readonly>
+					</div>
+					<div class="schedina__rowInput">
+						<input type="text" name="evento5_codice" id="eventoCodiceInput5" readonly>
+						<input type="text" name="evento5_colonna" id="eventoColonnaInput5" readonly>
+					</div>
+					<div class="schedina__rowInput">
+						<input type="text" name="evento6_codice" id="eventoCodiceInput6" readonly>
+						<input type="text" name="evento6_colonna" id="eventoColonnaInput6" readonly>
+					</div>
+					<div class="schedina__rowInput">
+						<input type="text" name="evento7_codice" id="eventoCodiceInput7" readonly>
+						<input type="text" name="evento7_colonna" id="eventoColonnaInput7" readonly>
+					</div>
+					<div class="schedina__rowInput">
+						<input type="text" name="evento8_codice" id="eventoCodiceInput8" readonly>
+						<input type="text" name="evento8_colonna" id="eventoColonnaInput8" readonly>
+					</div>
+					<div class="schedina__rowInput">
+						<input type="text" name="evento9_codice" id="eventoCodiceInput9" readonly>
+						<input type="text" name="evento9_colonna" id="eventoColonnaInput9" readonly>
+					</div>
+					
 				</div>
 				
 				<div class="schedina__button">
@@ -293,21 +326,30 @@ input {
 			} else if (eventiSelezionati.length < 9) {
 				// Aggiungi il nuovo valore se l'array non è pieno
 				eventiSelezionati.push(codicePartita + ' - ' + colonna);
-
 			}
 
 			updateInputValues();
 		}
 
 		function updateInputValues() {
-			const inputElements = document.querySelectorAll('#quoteForm input[type="text"]');
+			for (let i = 0; i < eventiSelezionati.length; i++) {
+				const inputCodice = document.getElementById('eventoCodiceInput' + (i + 1));
+				const inputColonna = document.getElementById('eventoColonnaInput' + (i + 1));
+				const eventiSelezionato = eventiSelezionati[i].split(' - ');
 
-			for (let i = 0; i < inputElements.length; i++) {
-				var inputValue = (i < eventiSelezionati.length) ? eventiSelezionati[i] : '';
-				inputElements[i].value = inputValue;
+				inputCodice.value = eventiSelezionato[0];
+				inputColonna.value = eventiSelezionato[1];
+			}
+
+			for (let i = eventiSelezionati.length; i < 9; i++) {
+				const inputCodice = document.getElementById('eventoCodiceInput' + (i + 1));
+				const inputColonna = document.getElementById('eventoColonnaInput' + (i + 1));
+
+				inputCodice.value = '';
+				inputColonna.value = '';
 			}
 		}
-		
+
 	</script>
 
 
