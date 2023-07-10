@@ -12,13 +12,15 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
-public class Evento_Sportivo {
+import Connessione.ClasseEstrapolazioneTXT;
 
+public class Evento_Sportivo {
+	ClasseEstrapolazioneTXT oggettotxt = new ClasseEstrapolazioneTXT();
 	String driver = "com.mysql.cj.jdbc.Driver";
 	String url = "jdbc:mysql://localhost:3306/rpcbet";
 	String usernameDb = "root";
 	// INSERISCI LA TUA PASSWORD
-	String passwordDb = "root";
+	String passwordDb = oggettotxt.MetodoEstrapolazioneFile();
 
 	private ArrayList<Evento_Sportivo> eventosportivo = new ArrayList<>();
 

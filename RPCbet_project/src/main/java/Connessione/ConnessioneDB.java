@@ -5,7 +5,10 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.net.URL;
 import java.sql.*;
+import java.io.File;
+import java.io.InputStream;
 
 
 
@@ -26,12 +29,20 @@ public class ConnessioneDB {
 	String password_admin;
 	
 	
+	
+	
+	
+	
+		ClasseEstrapolazioneTXT oggettotxt = new ClasseEstrapolazioneTXT();
+		
+		 
+	    
 	// credenziali database
 	String driver ="com.mysql.cj.jdbc.Driver";
 	String url = "jdbc:mysql://localhost:3306/rpcbet";
 	String usernameDb = "root";
 	// INSERISCI LA TUA PASSWORD
-	String passwordDb = "root";
+	String passwordDb = oggettotxt.MetodoEstrapolazioneFile();;
 	
 	
 	
