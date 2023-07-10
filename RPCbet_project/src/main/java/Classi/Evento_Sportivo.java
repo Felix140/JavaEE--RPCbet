@@ -342,7 +342,7 @@ public class Evento_Sportivo {
 			Class.forName(driver);
 			Connection conn = DriverManager.getConnection(url, usernameDb, passwordDb);
 			Statement stat = conn.createStatement();
-			String query = "SELECT Sq1, Sq2, Quota_1, Quota_x, Quota_2, Sport FROM rpcbet.evento_sportivo WHERE Sport = ? ORDER BY codice_partita DESC LIMIT 3";
+			String query = "SELECT Codice_Partita, Sq1, Sq2, Quota_1, Quota_x, Quota_2, Sport FROM rpcbet.evento_sportivo WHERE Sport = ? ORDER BY codice_partita DESC LIMIT 3";
 			PreparedStatement pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, sportDesiderato);
 			ResultSet rs = pstmt.executeQuery();
@@ -354,6 +354,7 @@ public class Evento_Sportivo {
 				evento.setQuota_1(rs.getFloat("Quota_1"));
 				evento.setQuota_x(rs.getFloat("Quota_x"));
 				evento.setQuota_2(rs.getFloat("Quota_2"));
+				evento.setCodice_partita(rs.getInt("Codice_Partita"));
 				evento.setSport(sportDesiderato);
 
 				eventiFiltrati.add(evento);

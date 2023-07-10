@@ -37,22 +37,31 @@
 }
 
 .schedina {
+	border: 2px solid yellow;
+}
+.schedina__form {
 	border: 2px solid red;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	
+	row-gap: 20px;
 }
-.schedina__form {
-	width: 300px;
+
+.schedina__input {
 	border: 2px solid green;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
+	background-color: white;
+	border-radius: 30px;
+	height: 500px;
+	width: 300px;
+	
+	padding: 40px 40px;
 }
+
 input {
 	width: 100%;
+	border: none;
 }
 </style>
 </head>
@@ -61,7 +70,6 @@ input {
 	String usernameUtente = (String) session.getAttribute("NomeUser");
 	%>
 
-	<h1>bet-page</h1>
 	<h2>
 		Benvenuto/a
 		<%=usernameUtente%></h2>
@@ -97,6 +105,7 @@ input {
 							<th scope="col">1</th>
 							<th scope="col">X</th>
 							<th scope="col">2</th>
+							<th scope="col">Codice</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -114,16 +123,16 @@ input {
 							<td><%=evento.getSq1() + " - " + evento.getSq2()%></td>
 							
 								<th><button	class="btn btn-primary"
-										onclick="returnQuota('<%=evento.getSq1() + " - " + evento.getSq2()%>','<%=evento.getQuota_1()%>', '1', this)"><%=evento.getQuota_1()%></button></th>
+										onclick="returnQuota('<%=evento.getCodice_partita() %>','<%=evento.getQuota_1()%>', '1', this)"><%=evento.getQuota_1()%></button></th>
 
 								<th><button	class="btn btn-primary"
-										onclick="returnQuota('<%=evento.getSq1() + " - " + evento.getSq2()%>','<%=evento.getQuota_x()%>', 'x', this)"><%=evento.getQuota_x()%></button></th>
+										onclick="returnQuota('<%=evento.getCodice_partita() %>','<%=evento.getQuota_x()%>', 'x', this)"><%=evento.getQuota_x()%></button></th>
 
 
-								<th><button class="btn btn-primary" onclick="returnQuota('<%=evento.getSq1() + " - " + evento.getSq2()%>','<%=evento.getQuota_2()%>', '2', this)"><%=evento.getQuota_2()%></button>
+								<th><button class="btn btn-primary" onclick="returnQuota('<%=evento.getCodice_partita() %>','<%=evento.getQuota_2()%>', '2', this)"><%=evento.getQuota_2()%></button>
 								</th>
 
-								
+								<th><%=evento.getCodice_partita() %></th>
 						</tr>
 
 
@@ -146,6 +155,7 @@ input {
 							<th scope="col">1</th>
 							<th scope="col">X</th>
 							<th scope="col">2</th>
+							<th scope="col">Codice</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -163,15 +173,15 @@ input {
 							<td><%=evento.getSq1() + " - " + evento.getSq2()%></td>
 							
 								<th><button	class="btn btn-primary"
-										onclick="returnQuota('<%=evento.getSq1() + " - " + evento.getSq2()%>','<%=evento.getQuota_1()%>', '1', this)"><%=evento.getQuota_1()%></button></th>
+										onclick="returnQuota('<%=evento.getCodice_partita() %>','<%=evento.getQuota_1()%>', '1', this)"><%=evento.getQuota_1()%></button></th>
 
 								<th><button	class="btn btn-primary"
-										onclick="returnQuota('<%=evento.getSq1() + " - " + evento.getSq2()%>','<%=evento.getQuota_x()%>', 'x', this)"><%=evento.getQuota_x()%></button></th>
+										onclick="returnQuota('<%=evento.getCodice_partita() %>','<%=evento.getQuota_x()%>', 'x', this)"><%=evento.getQuota_x()%></button></th>
 
 								<th><button	class="btn btn-primary"
-										onclick="returnQuota('<%=evento.getSq1() + " - " + evento.getSq2()%>','<%=evento.getQuota_2()%>', '2', this)"><%=evento.getQuota_2()%></button></th>
+										onclick="returnQuota('<%=evento.getCodice_partita() %>','<%=evento.getQuota_2()%>', '2', this)"><%=evento.getQuota_2()%></button></th>
 
-							
+								<th><%=evento.getCodice_partita() %></th>
 						</tr>
 
 						<%
@@ -194,6 +204,7 @@ input {
 							<th scope="col">1</th>
 							<th scope="col">X</th>
 							<th scope="col">2</th>
+							<th scope="col">Codice</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -212,15 +223,15 @@ input {
 							<td><%=evento.getSq1() + " - " + evento.getSq2()%></td>
 							
 								<th><button class="btn btn-primary"
-										onclick="returnQuota('<%=evento.getSq1() + " - " + evento.getSq2()%>','<%=evento.getQuota_1()%>', '1', this)"><%=evento.getQuota_1()%></button></th>
+										onclick="returnQuota('<%=evento.getCodice_partita() %>','<%=evento.getQuota_1()%>', '1', this)"><%=evento.getQuota_1()%></button></th>
 
 								<th><button	class="btn btn-primary"
-										onclick="returnQuota('<%=evento.getSq1() + " - " + evento.getSq2()%>','<%=evento.getQuota_x()%>', 'x', this)"><%=evento.getQuota_x()%></button></th>
+										onclick="returnQuota('<%=evento.getCodice_partita() %>','<%=evento.getQuota_x()%>', 'x', this)"><%=evento.getQuota_x()%></button></th>
 
 								<th><button	class="btn btn-primary"
-										onclick="returnQuota('<%=evento.getSq1() + " - " + evento.getSq2()%>','<%=evento.getQuota_2()%>', '2', this)"><%=evento.getQuota_2()%></button></th>
+										onclick="returnQuota('<%=evento.getCodice_partita() %>','<%=evento.getQuota_2()%>', '2', this)"><%=evento.getQuota_2()%></button></th>
 
-							
+								<th><%=evento.getCodice_partita() %></th>
 						</tr>
 						
 						<%
@@ -239,19 +250,22 @@ input {
 			<!-- CARD SCHEDINA -->
 		<div class="schedina">
 			<form id="quoteForm" action="" method="post" class="schedina__form">
-				<input type="text" name="evento1" id="eventoInput1" name="" readonly>
-				<br> <input type="text" name="evento2" id="eventoInput2" name="" readonly>
-				<br> <input type="text" name="evento3" id="eventoInput3" name="" readonly>
-				<br> <input type="text" name="evento4" id="eventoInput4" name="" readonly>
-				<br> <input type="text" name="evento5" id="eventoInput5" name="" readonly>
-				<br> <input type="text" name="evento6" id="eventoInput6" name="" readonly>
-				<br> <input type="text" name="evento7" id="eventoInput7" name="" readonly>
-				<br> <input type="text" name="evento8" id="eventoInput8" name="" readonly>
-				<br> <input type="text" name="evento9" id="eventoInput9" name="" readonly>
+				<div class="schedina__input">
+					<input type="text" name="evento1" id="eventoInput1" name="" readonly> 
+					<input type="text" name="evento2" id="eventoInput2" name="" readonly>
+					<input type="text" name="evento3" id="eventoInput3" name="" readonly>
+					<input type="text" name="evento4" id="eventoInput4" name="" readonly>
+					<input type="text" name="evento5" id="eventoInput5" name="" readonly>
+					<input type="text" name="evento6" id="eventoInput6" name="" readonly>
+					<input type="text" name="evento7" id="eventoInput7" name="" readonly>
+					<input type="text" name="evento8" id="eventoInput8" name="" readonly>
+					<input type="text" name="evento9" id="eventoInput9" name="" readonly>
+				</div>
 				
-				
-				<br> <input type="submit" value="Gioca schedina" class="btn btn-primary">
-
+				<div class="schedina__button">
+					<input type="submit" value="Gioca schedina" class="btn btn-primary">
+				</div>
+	
 			</form>
 		</div>
 
@@ -266,19 +280,19 @@ input {
 	
 
 	<script>
-		var eventiSelezionati = []; // Dichiarazione dell'array eventiSelezionati
+		const eventiSelezionati = []; // Dichiarazione dell'array eventiSelezionati
 
-		function returnQuota(evento, quota, colonna, button) {
-			var index = eventiSelezionati.findIndex(function (item) {
-				return item.startsWith(evento);
+		function returnQuota(codicePartita, quota, colonna, button) {
+			let index = eventiSelezionati.findIndex(function (item) {
+				return item.startsWith(codicePartita);
 			});
 
 			if (index !== -1) {
 				// Sostituisci il valore per lo stesso evento
-				eventiSelezionati[index] = evento + ' - ' + colonna;
+				eventiSelezionati[index] = codicePartita + ' - ' + colonna;
 			} else if (eventiSelezionati.length < 9) {
 				// Aggiungi il nuovo valore se l'array non è pieno
-				eventiSelezionati.push(evento + ' - ' + colonna);
+				eventiSelezionati.push(codicePartita + ' - ' + colonna);
 
 			}
 
@@ -286,9 +300,9 @@ input {
 		}
 
 		function updateInputValues() {
-			var inputElements = document.querySelectorAll('#quoteForm input[type="text"]');
+			const inputElements = document.querySelectorAll('#quoteForm input[type="text"]');
 
-			for (var i = 0; i < inputElements.length; i++) {
+			for (let i = 0; i < inputElements.length; i++) {
 				var inputValue = (i < eventiSelezionati.length) ? eventiSelezionati[i] : '';
 				inputElements[i].value = inputValue;
 			}
