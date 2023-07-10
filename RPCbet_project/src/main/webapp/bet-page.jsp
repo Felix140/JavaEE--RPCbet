@@ -12,7 +12,13 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <!-- <link rel="stylesheet" href="assets/css/style.css"> -->
-
+<style type="text/css">
+.classe-prova {
+	display: flex;
+	flex-direction: row;
+	border: 2px solid red;
+}
+</style>
 </head>
 <body>
 	<%
@@ -129,17 +135,61 @@
 	</table>
 
 
+	<!-- --------------------------------------- -->
+	<table class="table">
+		<caption>Eventi sportivi - Calcio</caption>
+		<thead>
+			<tr>
+				<th scope="col">Evento</th>
+				<th scope="col">1</th>
+				<th scope="col">X</th>
+				<th scope="col">2</th>
+			</tr>
+		</thead>
+		<tbody>
+			<%
+			for (int i = 0; i < event.size(); i++) {
+
+				Evento_Sportivo evento = event.get(i);
+
+				if (evento.getSport().equals("Calcio")) {
+			%>
+			˙
+			<tr>
+				<td><%=evento.getSq1() + " - " + evento.getSq2()%></td>
+				<div class="classe-prova">
+					<button
+						onclick="returnResult_X('<%=evento.getSq1() + " - " + evento.getSq2()%>','<%=evento.getQuota_1()%>')"><%=evento.getQuota_1()%></button>
+					<button><%=evento.getQuota_x()%></button>
+					<button><%=evento.getQuota_2()%></button>
+				</div>
+			</tr>
+			˙
+
+			<%
+			}
+			}
+			%>
+		</tbody>
+	</table>
+	<!-- --------------------------------------- -->
 
 
 
+	<script>
+		function returnResult_X(evento, quota) {
+			console.log("Evento: " + evento + ", Quota: " + quota);
+		}
+	</script>
+	˙
 
 
-
-
-	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+	<script
+		src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
 		integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
 		crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"
 		integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS"
 		crossorigin="anonymous"></script>
 
