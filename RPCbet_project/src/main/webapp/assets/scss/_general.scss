@@ -1,12 +1,15 @@
+$backgorund-1: #1C1E2E;
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-$backgorund-1: #1C1E2E;
 
-.container__index {
+body {
     background-color: $backgorund-1;
-    height: 100%;
 }
 
+.index_texture {
+    border: solid 2px yellow;
+}

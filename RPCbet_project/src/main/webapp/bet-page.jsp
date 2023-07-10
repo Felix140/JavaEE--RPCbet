@@ -11,12 +11,62 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<!-- <link rel="stylesheet" href="assets/css/style.css"> -->
+ <link rel="stylesheet" href="assets/css/style.css">
 <style type="text/css">
+
+.mainView {
+	display: flex;
+	flex-direction: row;
+	background-color: blue;
+	justify-content: space-around;
+	align-items: center;
+}
+
 .classe-prova {
 	display: flex;
 	flex-direction: row;
 	border: 2px solid red;
+}
+
+#quoteForm {
+	margin-top: 20px;
+}
+
+#quoteForm input {
+	margin-right: 10px;
+}
+
+.schedina {
+	border: 2px solid yellow;
+}
+.schedina__form {
+	border: 2px solid red;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	
+	row-gap: 20px;
+}
+
+.schedina__input {
+	border: 2px solid green;
+	background-color: white;
+	border-radius: 30px;
+	height: 500px;
+	width: 300px;
+	
+	padding: 40px 40px;
+}
+
+.schedina__rowInput {
+	display: flex; 
+	flex-direction: row;
+}
+
+input {
+	width: 100%;
+	border: solid 1px grey;
 }
 </style>
 </head>
@@ -25,10 +75,10 @@
 	String usernameUtente = (String) session.getAttribute("NomeUser");
 	%>
 
-	<h1>bet-page</h1>
 	<h2>
 		Benvenuto/a
 		<%=usernameUtente%></h2>
+		
 
 	<!-- Tabella eventi calcio -->
 	<table class="table table-striped">
@@ -46,148 +96,261 @@
 
 	<h3>Tabella Eventi Sport</h3>
 
+	<div class="mainView">
 
-	<table class="table">
-		<caption>Eventi sportivi - Calcio</caption>
-		<thead>
-			<tr>
-				<th scope="col">Evento</th>
-				<th scope="col">1</th>
-				<th scope="col">X</th>
-				<th scope="col">2</th>
-			</tr>
-		</thead>
-		<tbody>
-			<%
-			ArrayList<Evento_Sportivo> event = (ArrayList<Evento_Sportivo>) request.getAttribute("tableCalcio");
+		<div class="tabels">
 
-			for (int i = 0; i < event.size(); i++) {
+			<!-- -----------------CALCIO---------------------- -->
+			<div class="tables__calcio">
+				<table class="table">
+					
+					<thead>
+						<tr>
+							<th scope="col">Evento</th>
+							<th scope="col">1</th>
+							<th scope="col">X</th>
+							<th scope="col">2</th>
+							<th scope="col">Codice</th>
+						</tr>
+					</thead>
+					<tbody>
+						<%
+						ArrayList<Evento_Sportivo> eventCalcio = (ArrayList<Evento_Sportivo>) request.getAttribute("tableCalcio");
+						
+						for (int i = 0; i < eventCalcio.size(); i++) {
 
-				Evento_Sportivo evento = event.get(i);
+							Evento_Sportivo evento = eventCalcio.get(i);
 
-				if (evento.getSport().equals("Calcio")) {
-			%>
-			<tr>
-				<td><%=evento.getSq1() + " - " + evento.getSq2()%></td>
-				<td><%=evento.getQuota_1()%></td>
-				<td><%=evento.getQuota_x()%></td>
-				<td><%=evento.getQuota_2()%></td>
-			</tr>
-			<%
-			}
-			}
-			%>
-		</tbody>
-	</table>
+							if (evento.getSport().equals("Calcio")) {
+						%>
 
-	<table class="table">
-		<caption>Eventi sportivi - Tennis</caption>
-		<thead>
-			<tr>
-				<th scope="col">Evento</th>
-				<th scope="col">1</th>
-				<th scope="col">X</th>
-				<th scope="col">2</th>
-			</tr>
-		</thead>
-		<tbody>
-			<%
-			ArrayList<Evento_Sportivo> eventTennis = (ArrayList<Evento_Sportivo>) request.getAttribute("tableTennis");
+						<tr>
+							<td><%=evento.getSq1() + " - " + evento.getSq2()%></td>
+							
+								<th><button	class="btn btn-primary"
+										onclick="returnQuota('<%=evento.getCodice_partita() %>','<%=evento.getQuota_1()%>', '1', this)"><%=evento.getQuota_1()%></button></th>
 
-			for (int i = 0; i < eventTennis.size(); i++) {
-				Evento_Sportivo evento = eventTennis.get(i);
-				out.println("<tr>");
-				out.println("<td>" + evento.getSq1() + " - " + evento.getSq2() + "</td>");
-				out.println("<td>" + evento.getQuota_1() + "</td>");
-				out.println("<td>" + evento.getQuota_x() + "</td>");
-				out.println("<td>" + evento.getQuota_2() + "</td>");
-				out.println("</tr>");
-			}
-			%>
-		</tbody>
-	</table>
-
-	<table class="table">
-		<caption>Eventi sportivi - Boxe</caption>
-		<thead>
-			<tr>
-				<th scope="col">Evento</th>
-				<th scope="col">1</th>
-				<th scope="col">X</th>
-				<th scope="col">2</th>
-			</tr>
-		</thead>
-		<tbody>
-			<%
-			ArrayList<Evento_Sportivo> eventBoxe = (ArrayList<Evento_Sportivo>) request.getAttribute("tableBoxe");
-
-			for (int i = 0; i < eventBoxe.size(); i++) {
-				Evento_Sportivo evento = eventBoxe.get(i);
-				out.println("<tr>");
-				out.println("<td>" + evento.getSq1() + " - " + evento.getSq2() + "</td>");
-				out.println("<td>" + evento.getQuota_1() + "</td>");
-				out.println("<td>" + evento.getQuota_x() + "</td>");
-				out.println("<td>" + evento.getQuota_2() + "</td>");
-				out.println("</tr>");
-			}
-			%>
-		</tbody>
-	</table>
+								<th><button	class="btn btn-primary"
+										onclick="returnQuota('<%=evento.getCodice_partita() %>','<%=evento.getQuota_x()%>', 'x', this)"><%=evento.getQuota_x()%></button></th>
 
 
-	<!-- --------------------------------------- -->
-	<table class="table">
-		<caption>Eventi sportivi - Calcio</caption>
-		<thead>
-			<tr>
-				<th scope="col">Evento</th>
-				<th scope="col">1</th>
-				<th scope="col">X</th>
-				<th scope="col">2</th>
-			</tr>
-		</thead>
-		<tbody>
-			<%
-			for (int i = 0; i < event.size(); i++) {
+								<th><button class="btn btn-primary" onclick="returnQuota('<%=evento.getCodice_partita() %>','<%=evento.getQuota_2()%>', '2', this)"><%=evento.getQuota_2()%></button>
+								</th>
 
-				Evento_Sportivo evento = event.get(i);
+								<th><%=evento.getCodice_partita() %></th>
+						</tr>
 
-				if (evento.getSport().equals("Calcio")) {
-			%>
-			˙
-			<tr>
-				<td><%=evento.getSq1() + " - " + evento.getSq2()%></td>
-				<div class="classe-prova">
-					<button
-						onclick="returnQuota('<%=evento.getSq1() + " - " + evento.getSq2()%>','<%=evento.getQuota_1()%>', '1')"><%=evento.getQuota_1()%></button>
 
-					<button
-						onclick="returnQuota('<%=evento.getSq1() + " - " + evento.getSq2()%>','<%=evento.getQuota_x()%>', 'x')"><%=evento.getQuota_x()%></button>
+						<%
+						}
+						}
+						%>
+					</tbody>
+				</table>
+			</div>
 
-					<button
-						onclick="returnQuota('<%=evento.getSq1() + " - " + evento.getSq2()%>','<%=evento.getQuota_2()%>', '2')"><%=evento.getQuota_2()%></button>
+			<!-- -----------------TENNIS---------------------- -->
+			<div class="tables__tennis">
 
+				<table class="table">
+					
+					<thead>
+						<tr>
+							<th scope="col">Evento</th>
+							<th scope="col">1</th>
+							<th scope="col">X</th>
+							<th scope="col">2</th>
+							<th scope="col">Codice</th>
+						</tr>
+					</thead>
+					<tbody>
+						<%
+						ArrayList<Evento_Sportivo> eventTennis = (ArrayList<Evento_Sportivo>) request.getAttribute("tableTennis");
+
+						for (int i = 0; i < eventTennis.size(); i++) {
+
+							Evento_Sportivo evento = eventTennis.get(i);
+
+							if (evento.getSport().equals("Tennis")) {
+						%>
+
+						<tr>
+							<td><%=evento.getSq1() + " - " + evento.getSq2()%></td>
+							
+								<th><button	class="btn btn-primary"
+										onclick="returnQuota('<%=evento.getCodice_partita() %>','<%=evento.getQuota_1()%>', '1', this)"><%=evento.getQuota_1()%></button></th>
+
+								<th><button	class="btn btn-primary"
+										onclick="returnQuota('<%=evento.getCodice_partita() %>','<%=evento.getQuota_x()%>', 'x', this)"><%=evento.getQuota_x()%></button></th>
+
+								<th><button	class="btn btn-primary"
+										onclick="returnQuota('<%=evento.getCodice_partita() %>','<%=evento.getQuota_2()%>', '2', this)"><%=evento.getQuota_2()%></button></th>
+
+								<th><%=evento.getCodice_partita() %></th>
+						</tr>
+
+						<%
+						}
+						}
+						%>
+
+					</tbody>
+				</table>
+			</div>
+
+			
+			<!-- ------------------BOXE--------------------- -->
+			<div class="tables__boxe">
+				<table class="table">
+					
+					<thead>
+						<tr>
+							<th scope="col">Evento</th>
+							<th scope="col">1</th>
+							<th scope="col">X</th>
+							<th scope="col">2</th>
+							<th scope="col">Codice</th>
+						</tr>
+					</thead>
+					<tbody>
+					
+						<%
+						ArrayList<Evento_Sportivo> eventBoxe = (ArrayList<Evento_Sportivo>) request.getAttribute("tableBoxe");
+
+						for (int i = 0; i < eventBoxe.size(); i++) {
+
+							Evento_Sportivo evento = eventBoxe.get(i);
+
+							if (evento.getSport().equals("Boxe")) {
+						%>
+						
+						<tr>
+							<td><%=evento.getSq1() + " - " + evento.getSq2()%></td>
+							
+								<th><button class="btn btn-primary"
+										onclick="returnQuota('<%=evento.getCodice_partita() %>','<%=evento.getQuota_1()%>', '1', this)"><%=evento.getQuota_1()%></button></th>
+
+								<th><button	class="btn btn-primary"
+										onclick="returnQuota('<%=evento.getCodice_partita() %>','<%=evento.getQuota_x()%>', 'x', this)"><%=evento.getQuota_x()%></button></th>
+
+								<th><button	class="btn btn-primary"
+										onclick="returnQuota('<%=evento.getCodice_partita() %>','<%=evento.getQuota_2()%>', '2', this)"><%=evento.getQuota_2()%></button></th>
+
+								<th><%=evento.getCodice_partita() %></th>
+						</tr>
+						
+						<%
+						}
+						}
+						%>
+						
+					</tbody>
+				</table>
+			</div>
+
+
+		</div>
+
+
+			<!-- CARD SCHEDINA -->
+		<div class="schedina">
+			<form id="quoteForm" action="" method="post" class="schedina__form">
+				<div class="schedina__input">
+					<div class="schedina__rowInput">
+						<input type="text" name="evento1_codice" id="eventoCodiceInput1" readonly>
+						<input type="text" name="evento1_colonna" id="eventoColonnaInput1" readonly>
+					</div>
+					<div class="schedina__rowInput">
+						<input type="text" name="evento2_codice" id="eventoCodiceInput2" readonly>
+						<input type="text" name="evento2_colonna" id="eventoColonnaInput2" readonly>
+					</div>
+					<div class="schedina__rowInput">
+						<input type="text" name="evento3_codice" id="eventoCodiceInput3" readonly>
+						<input type="text" name="evento3_colonna" id="eventoColonnaInput3" readonly>
+					</div>
+					<div class="schedina__rowInput">
+						<input type="text" name="evento4_codice" id="eventoCodiceInput4" readonly>
+						<input type="text" name="evento4_colonna" id="eventoColonnaInput4" readonly>
+					</div>
+					<div class="schedina__rowInput">
+						<input type="text" name="evento5_codice" id="eventoCodiceInput5" readonly>
+						<input type="text" name="evento5_colonna" id="eventoColonnaInput5" readonly>
+					</div>
+					<div class="schedina__rowInput">
+						<input type="text" name="evento6_codice" id="eventoCodiceInput6" readonly>
+						<input type="text" name="evento6_colonna" id="eventoColonnaInput6" readonly>
+					</div>
+					<div class="schedina__rowInput">
+						<input type="text" name="evento7_codice" id="eventoCodiceInput7" readonly>
+						<input type="text" name="evento7_colonna" id="eventoColonnaInput7" readonly>
+					</div>
+					<div class="schedina__rowInput">
+						<input type="text" name="evento8_codice" id="eventoCodiceInput8" readonly>
+						<input type="text" name="evento8_colonna" id="eventoColonnaInput8" readonly>
+					</div>
+					<div class="schedina__rowInput">
+						<input type="text" name="evento9_codice" id="eventoCodiceInput9" readonly>
+						<input type="text" name="evento9_colonna" id="eventoColonnaInput9" readonly>
+					</div>
+					
 				</div>
-			</tr>
-			˙
+				
+				<div class="schedina__button">
+					<input type="submit" value="Gioca schedina" class="btn btn-primary">
+				</div>
+	
+			</form>
+		</div>
 
-			<%
-			}
-			}
-			%>
-		</tbody>
-	</table>
-	<!-- --------------------------------------- -->
+	</div>
 
 
+
+
+
+
+
+	
 
 	<script>
-		function returnQuota(evento, quota, colonna) {
-			console.log("Evento: " + evento + ", Scelta selezionata: " + colonna);
-		}
-	</script>
+		const eventiSelezionati = []; // Dichiarazione dell'array eventiSelezionati
 
-	˙
+		function returnQuota(codicePartita, quota, colonna, button) {
+			let index = eventiSelezionati.findIndex(function (item) {
+				return item.startsWith(codicePartita);
+			});
+
+			if (index !== -1) {
+				// Sostituisci il valore per lo stesso evento
+				eventiSelezionati[index] = codicePartita + ' - ' + colonna;
+			} else if (eventiSelezionati.length < 9) {
+				// Aggiungi il nuovo valore se l'array non è pieno
+				eventiSelezionati.push(codicePartita + ' - ' + colonna);
+			}
+
+			updateInputValues();
+		}
+
+		function updateInputValues() {
+			for (let i = 0; i < eventiSelezionati.length; i++) {
+				const inputCodice = document.getElementById('eventoCodiceInput' + (i + 1));
+				const inputColonna = document.getElementById('eventoColonnaInput' + (i + 1));
+				const eventiSelezionato = eventiSelezionati[i].split(' - ');
+
+				inputCodice.value = eventiSelezionato[0];
+				inputColonna.value = eventiSelezionato[1];
+			}
+
+			for (let i = eventiSelezionati.length; i < 9; i++) {
+				const inputCodice = document.getElementById('eventoCodiceInput' + (i + 1));
+				const inputColonna = document.getElementById('eventoColonnaInput' + (i + 1));
+
+				inputCodice.value = '';
+				inputColonna.value = '';
+			}
+		}
+
+	</script>
 
 
 	<script

@@ -1,10 +1,11 @@
 @import url();
 
 @import "general";
-@import "vendors/bootstrap/bootstrap";
 @import "variables";
+@import "vendors/bootstrap/bootstrap";
 
 // components
 @import "components/logo";
 @import "components/buttons";
-@import "components/containers/containers";
+@import "components/hero-index";
+@import "containers";

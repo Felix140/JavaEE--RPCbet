@@ -1,0 +1,76 @@
+.hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    row-gap: 80px;
+    // border: 2px solid green;
+    padding-left: 190px;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+
+    &__button {
+        display: flex;
+        flex-direction: row;
+        font-family: Orbitron;
+
+        // border: 1px solid yellow;
+        column-gap: 30px;
+    }
+
+    &__loginBtn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        background-color: $backgorund-1;
+        width: 156px;
+        height: 45;
+        padding: 12px 24px;
+        border-radius: 10px;
+
+        border: 2px solid $primary;
+        transition: transform 0.5s ease, background-color 0.3s ease, color 0.3s ease;
+        a {
+            text-decoration: none;
+            color: $primary;
+            font-weight: 600;
+        }
+        &:hover {
+            transform: scale(1.1);
+            background-color: $primary;
+            a {
+                color: $backgorund-1;
+            }
+        }
+    }
+
+    &__registrazioneBtn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        background-color: $primary;
+        width: 156px;
+        height: 45;
+        padding: 12px 24px;
+
+        border-radius: 10px;
+
+        transition: transform 0.5s ease, background-color 0.3s ease, color 0.3s ease;
+
+        a {
+            text-decoration: none;
+            color: $backgorund-1;
+            font-weight: 600;
+        }
+        &:hover {
+            transform: scale(1.1);
+            background-color: $secondary;
+            a {
+                color: $primary;
+            }
+        }
+    }
+}
