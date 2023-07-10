@@ -1,0 +1,28 @@
+
+
+$backgorund-1: #1C1E2E;
+$backgorund-2: #222637;
+$backgorund-3: #33394B;
+$primary: #6DD338;
+$secondary: #FDFEFF;
+$tertiary: #696E88;
+
+// FONT LOCALI
+@font-face {
+    font-family: "poppins";
+    src: url(../fonts/Poppins/Poppins-Regular.ttf);
+}
+@font-face {
+    font-family: "poppins";
+    src: url(../fonts/Poppins/Poppins-Bold.ttf);
+    font-weight: 700;
+}
+@font-face {
+    font-family: "orbitron";
+    src: url(../fonts/Orbitron/Orbitron-Regular.ttf);
+}
+@font-face {
+    font-family: "orbitron";
+    src: url(../fonts/Orbitron/Orbitron-Bold.ttf);
+    font-weight: 700;
+}
