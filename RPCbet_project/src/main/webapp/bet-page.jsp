@@ -19,21 +19,24 @@
 .mainView {
 	display: flex;
 	flex-direction: row;
-	background-color:  #1C1E2E;
+	background-color:  #33394B;
 	justify-content: space-around;
+	
 	align-items: center;
 }
 
 .classe-prova {
 	display: flex;
 	flex-direction: row;
-	border: 2px solid red;
+	/* border: 2px solid red; */
 }
 
 .tables {
-	border: 2px solid green;
+	/* border: 2px solid green; */
 	width: 100%;
+	background-color:  #33394B;
 }
+
 
 #quoteForm {
 	margin-top: 20px;
@@ -44,21 +47,27 @@
 }
 
 .schedina {
-	border: 2px solid yellow;
+	/* border: 2px solid yellow; */
+	background-color: transparent;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	height: 100%;
+	padding: 0 20px;
+	margin: 0;
 }
 .schedina__form {
-	border: 2px solid red;
+	/* border: 2px solid red; */
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	
+	background-color: transparent;
 	row-gap: 20px;
 }
 
 .schedina__input {
-	border: 2px solid green;
+	/* border: 2px solid green; */
 	background-color: white;
 	border-radius: 30px;
 	height: 500px;
@@ -73,23 +82,27 @@
 	background-color: transparent;
 }
 
-.schedina_field {
+.schedina__field {
 	width: 100%;
 	border: none;
 	background-color: transparent;
 }
-.schedina_importo {
+.schedina__importo {
 	width: 100%;
 	border: 2px solid #1C1E2E;
 	background-color: transparent;
 	border-radius: 10px;
+}
+.schedina__button {
+	background-color: transparent;
+	color: white;
 }
 
 .header  {
 	display: flex;
 	flex-direction: column;
 	width: 100%;
-	border: 1px solid red;
+	/* border: 1px solid red; */
 	justify-content: center;
 	align-items: center;
 	
@@ -102,16 +115,17 @@
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: center;
-	border: 1px solid green;
+	/* border: 1px solid green; */
 	width: 100%;
 	height: 67px;
+	padding: 0 20px;
 }
 .header__sections {
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
 	align-items: center;
-	border: 1px solid yellow;
+	/* border: 1px solid yellow; */
 	width: 100%;
 
 	background-color: #222637;
@@ -125,17 +139,36 @@
 	flex-direction: row;
 	justify-content: center;
 	align-items: center;
+
+	/* border: 1px solid blue; */
+
+	column-gap: 20px;
 }
 .header__saldo {
 	display: flex;
 	flex-direction: row;
-	justify-content: center;
+	justify-content: space-between;
 	align-items: center;
 	
-	border: 2px solid green;
+	/* border: 2px solid green; */
+	background-color: white;
+	color: #1C1E2E;
+
+	width: 230px;
+
+	border-radius: 20px;
+}
+.btn-rounded {
+	border-radius: 20px;
+}
+p {
+	background-color: transparent;
 }
 .hero__logo {
 	width: 150px;
+}
+h3 {
+	background-color: transparent;
 }
 </style>
 </head>
@@ -152,15 +185,17 @@
 	
 	
 					<form action="Servlet_IncrementaSaldo" method="POST" class="header__saldo">
-						<p>Saldo Corrente</p>
-						<p>
+						
+						<p class="m-auto">
+							€
 							<%=request.getAttribute("saldo")%>
 						</p>
 						<input type="hidden" name="aumentosaldo">
-						<button class="btn btn-danger " type="submit">Desposita</button>
+						<button class="btn btn-danger btn-rounded" type="submit">Deposita</button>
 					</form>
-					<% String usernameUtente=(String) session.getAttribute("NomeUser"); %>
+					
 					<p>
+						<% String usernameUtente=(String) session.getAttribute("NomeUser"); %>
 						Benvenuto/a
 						<%=usernameUtente%>
 					</p>
@@ -357,49 +392,50 @@
 		<div class="schedina">
 			<form id="quoteForm" action="" method="post" class="schedina__form">
 				<div class="schedina__input">
+					<h3>La tua schedina</h3>
 					<div class="schedina__rowInput">
-						<input type="text" name="evento1_codice" id="eventoCodiceInput1" class="schedina_field" readonly>
-						<input type="text" name="evento1_colonna" id="eventoColonnaInput1" class="schedina_field" readonly>
+						<input type="text" name="evento1_codice" id="eventoCodiceInput1" class="schedina__field" readonly>
+						<input type="text" name="evento1_colonna" id="eventoColonnaInput1" class="schedina__field" readonly>
 					</div>
 					<div class="schedina__rowInput">
-						<input type="text" name="evento2_codice" id="eventoCodiceInput2" class="schedina_field" readonly>
-						<input type="text" name="evento2_colonna" id="eventoColonnaInput2" class="schedina_field" readonly>
+						<input type="text" name="evento2_codice" id="eventoCodiceInput2" class="schedina__field" readonly>
+						<input type="text" name="evento2_colonna" id="eventoColonnaInput2" class="schedina__field" readonly>
 					</div>
 					<div class="schedina__rowInput">
-						<input type="text" name="evento3_codice" id="eventoCodiceInput3" class="schedina_field" readonly>
-						<input type="text" name="evento3_colonna" id="eventoColonnaInput3" class="schedina_field" readonly>
+						<input type="text" name="evento3_codice" id="eventoCodiceInput3" class="schedina__field" readonly>
+						<input type="text" name="evento3_colonna" id="eventoColonnaInput3" class="schedina__field" readonly>
 					</div>
 					<div class="schedina__rowInput">
-						<input type="text" name="evento4_codice" id="eventoCodiceInput4" class="schedina_field" readonly>
-						<input type="text" name="evento4_colonna" id="eventoColonnaInput4" class="schedina_field" readonly>
+						<input type="text" name="evento4_codice" id="eventoCodiceInput4" class="schedina__field" readonly>
+						<input type="text" name="evento4_colonna" id="eventoColonnaInput4" class="schedina__field" readonly>
 					</div>
 					<div class="schedina__rowInput">
-						<input type="text" name="evento5_codice" id="eventoCodiceInput5" class="schedina_field" readonly>
-						<input type="text" name="evento5_colonna" id="eventoColonnaInput5" class="schedina_field" readonly>
+						<input type="text" name="evento5_codice" id="eventoCodiceInput5" class="schedina__field" readonly>
+						<input type="text" name="evento5_colonna" id="eventoColonnaInput5" class="schedina__field" readonly>
 					</div>
 					<div class="schedina__rowInput">
-						<input type="text" name="evento6_codice" id="eventoCodiceInput6" class="schedina_field" readonly>
-						<input type="text" name="evento6_colonna" id="eventoColonnaInput6" class="schedina_field" readonly>
+						<input type="text" name="evento6_codice" id="eventoCodiceInput6" class="schedina__field" readonly>
+						<input type="text" name="evento6_colonna" id="eventoColonnaInput6" class="schedina__field" readonly>
 					</div>
 					<div class="schedina__rowInput">
-						<input type="text" name="evento7_codice" id="eventoCodiceInput7" class="schedina_field" readonly>
-						<input type="text" name="evento7_colonna" id="eventoColonnaInput7" class="schedina_field" readonly>
+						<input type="text" name="evento7_codice" id="eventoCodiceInput7" class="schedina__field" readonly>
+						<input type="text" name="evento7_colonna" id="eventoColonnaInput7" class="schedina__field" readonly>
 					</div>
 					<div class="schedina__rowInput">
-						<input type="text" name="evento8_codice" id="eventoCodiceInput8" class="schedina_field" readonly>
-						<input type="text" name="evento8_colonna" id="eventoColonnaInput8" class="schedina_field" readonly>
+						<input type="text" name="evento8_codice" id="eventoCodiceInput8" class="schedina__field" readonly>
+						<input type="text" name="evento8_colonna" id="eventoColonnaInput8" class="schedina__field" readonly>
 					</div>
 					<div class="schedina__rowInput">
-						<input type="text" name="evento9_codice" id="eventoCodiceInput9" class="schedina_field" readonly>
-						<input type="text" name="evento9_colonna" id="eventoColonnaInput9" class="schedina_field" readonly>
+						<input type="text" name="evento9_codice" id="eventoCodiceInput9" class="schedina__field" readonly>
+						<input type="text" name="evento9_colonna" id="eventoColonnaInput9" class="schedina__field" readonly>
 					</div>
 					
-					<input type="text" placeholder="Inserisci la cifra giocata" class="schedina_importo">
+					<input type="text" placeholder="Inserisci la cifra giocata" class="schedina__importo">
 					
 				</div>
 				
 				<div class="schedina__button">
-					<input type="submit" value="Gioca schedina" class="btn btn-primary">
+					<input type="submit" value="Gioca schedina" class="btn btn-primary btn-rounded">
 				</div>
 	
 			</form>
