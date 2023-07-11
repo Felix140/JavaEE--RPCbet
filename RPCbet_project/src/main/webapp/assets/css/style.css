@@ -1,20 +1,5 @@
 @charset "UTF-8";
 @import url();
-* {
-  margin: 0;
-  padding: 0;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-}
-
-body {
-  background-color: #1C1E2E;
-}
-
-.index_texture {
-  border: solid 2px yellow;
-}
-
 @font-face {
   font-family: "poppins";
   src: url(../fonts/Poppins/Poppins-Regular.ttf);
@@ -33,6 +18,22 @@ body {
   src: url(../fonts/Orbitron/Orbitron-Bold.ttf);
   font-weight: 700;
 }
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  background-color: #1c1e2e;
+}
+
+.body-index {
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-image: linear-gradient(105deg, hsl(100, 43%, 27%) 0%, hsl(115, 17%, 21%) 1%, hsl(233, 24%, 15%) 41%);
+}
+
 /*!
  * Bootstrap  v5.3.0 (https://getbootstrap.com/)
  * Copyright 2011-2023 The Bootstrap Authors
@@ -13431,9 +13432,30 @@ textarea.form-control-lg {
 }
 .hero__logo {
   width: 480px;
+  background-color: transparent;
 }
 
 .hero {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  row-gap: 80px;
+  padding-left: 190px;
+  width: 100%;
+  overflow: hidden;
+  background-color: transparent;
+}
+.hero__main {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -13447,10 +13469,8 @@ textarea.form-control-lg {
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: start;
-  row-gap: 80px;
-  padding-left: 190px;
-  width: 100%;
-  height: 100%;
+  background-color: transparent;
+  row-gap: 60px;
   z-index: 1;
 }
 .hero__button {
@@ -13465,6 +13485,7 @@ textarea.form-control-lg {
   -webkit-column-gap: 30px;
      -moz-column-gap: 30px;
           column-gap: 30px;
+  background-color: transparent;
 }
 .hero__loginBtn {
   display: -webkit-box;
@@ -13476,7 +13497,7 @@ textarea.form-control-lg {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background-color: #1C1E2E;
+  background-color: #1c1e2e;
   width: 156px;
   height: 45;
   padding: 12px 24px;
@@ -13488,6 +13509,7 @@ textarea.form-control-lg {
   transition: transform 0.5s ease, background-color 0.3s ease, color 0.3s ease, -webkit-transform 0.5s ease;
 }
 .hero__loginBtn a {
+  background-color: transparent;
   text-decoration: none;
   color: #6DD338;
   font-weight: 600;
@@ -13495,10 +13517,12 @@ textarea.form-control-lg {
 .hero__loginBtn:hover {
   -webkit-transform: scale(1.1);
           transform: scale(1.1);
-  background-color: #6DD338;
+  background-color: #FDFEFF;
+  border: 2px solid white;
 }
 .hero__loginBtn:hover a {
-  color: #1C1E2E;
+  background-color: transparent;
+  color: #1c1e2e;
 }
 .hero__registrazioneBtn {
   display: -webkit-box;
@@ -13521,8 +13545,9 @@ textarea.form-control-lg {
   transition: transform 0.5s ease, background-color 0.3s ease, color 0.3s ease, -webkit-transform 0.5s ease;
 }
 .hero__registrazioneBtn a {
+  background-color: transparent;
   text-decoration: none;
-  color: #1C1E2E;
+  color: #1c1e2e;
   font-weight: 600;
 }
 .hero__registrazioneBtn:hover {
@@ -13531,47 +13556,29 @@ textarea.form-control-lg {
   background-color: #FDFEFF;
 }
 .hero__registrazioneBtn:hover a {
+  background-color: transparent;
   color: #6DD338;
 }
 
-.index {
-  min-height: 800px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: start;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  background-color: #1C1E2E;
-  background-image: url(../img/texture/unique-texture.svg);
-  background-repeat: no-repeat;
-  background-size: 1300px 1800px;
+.images {
   position: relative;
+  background-color: transparent;
+  width: 1000px;
 }
-.index__imgboxe {
-  width: 700px;
-  border-radius: 300px 0 0 300px;
-  position: absolute;
-  left: 1150px;
-  top: 450px;
+.images__img {
+  background-color: transparent;
+  height: 800px;
 }
-.index__imgcalcio {
-  width: 700px;
-  border-radius: 300px 0 0 300px;
-  position: absolute;
-  left: 1050px;
-}
-.index__imgtennis {
-  width: 700px;
-  border-radius: 300px 0 0 300px;
-  position: absolute;
-  left: 950px;
-  bottom: 450px;
+
+.index {
+  background-color: transparent;
+  position: relative;
 }
 .index__star {
   position: absolute;
+  background-color: transparent;
+  top: 90px;
+  left: 30px;
+  width: 500px;
   z-index: 0;
 }

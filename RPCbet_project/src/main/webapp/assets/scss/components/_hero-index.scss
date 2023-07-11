@@ -1,22 +1,36 @@
 .hero {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
-    align-items: start;
+    align-items: center;
     row-gap: 80px;
-    // border: 2px solid green;
+    // border: 5px solid green;
     padding-left: 190px;
     width: 100%;
-    height: 100%;
-    z-index: 1;
 
+    overflow: hidden;
+    background-color: transparent;
+
+    
+    
+
+    &__main {
+        // border: 2px solid yellow;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: start;
+        background-color: transparent;
+        row-gap: 60px;
+
+        z-index: 1;
+    }
     &__button {
         display: flex;
         flex-direction: row;
         font-family: Orbitron;
-
-        // border: 1px solid yellow;
         column-gap: 30px;
+        background-color: transparent;
     }
 
     &__loginBtn {
@@ -33,14 +47,17 @@
         border: 2px solid $primary;
         transition: transform 0.5s ease, background-color 0.3s ease, color 0.3s ease;
         a {
+            background-color: transparent;
             text-decoration: none;
             color: $primary;
             font-weight: 600;
         }
         &:hover {
             transform: scale(1.1);
-            background-color: $primary;
+            background-color: $secondary;
+            border: 2px solid white;
             a {
+                background-color: transparent;
                 color: $backgorund-1;
             }
         }
@@ -61,6 +78,7 @@
         transition: transform 0.5s ease, background-color 0.3s ease, color 0.3s ease;
 
         a {
+            background-color: transparent;
             text-decoration: none;
             color: $backgorund-1;
             font-weight: 600;
@@ -69,8 +87,21 @@
             transform: scale(1.1);
             background-color: $secondary;
             a {
+                background-color: transparent;
                 color: $primary;
             }
         }
+    }
+
+}
+
+.images {
+    position: relative;
+    background-color: transparent;
+    width: 1000px;
+
+    &__img {
+        background-color: transparent;
+        height: 800px;
     }
 }

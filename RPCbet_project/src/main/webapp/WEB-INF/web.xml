@@ -79,4 +79,14 @@
     <servlet-name>Servlet_MostraEventi</servlet-name>
     <url-pattern>/Servlet_MostraEventi</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Servlet_IncrementaSaldo</display-name>
+    <servlet-name>Servlet_IncrementaSaldo</servlet-name>
+    <servlet-class>Servlet.Servlet_IncrementaSaldo</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Servlet_IncrementaSaldo</servlet-name>
+    <url-pattern>/Servlet_IncrementaSaldo</url-pattern>
+  </servlet-mapping>
 </web-app>

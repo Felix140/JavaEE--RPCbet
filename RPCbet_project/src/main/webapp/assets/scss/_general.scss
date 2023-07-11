@@ -1,15 +1,14 @@
-$backgorund-1: #1C1E2E;
+$backgorund-1: #1c1e2e;
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-
-body {
     background-color: $backgorund-1;
 }
 
-.index_texture {
-    border: solid 2px yellow;
+.body-index {
+    overflow: hidden;
+    display: flex;
+    background-image: linear-gradient(105deg, hsl(100deg 43% 27%) 0%, hsl(115deg 17% 21%) 1%, hsl(233deg 24% 15%) 41%);
 }
