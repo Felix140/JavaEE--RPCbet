@@ -1,11 +1,14 @@
 package Servlet;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Random;
+
 import Connessione.ConnessioneDB;
 
 /**
@@ -17,97 +20,227 @@ public class Servlet_Schedina extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	 int counter = 0;
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
 		
-	int contatore = 0;
-	while(contatore<10) {
-		contatore++;
-		if(contatore==1) {
-			//EVENTO 1
-			int evento1Codice = Integer.parseInt(request.getParameter("evento1_codice"));
-			String evento1Colonna = request.getParameter("evento1_colonna");
-			ConnessioneDB conn1 = new ConnessioneDB();
-			conn1.InserimentoSchedina(evento1Codice, evento1Colonna);
-			break;
-		} else if (contatore==2) {
-			//EVENTO 2
-			int evento2Codice = Integer.parseInt(request.getParameter("evento2_codice"));
-			String evento2Colonna= request.getParameter("evento2_colonna");
-			ConnessioneDB conn2 = new ConnessioneDB();
-			conn2.InserimentoSchedina(evento2Codice, evento2Colonna);
-			break;
-		} else if (contatore==3) {
-			//EVENTO 3
-			int evento3Codice = Integer.parseInt(request.getParameter("evento3_codice"));
-			String evento3Colonna= request.getParameter("evento3_colonna");
-			ConnessioneDB conn3 = new ConnessioneDB();
-			conn3.InserimentoSchedina(evento3Codice, evento3Colonna);
-			break;
-		} else if (contatore==4) {
-			//EVENTO 4
-			int evento4Codice = Integer.parseInt(request.getParameter("evento4_codice"));
-			String evento4Colonna= request.getParameter("evento4_colonna");
-			ConnessioneDB conn4 = new ConnessioneDB();
-			conn4.InserimentoSchedina(evento4Codice, evento4Colonna);
-			break;
-		} else if (contatore==5) {
-			//EVENTO 5
-			int evento5Codice = Integer.parseInt(request.getParameter("evento5_codice"));
-			String evento5Colonna= request.getParameter("evento5_colonna");
-			ConnessioneDB conn5 = new ConnessioneDB();
-			conn5.InserimentoSchedina(evento5Codice, evento5Colonna);
-			break;
-		} else if (contatore==6) {
-			//EVENTO 6
-			int evento6Codice = Integer.parseInt(request.getParameter("evento6_codice"));
-			String evento6Colonna= request.getParameter("evento6_colonna");
-			ConnessioneDB conn6 = new ConnessioneDB();
-			conn6.InserimentoSchedina(evento6Codice, evento6Colonna);
-			break;
-		} else if (contatore==7) {
-			//EVENTO 7
-			int evento7Codice = Integer.parseInt(request.getParameter("evento7_codice"));
-			String evento7Colonna= request.getParameter("evento7_colonna");
-			ConnessioneDB conn7 = new ConnessioneDB();
-			conn7.InserimentoSchedina(evento7Codice, evento7Colonna);
-			break;
-		} else if (contatore==8) {
-			//EVENTO 8
-			int evento8Codice = Integer.parseInt(request.getParameter("evento8_codice"));
-			String evento8Colonna= request.getParameter("evento8_colonna");
-			ConnessioneDB conn8 = new ConnessioneDB();
-			conn8.InserimentoSchedina(evento8Codice, evento8Colonna);
-			break;
-		} else if (contatore==9) {
-			//EVENTO 9
-			int evento9Codice = Integer.parseInt(request.getParameter("evento9_codice"));
-			String evento9Colonna= request.getParameter("evento9_colonna");
-			ConnessioneDB conn9 = new ConnessioneDB();
-			conn9.InserimentoSchedina(evento9Codice, evento9Colonna);
-			break;
-		}
+		
 	}
 	
 	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String evento1Codice = request.getParameter("evento1_codice");
+		String evento2Codice = request.getParameter("evento2_codice");
+		String evento3Codice = request.getParameter("evento3_codice");
+		String evento4Codice = request.getParameter("evento4_codice");
+		String evento5Codice = request.getParameter("evento5_codice");
+		String evento6Codice = request.getParameter("evento6_codice");
+		String evento7Codice = request.getParameter("evento7_codice");
+		String evento8Codice = request.getParameter("evento8_codice");
+		String evento9Codice = request.getParameter("evento9_codice");
+		String esitopartita = "-";
+		String user = request.getParameter("NomeUser");
+		int generacodiceschedina =GeneraCodiceSchedina();
+		int codiceschedina =  generacodiceschedina;
+
+		String importogiocato = request.getParameter("importogiocato");
+		
+		
+		
+		
+		
+		 {
+			//EVENTO 1
+			if (evento1Codice == null || evento1Codice.isEmpty()) {
+				
+			
+			} else {
+			
+             	String evento1Colonna = request.getParameter("evento1_colonna");
+             	
+				int parametro = Integer.parseInt(evento1Codice);
+				float importogiocatofloat = Float.parseFloat(importogiocato);
+		    	ConnessioneDB conn1 = new ConnessioneDB();
+			    conn1.InserimentoSchedina(generacodiceschedina,parametro,user,esitopartita,evento1Colonna,false,importogiocatofloat);
+			    
+			}
+			
+			//EVENTO 2
+           if (evento2Codice == null || evento2Codice.isEmpty()) {
+				   
+				
+			} else {
+	            String evento2Colonna = request.getParameter("evento2_colonna");
+	            float importogiocatofloat = Float.parseFloat(importogiocato);
+				int parametro = Integer.parseInt(evento2Codice);
+		    	ConnessioneDB conn1 = new ConnessioneDB();
+		    	conn1.InserimentoSchedina(codiceschedina,parametro,user,esitopartita,evento2Colonna,false,importogiocatofloat);
+			
 	
+			}
+			//EVENTO 3	
+	if (evento3Codice == null || evento3Codice.isEmpty()) {
+				   
+				
+			} else {
+	            String evento3Colonna = request.getParameter("evento3_colonna");
+	            float importogiocatofloat = Float.parseFloat(importogiocato);
+				int parametro = Integer.parseInt(evento3Codice);
+		    	ConnessioneDB conn1 = new ConnessioneDB();
+		    	conn1.InserimentoSchedina(codiceschedina,parametro,user,esitopartita,evento3Colonna,false,importogiocatofloat);
+			
 	
-	
-	
-	
-	
-	
+			}
+	//EVENTO 4
+	if (evento4Codice == null || evento4Codice.isEmpty()) {
+		   
+		
+	} else {
+        String evento4Colonna = request.getParameter("evento4_colonna");
+        float importogiocatofloat = Float.parseFloat(importogiocato);
+		int parametro = Integer.parseInt(evento4Codice);
+    	ConnessioneDB conn1 = new ConnessioneDB();
+    	conn1.InserimentoSchedina(codiceschedina,parametro,user,esitopartita,evento4Colonna,false,importogiocatofloat);
 	
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	}
+	//EVENTO 5
+	if (evento5Codice == null || evento5Codice.isEmpty()) {
+		   
+		
+	} else {
+        String evento5Colonna = request.getParameter("evento5_colonna");
+        float importogiocatofloat = Float.parseFloat(importogiocato);
+		int parametro = Integer.parseInt(evento5Codice);
+    	ConnessioneDB conn1 = new ConnessioneDB();
+    	conn1.InserimentoSchedina(codiceschedina,parametro,user,esitopartita,evento5Colonna,false,importogiocatofloat);
+	
+
+	}
+	//EVENTO 6
+	if (evento6Codice == null || evento6Codice.isEmpty()) {
+		   
+		
+	} else {
+        String evento6Colonna = request.getParameter("evento6_colonna");
+        float importogiocatofloat = Float.parseFloat(importogiocato);
+		int parametro = Integer.parseInt(evento6Codice);
+    	ConnessioneDB conn1 = new ConnessioneDB();
+    	conn1.InserimentoSchedina(codiceschedina,parametro,user,esitopartita,evento6Colonna,false,importogiocatofloat);
+	
+
+	}
+	//EVENTO 7
+	if (evento7Codice == null || evento7Codice.isEmpty()) {
+		   
+		
+	} else {
+        String evento7Colonna = request.getParameter("evento7_colonna");
+        float importogiocatofloat = Float.parseFloat(importogiocato);
+		int parametro = Integer.parseInt(evento7Codice);
+    	ConnessioneDB conn1 = new ConnessioneDB();
+    	conn1.InserimentoSchedina(codiceschedina,parametro,user,esitopartita,evento7Colonna,false,importogiocatofloat);
+	
+
+	}
+	//EVENTO 8
+	if (evento8Codice == null || evento8Codice.isEmpty()) {
+		   
+		
+	} else {
+        String evento8Colonna = request.getParameter("evento8_colonna");
+        float importogiocatofloat = Float.parseFloat(importogiocato);
+		int parametro = Integer.parseInt(evento8Codice);
+    	ConnessioneDB conn1 = new ConnessioneDB();
+    	conn1.InserimentoSchedina(codiceschedina,parametro,user,esitopartita,evento8Colonna,false,importogiocatofloat);
+	
+
+	}
+	//EVENTO 9
+	if (evento9Codice == null || evento9Codice.isEmpty()) {
+		   
+		
+	} else {
+        String evento9Colonna = request.getParameter("evento9_colonna");
+        float importogiocatofloat = Float.parseFloat(importogiocato);
+		int parametro = Integer.parseInt(evento9Codice);
+    	ConnessioneDB conn1 = new ConnessioneDB();
+    	conn1.InserimentoSchedina(codiceschedina,parametro,user,esitopartita,evento9Colonna,false,importogiocatofloat);
+	
+
+	}
+
+	
+			
+			
+			
+			
+			
+//		 {
+//			//EVENTO 2
+//			int evento2Codice = Integer.parseInt(request.getParameter("evento2_codice"));
+//			String evento2Colonna= request.getParameter("evento2_colonna");
+//			ConnessioneDB conn2 = new ConnessioneDB();
+//			conn2.InserimentoSchedina(evento2Codice, evento2Colonna);
+//			break;
+//		 {
+//			//EVENTO 3
+//			int evento3Codice = Integer.parseInt(request.getParameter("evento3_codice"));
+//			String evento3Colonna= request.getParameter("evento3_colonna");
+//			ConnessioneDB conn3 = new ConnessioneDB();
+//			conn3.InserimentoSchedina(evento3Codice, evento3Colonna);
+//			break;
+//		{
+//			//EVENTO 4
+//			int evento4Codice = Integer.parseInt(request.getParameter("evento4_codice"));
+//			String evento4Colonna= request.getParameter("evento4_colonna");
+//			ConnessioneDB conn4 = new ConnessioneDB();
+//			conn4.InserimentoSchedina(evento4Codice, evento4Colonna);
+//			break;
+//		 {
+//			//EVENTO 5
+//			int evento5Codice = Integer.parseInt(request.getParameter("evento5_codice"));
+//			String evento5Colonna= request.getParameter("evento5_colonna");
+//			ConnessioneDB conn5 = new ConnessioneDB();
+//			conn5.InserimentoSchedina(evento5Codice, evento5Colonna);
+//			break;
+//		 {
+//			//EVENTO 6
+//			int evento6Codice = Integer.parseInt(request.getParameter("evento6_codice"));
+//			String evento6Colonna= request.getParameter("evento6_colonna");
+//			ConnessioneDB conn6 = new ConnessioneDB();
+//			conn6.InserimentoSchedina(evento6Codice, evento6Colonna);
+//			break;
+//		 {
+//			//EVENTO 7
+//			int evento7Codice = Integer.parseInt(request.getParameter("evento7_codice"));
+//			String evento7Colonna= request.getParameter("evento7_colonna");
+//			ConnessioneDB conn7 = new ConnessioneDB();
+//			conn7.InserimentoSchedina(evento7Codice, evento7Colonna);
+//			break;
+//		 {
+//			//EVENTO 8
+//			int evento8Codice = Integer.parseInt(request.getParameter("evento8_codice"));
+//			String evento8Colonna= request.getParameter("evento8_colonna");
+//			ConnessioneDB conn8 = new ConnessioneDB();
+//			conn8.InserimentoSchedina(evento8Codice, evento8Colonna);
+//			break;
+//	 {
+//			//EVENTO 9
+//			int evento9Codice = Integer.parseInt(request.getParameter("evento9_codice"));
+//			String evento9Colonna= request.getParameter("evento9_colonna");
+//			ConnessioneDB conn9 = new ConnessioneDB();
+//			conn9.InserimentoSchedina(evento9Codice, evento9Colonna);
+//			break;
+//		}
+	}	
+	}
+	
+	public int GeneraCodiceSchedina() {
+		Random random = new Random();
+		return random.nextInt(1000000); // Genera un intero compreso tra 0 e 999999 (massimo 6 cifre)
+	}
+	
+	
 
 }

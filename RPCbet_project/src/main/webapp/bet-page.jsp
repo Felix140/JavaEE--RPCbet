@@ -394,7 +394,7 @@
 						<input type="text" name="evento9_colonna" id="eventoColonnaInput9" class="schedina_field" readonly>
 					</div>
 					
-					<input type="text" placeholder="Inserisci la cifra giocata" class="schedina_importo">
+					<input type="text" name="importogiocato" placeholder="Inserisci la cifra giocata" class="schedina_importo">
 					
 				</div>
 				
