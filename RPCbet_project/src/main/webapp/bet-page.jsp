@@ -4,7 +4,9 @@
 <%@ page import="Connessione.ConnessioneDB" import="Classi.*"
 	import="Classi.Evento_Sportivo"
 	import="Servlet.Servlet_GenerazioneEventi"
-	import="Servlet.Servlet_MostraEventi" import="java.util.*"%>
+	import="Servlet.Servlet_MostraEventi" 
+	import="Servlet.Servlet_IncrementaSaldo" 
+	import="java.util.*"%>
 
 <!DOCTYPE html>
 <html>
@@ -66,7 +68,7 @@
 }
 
 .schedina__rowInput {
-	display: flex; 
+	display: flex;
 	flex-direction: row;
 	background-color: transparent;
 }
@@ -80,7 +82,7 @@
 	width: 100%;
 	border: 2px solid #1C1E2E;
 	background-color: transparent;
-	border-radius: 10px; 
+	border-radius: 10px;
 }
 
 .header  {
@@ -98,7 +100,7 @@
 .header__actions {
 	display: flex;
 	flex-direction: row;
-	justify-content: center;
+	justify-content: space-between;
 	align-items: center;
 	border: 1px solid green;
 	width: 100%;
@@ -117,29 +119,62 @@
 
 	column-gap: 20px;
 }
+
+.header__user {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+.header__saldo {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	
+	border: 2px solid green;
+}
+.hero__logo {
+	width: 150px;
+}
 </style>
 </head>
 <body>
 
 	<div class="header">
 		<nav class="header__actions">
-				<%
-					String usernameUtente = (String) session.getAttribute("NomeUser");
-				%>
-
-				<img src="" alt="">
-			<p>
-				Benvenuto/a
-				<%=usernameUtente%>
-			</p>
-
+			<img src="assets/img/logo/rpcbet-logo-2.svg" alt="" class="hero__logo">
+			
+	
+	
+	
+				<div class="header__user">
+	
+	
+					<form action="Servlet_IncrementaSaldo" method="POST" class="header__saldo">
+						<p>Saldo Corrente</p>
+						<p>
+							<%=request.getAttribute("saldo")%>
+						</p>
+						<input type="hidden" name="aumentosaldo">
+						<button class="btn btn-danger " type="submit">Desposita</button>
+					</form>
+					<% String usernameUtente=(String) session.getAttribute("NomeUser"); %>
+					<p>
+						Benvenuto/a
+						<%=usernameUtente%>
+					</p>
+	
+				</div>
+	
 		</nav>
-
-		<div class="header__sections">
+	
+		<nav class="header__sections">
 			<button class="btn btn-secondary">Calcio</button>
 			<button class="btn btn-secondary">Tennis</button>
 			<button class="btn btn-secondary">Boxe</button>
-		</div>
+		</nav>
+	
 	</div>
 	
 
