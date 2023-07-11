@@ -151,7 +151,16 @@ public class Evento_Sportivo {
 	// genera in modo randomico le varie quote
 	public double generateRandomDouble() {
 		Random random = new Random();
-		return 0.0 + (10.0 - 0.0) * random.nextDouble();
+		double quota = random.nextDouble();
+		
+		String check = String.valueOf(quota);
+		String check2 = check.substring(0);
+		if(check2.equals(0))
+		{
+			quota = quota + 1;
+		}
+		
+		return 10 * quota;
 	}
 
 	public boolean inserimento_eventocalcio() {
