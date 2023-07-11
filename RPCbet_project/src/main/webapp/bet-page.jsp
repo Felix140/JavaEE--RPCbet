@@ -355,7 +355,7 @@
 
 			<!-- CARD SCHEDINA -->
 		<div class="schedina">
-			<form id="quoteForm" action="" method="post" class="schedina__form">
+			<form id="quoteForm" action="Servlet_Schedina" method="POST" class="schedina__form">
 				<div class="schedina__input">
 					<div class="schedina__rowInput">
 						<input type="text" name="evento1_codice" id="eventoCodiceInput1" class="schedina_field" readonly>

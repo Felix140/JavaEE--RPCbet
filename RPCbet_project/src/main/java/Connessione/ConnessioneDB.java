@@ -155,7 +155,7 @@ public class ConnessioneDB {
 		return false;
 	}
 
-	// GET SALDO
+	// ***********************GET SALDO****************************
 
 	public float getSaldo(int idUtente) {
 
@@ -189,7 +189,7 @@ public class ConnessioneDB {
 	//
 //			}
 
-	// SET SALDO
+	// *********************SET SALDO*****************************
 	public void incrementaSaldo(int idUtente, float importo) {
 		this.idu = idUtente;
 		this.imp = importo;
@@ -211,5 +211,54 @@ public class ConnessioneDB {
 		}
 
 	}
+	
+
+	
+	//**********************INSERIMENTO SCHEDINA***********************
+	int Codice_Partita;
+	String Esito_Utente;
+	
+	public void InserimentoSchedina(int a, String b) {
+		this.Codice_Partita = a;
+		this.Esito_Utente = b;
+		
+		try {
+			Class.forName(driver);
+			Connection conn = DriverManager.getConnection(url, usernameDb, passwordDb);
+			String query = "INSERT INTO schedina (id, Codice_Partita, Esito_Utente) VALUES (0, ?, ?)";
+			PreparedStatement stat = conn.prepareStatement(query);
+			
+			stat.setInt(1, this.Codice_Partita);
+			stat.setString(2, Esito_Utente);
+			stat.executeUpdate();
+			
+			System.out.println("Scommessa piazzata");
+			conn.close();
+			
+		} catch (ClassNotFoundException | SQLException e) {
+
+			e.printStackTrace();
+		
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	}
+	
+	
+	
+	
+	
+	
 
 }
