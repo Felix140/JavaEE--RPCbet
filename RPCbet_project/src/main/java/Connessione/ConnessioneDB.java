@@ -27,7 +27,9 @@ public class ConnessioneDB {
 	// admin
 	String nome_admin;
 	String password_admin;
-	
+	//aumento importo
+	private int idu;
+	private float imp;
 	
 	
 	
@@ -176,6 +178,67 @@ public class ConnessioneDB {
 		return false;
 	}	
 	
+	//GET SALDO
 	
+		public float getSaldo(int idUtente) {
+		
+			float saldo = 0.0f;
+			
+			try {
+				Class.forName(driver);
+				Connection conn = DriverManager.getConnection(url,usernameDb,passwordDb);
+				String query = "SELECT saldo FROM rpcbet.utente WHERE id = ? ";
+				PreparedStatement stat = conn.prepareStatement(query);
+				stat.setInt(1, idUtente);
+				ResultSet rs = stat.executeQuery();
+						
+				if (rs.next()) {
+					saldo = rs.getFloat("saldo");
+				}
+						
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} catch (ClassNotFoundException e) {
+				e.printStackTrace();
+			}
+			return saldo;
+		}
+		
+//		public static void main (String [] args) {
+//			int idUtente = 1;
+//			ConnessioneDB conn = new ConnessioneDB();
+//			float saldo = conn.getSaldo(1);
+//			System.out.println("Saldo:" + saldo);
+	//	
+//		}
+		
+		
+		//SET SALDO
+		public void incrementaSaldo(int idUtente, float importo) {
+			this.idu = idUtente;
+			this.imp = importo;
+			try {
+				Class.forName(driver);
+				Connection conn = DriverManager.getConnection(url,usernameDb,passwordDb);
+				String query = "UPDATE utente SET saldo = saldo + ? WHERE id = ? ";
+				PreparedStatement stat = conn.prepareStatement(query);
+				
+				
+				stat.setFloat(1, this.imp);
+				stat.setInt(2, this.idu);
+				
+				
+				
+				
+				stat.executeUpdate();
+				conn.close();
+				
+			} catch (ClassNotFoundException | SQLException e) {
+				e.printStackTrace();
+				
+			}
+			
+			
+		}
 
 }

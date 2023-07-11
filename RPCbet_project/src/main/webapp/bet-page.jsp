@@ -80,17 +80,15 @@ input {
 		<%=usernameUtente%></h2>
 		
 
-	<!-- Tabella eventi calcio -->
-	<table class="table table-striped">
-		<tbody>
-			<%
-			boolean ciccio = (boolean) request.getAttribute("ForzaMagggggica");
 
-			out.println(ciccio);
-			%>
-		</tbody>
-	</table>
 
+<h1>Saldo corrente:</h1>
+	<p><%=request.getAttribute("saldo")%></p>
+	<form action="Servlet_IncrementaSaldo" method="POST">
+         <input type="hidden" name="aumentosaldo">
+         <button class="btn btn-danger" type="submit">+</button>
+    </form>
+	
 
 
 
