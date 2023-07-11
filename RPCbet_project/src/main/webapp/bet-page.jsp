@@ -11,13 +11,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
- <link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/style.css">
 <style type="text/css">
 
 .mainView {
 	display: flex;
 	flex-direction: row;
-	background-color: blue;
+	background-color:  #1C1E2E;
 	justify-content: space-around;
 	align-items: center;
 }
@@ -26,6 +26,11 @@
 	display: flex;
 	flex-direction: row;
 	border: 2px solid red;
+}
+
+.tables {
+	border: 2px solid green;
+	width: 100%;
 }
 
 #quoteForm {
@@ -38,6 +43,7 @@
 
 .schedina {
 	border: 2px solid yellow;
+	height: 100%;
 }
 .schedina__form {
 	border: 2px solid red;
@@ -62,43 +68,103 @@
 .schedina__rowInput {
 	display: flex; 
 	flex-direction: row;
+	background-color: transparent;
 }
 
-input {
+.schedina_field {
 	width: 100%;
-	border: solid 1px grey;
+	border: none;
+	background-color: transparent;
+}
+.schedina_importo {
+	width: 100%;
+	border: 2px solid #1C1E2E;
+	background-color: transparent;
+	border-radius: 10px; 
+}
+
+.header  {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	border: 1px solid red;
+	justify-content: center;
+	align-items: center;
+	
+	color: white;
+	background-color: #1C1E2E;
+}
+
+.header__actions {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	border: 1px solid green;
+	width: 100%;
+	height: 67px;
+}
+.header__sections {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	border: 1px solid yellow;
+	width: 100%;
+
+	background-color: #222637;
+	height: 54px;
+
+	column-gap: 20px;
 }
 </style>
 </head>
 <body>
-	<%
-	String usernameUtente = (String) session.getAttribute("NomeUser");
-	%>
 
-	<h2>
-		Benvenuto/a
-		<%=usernameUtente%></h2>
+	<div class="header">
+		<nav class="header__actions">
+				<%
+					String usernameUtente = (String) session.getAttribute("NomeUser");
+				%>
+
+				<img src="" alt="">
+			<p>
+				Benvenuto/a
+				<%=usernameUtente%>
+			</p>
+
+		</nav>
+
+		<div class="header__sections">
+			<button class="btn btn-secondary">Calcio</button>
+			<button class="btn btn-secondary">Tennis</button>
+			<button class="btn btn-secondary">Boxe</button>
+		</div>
+	</div>
+	
+
+	
 		
 
 	<!-- Tabella eventi calcio -->
-	<table class="table table-striped">
+	<!-- <table class="table table-striped">
 		<tbody>
-			<%
-			boolean ciccio = (boolean) request.getAttribute("ForzaMagggggica");
+ <%
+			/* boolean ciccio = (boolean) request.getAttribute("ForzaMagggggica");
 
-			out.println(ciccio);
-			%>
+			out.println(ciccio); */ 
+			%> 			
 		</tbody>
-	</table>
+	</table> -->
 
 
 
 
-	<h3>Tabella Eventi Sport</h3>
+	
 
 	<div class="mainView">
 
-		<div class="tabels">
+		<div class="tables">
 
 			<!-- -----------------CALCIO---------------------- -->
 			<div class="tables__calcio">
@@ -257,41 +323,43 @@ input {
 			<form id="quoteForm" action="" method="post" class="schedina__form">
 				<div class="schedina__input">
 					<div class="schedina__rowInput">
-						<input type="text" name="evento1_codice" id="eventoCodiceInput1" readonly>
-						<input type="text" name="evento1_colonna" id="eventoColonnaInput1" readonly>
+						<input type="text" name="evento1_codice" id="eventoCodiceInput1" class="schedina_field" readonly>
+						<input type="text" name="evento1_colonna" id="eventoColonnaInput1" class="schedina_field" readonly>
 					</div>
 					<div class="schedina__rowInput">
-						<input type="text" name="evento2_codice" id="eventoCodiceInput2" readonly>
-						<input type="text" name="evento2_colonna" id="eventoColonnaInput2" readonly>
+						<input type="text" name="evento2_codice" id="eventoCodiceInput2" class="schedina_field" readonly>
+						<input type="text" name="evento2_colonna" id="eventoColonnaInput2" class="schedina_field" readonly>
 					</div>
 					<div class="schedina__rowInput">
-						<input type="text" name="evento3_codice" id="eventoCodiceInput3" readonly>
-						<input type="text" name="evento3_colonna" id="eventoColonnaInput3" readonly>
+						<input type="text" name="evento3_codice" id="eventoCodiceInput3" class="schedina_field" readonly>
+						<input type="text" name="evento3_colonna" id="eventoColonnaInput3" class="schedina_field" readonly>
 					</div>
 					<div class="schedina__rowInput">
-						<input type="text" name="evento4_codice" id="eventoCodiceInput4" readonly>
-						<input type="text" name="evento4_colonna" id="eventoColonnaInput4" readonly>
+						<input type="text" name="evento4_codice" id="eventoCodiceInput4" class="schedina_field" readonly>
+						<input type="text" name="evento4_colonna" id="eventoColonnaInput4" class="schedina_field" readonly>
 					</div>
 					<div class="schedina__rowInput">
-						<input type="text" name="evento5_codice" id="eventoCodiceInput5" readonly>
-						<input type="text" name="evento5_colonna" id="eventoColonnaInput5" readonly>
+						<input type="text" name="evento5_codice" id="eventoCodiceInput5" class="schedina_field" readonly>
+						<input type="text" name="evento5_colonna" id="eventoColonnaInput5" class="schedina_field" readonly>
 					</div>
 					<div class="schedina__rowInput">
-						<input type="text" name="evento6_codice" id="eventoCodiceInput6" readonly>
-						<input type="text" name="evento6_colonna" id="eventoColonnaInput6" readonly>
+						<input type="text" name="evento6_codice" id="eventoCodiceInput6" class="schedina_field" readonly>
+						<input type="text" name="evento6_colonna" id="eventoColonnaInput6" class="schedina_field" readonly>
 					</div>
 					<div class="schedina__rowInput">
-						<input type="text" name="evento7_codice" id="eventoCodiceInput7" readonly>
-						<input type="text" name="evento7_colonna" id="eventoColonnaInput7" readonly>
+						<input type="text" name="evento7_codice" id="eventoCodiceInput7" class="schedina_field" readonly>
+						<input type="text" name="evento7_colonna" id="eventoColonnaInput7" class="schedina_field" readonly>
 					</div>
 					<div class="schedina__rowInput">
-						<input type="text" name="evento8_codice" id="eventoCodiceInput8" readonly>
-						<input type="text" name="evento8_colonna" id="eventoColonnaInput8" readonly>
+						<input type="text" name="evento8_codice" id="eventoCodiceInput8" class="schedina_field" readonly>
+						<input type="text" name="evento8_colonna" id="eventoColonnaInput8" class="schedina_field" readonly>
 					</div>
 					<div class="schedina__rowInput">
-						<input type="text" name="evento9_codice" id="eventoCodiceInput9" readonly>
-						<input type="text" name="evento9_colonna" id="eventoColonnaInput9" readonly>
+						<input type="text" name="evento9_codice" id="eventoCodiceInput9" class="schedina_field" readonly>
+						<input type="text" name="evento9_colonna" id="eventoColonnaInput9" class="schedina_field" readonly>
 					</div>
+					
+					<input type="text" placeholder="Inserisci la cifra giocata" class="schedina_importo">
 					
 				</div>
 				
