@@ -259,7 +259,7 @@
 
 				<!-- CARD SCHEDINA -->
 				<div class="schedina">
-					<form id="quoteForm" action="" method="post" class="schedina__form">
+					<form id="quoteForm" action="Servlet_Schedina" method="post" class="schedina__form">
 						<div class="schedina__input">
 							<h3 class="schedina__title">La tua schedina</h3>
 							<div class="schedina__rowInput">
@@ -317,12 +317,14 @@
 									class="schedina__field" readonly>
 							</div>
 
-							<input type="text" placeholder="Inserisci la cifra giocata" class="schedina__importo">
+							<input type="number" name="importogiocato"  placeholder="Inserisci la cifra giocata" class="schedina__importo">
+
+							<input type="text" name="NomeUser" value="<%=usernameUtente%>" hidden>
 
 						</div>
 
 						<div class="schedina__button">
-							<input type="submit" name="importogiocato" value="Gioca schedina" class="btn btn-primary btn-rounded">
+							<input type="submit" value="Gioca schedina" class="btn btn-primary btn-rounded">
 						</div>
 
 					</form>

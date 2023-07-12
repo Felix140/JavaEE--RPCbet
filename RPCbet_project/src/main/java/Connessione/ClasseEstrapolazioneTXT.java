@@ -11,7 +11,7 @@ public class ClasseEstrapolazioneTXT
 	
 	public String MetodoEstrapolazioneFile()
 	{
-		try (BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\Loren\\Desktop\\RPCbet\\Password.txt"))) {
+		try (BufferedReader br = new BufferedReader(new FileReader("/Users/felixvaldez/Documents/Github/PasswordDB.txt"))) {
 		    String linea;
 		    while ((linea = br.readLine()) != null) {
 		        contenutoFile += linea;
