@@ -144,7 +144,7 @@ public class ConnessioneDB {
 				System.out.println("Nome: " + user);
 				System.out.println("Password: " + password);
 
-				return true;
+		 	return true;
 
 			} else {
 				System.out.println("Credenziali errate");
@@ -264,6 +264,40 @@ public class ConnessioneDB {
 		
 		}
 		
+	}
+	
+	
+	//**********************METODO INSERIMENTO DELLO STORICO DELLA SCHEDINA***********************
+	boolean esitoschedina;
+	String userstorico;
+	int codiceschedinastorico;
+		public void InserimentoStoricoSchedina(String user,int codiceschedina,boolean esitoschedina) {
+
+			this.esitoschedina = esitoschedina;
+			this.userstorico =user;
+			this.codiceschedinastorico = codiceschedina;
+				
+				try {
+					Class.forName(driver);
+					Connection conn = DriverManager.getConnection(url, usernameDb, passwordDb);
+					String query = "INSERT INTO storico_schedine  VALUES (0, ?, ?, ?)";
+					PreparedStatement stat = conn.prepareStatement(query);
+					stat.setString(1,this.userstorico);
+					stat.setInt(2, this.codiceschedinastorico);		
+					stat.setBoolean(3, this.esitoschedina);
+					
+								
+					
+					stat.executeUpdate();
+					
+					System.out.println("storico inserito con successo ");
+					conn.close();
+					
+				} catch (ClassNotFoundException | SQLException e) {
+
+					e.printStackTrace();
+				
+				}
 		
 		
 		
