@@ -37,7 +37,7 @@ public class Servlet_MostraEventi extends HttpServlet {
 		
 		// Spedisci verso bet-page
 		RequestDispatcher dispatch = request.getRequestDispatcher("bet-page.jsp");
-		dispatch.forward(request, response); 
+		dispatch.forward(request, response);
 
 	}
 

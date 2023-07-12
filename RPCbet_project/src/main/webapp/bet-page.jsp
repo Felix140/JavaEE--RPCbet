@@ -39,7 +39,7 @@
 
 						<div class="header__userName">
 							<% String usernameUtente=(String) session.getAttribute("NomeUser"); %>
-								<%=usernameUtente%>
+								<a href="profilo-utente.jsp"><%=usernameUtente%></a>
 						</div>
 
 					</div>

@@ -5,10 +5,39 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<!-- <link rel="stylesheet" href="assets/css/style.css"> -->
+<link rel="stylesheet" href="assets/css/style.css">
+
+<style>
+	.header__userName  {
+		background-color: red;
+	}
+</style>
+
 </head>
 <body>
     <h1>Profilo utente</h1>
+	<a href="">Torna indietro</a>
+
+	<div class="header__userName">
+		<% String usernameUtente=(String) session.getAttribute("NomeUser"); %>
+			<%=usernameUtente%>
+	</div>
+
+	<table class="table table-hover">
+		<thead>
+			<th class="col">Codice Schedina</th>
+			<th class="col">Esito Schedina</th>
+			<th class="col">Vincita</th>
+		</thead>
+		<tbody>
+			<tr>
+				<td>testo</td>
+				<th>testo</th>
+				<th>testo</th>
+			</tr>
+		</tbody>
+	</table>
+	
 
 
 
