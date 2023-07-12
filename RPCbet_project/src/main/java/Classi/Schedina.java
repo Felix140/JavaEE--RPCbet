@@ -49,7 +49,7 @@ public class Schedina {
 		return importo_giocato;
 	}
 	public void setImporto_giocato(float importo_giocato) {
-		this.importo_giocato = importo_giocato;
+    	this.importo_giocato = importo_giocato;
 	} 
 	
 	
