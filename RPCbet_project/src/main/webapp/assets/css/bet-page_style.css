@@ -179,7 +179,14 @@ tr > th {
   background-color: transparent;
 }
 .schedina__importo {
+  display: flex;
+  flex-direction: row;
   width: 100%;
+  background-color: transparent;
+
+}
+.schedina__importofield {
+  width: 50%;
   border: 2px solid var(--backgorund-1);
   background-color: transparent;
   border-radius: 10px;
@@ -191,6 +198,20 @@ tr > th {
 
 .schedina__title {
   background-color: transparent;
+}
+
+.schedina__vincita {
+  background-color: transparent;
+}
+
+.schedina__valoreVincita {
+  background-color: transparent;
+  color: var(--tertiary);
+}
+
+.schedina__valoreVincita > input{
+  background-color: transparent;
+  color: var(--tertiary);
 }
 
 /* ________________________ */
@@ -226,8 +247,12 @@ tr > th {
   background-color: var(--tertiary);
 }
 
-/* ________________________ */
+/* _________TAGS_______________ */
 
 p {
   background-color: transparent;
+}
+
+hr {
+  border: solid 2px red;
 }
