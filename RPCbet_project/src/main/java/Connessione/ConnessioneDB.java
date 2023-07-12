@@ -284,10 +284,7 @@ public class ConnessioneDB {
 					PreparedStatement stat = conn.prepareStatement(query);
 					stat.setString(1,this.userstorico);
 					stat.setInt(2, this.codiceschedinastorico);		
-					stat.setBoolean(3, this.esitoschedina);
-					
-								
-					
+					stat.setBoolean(3, this.esitoschedina);	
 					stat.executeUpdate();
 					
 					System.out.println("storico inserito con successo ");
@@ -298,24 +295,5 @@ public class ConnessioneDB {
 					e.printStackTrace();
 				
 				}
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 	}
-	
-	
-	
-	
-	
-	
-
 }
