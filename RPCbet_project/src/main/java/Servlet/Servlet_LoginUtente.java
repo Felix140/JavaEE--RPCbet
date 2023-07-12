@@ -23,6 +23,9 @@ public class Servlet_LoginUtente extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String usernameUtente = request.getParameter("usernameUtente");
+		request.setAttribute ("user", usernameUtente);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("Servlet_IncrementaSaldo");
+		dispatcher.forward(request, response);
 		String passwordUtente = request.getParameter("passwordUtente");
 		
 		ConnessioneDB connect = new ConnessioneDB();

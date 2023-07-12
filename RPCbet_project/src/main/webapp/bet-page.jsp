@@ -157,7 +157,7 @@
 							<%=request.getAttribute("saldo")%>
 						</p>
 						<input type="hidden" name="aumentosaldo">
-						<button class="btn btn-danger " type="submit">Desposita</button>
+						<button name="buttonSaldo" class="btn btn-danger " type="submit">Desposita</button>
 					</form>
 					<% String usernameUtente=(String) session.getAttribute("NomeUser"); %>
 					<p>
