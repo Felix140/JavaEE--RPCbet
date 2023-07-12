@@ -322,7 +322,7 @@
 						</div>
 
 						<div class="schedina__button">
-							<input type="submit" value="Gioca schedina" class="btn btn-primary btn-rounded">
+							<input type="submit" name="importogiocato" value="Gioca schedina" class="btn btn-primary btn-rounded">
 						</div>
 
 					</form>
