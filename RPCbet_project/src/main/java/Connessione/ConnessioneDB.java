@@ -155,7 +155,7 @@ public class ConnessioneDB {
 		return false;
 	}
 
-	// GET SALDO
+	// ***********************GET SALDO****************************
 
 	public float getSaldo(int idUtente) {
 
@@ -189,7 +189,7 @@ public class ConnessioneDB {
 	//
 //			}
 
-	// SET SALDO
+	// *********************SET SALDO*****************************
 	public void incrementaSaldo(int idUtente, float importo) {
 		this.idu = idUtente;
 		this.imp = importo;
@@ -211,5 +211,77 @@ public class ConnessioneDB {
 		}
 
 	}
+	
+
+	
+	//**********************INSERIMENTO SCHEDINA***********************
+	int Codice_Partita;
+	int Codice_Schedina;
+	String Esito_Utente;
+	String userschedina;
+	String esitopartita;
+	boolean risultatopartita;
+	float importogiocato;
+	
+	public void InserimentoSchedina(int codiceschedina,int codicepartita,String user,String esitopartita, String esitoutente,boolean risultatopartita, float importogiocato) {
+	this.Codice_Schedina = codiceschedina;
+		this.Codice_Partita = codicepartita;
+		this.Esito_Utente = esitoutente;
+		this.userschedina =user;
+		this.esitopartita =esitopartita;
+		this.risultatopartita = risultatopartita;
+		this.importogiocato = importogiocato;
+		
+		try {
+			Class.forName(driver);
+			Connection conn = DriverManager.getConnection(url, usernameDb, passwordDb);
+			String query = "INSERT INTO schedina  VALUES (0, ?, ?, ?, ?, ?, ?, ?)";
+			PreparedStatement stat = conn.prepareStatement(query);
+			
+			stat.setInt(1, this.Codice_Schedina);
+			stat.setInt(2, this.Codice_Partita);
+			stat.setString(3,this.userschedina);
+			stat.setString(4,this.esitopartita);
+			stat.setString(5,this.Esito_Utente);
+			stat.setBoolean(6, this.risultatopartita);
+			stat.setFloat(7, this.importogiocato);
+			
+			
+			
+			
+			
+			
+			
+			
+			stat.executeUpdate();
+			
+			System.out.println("Scommessa piazzata");
+			conn.close();
+			
+		} catch (ClassNotFoundException | SQLException e) {
+
+			e.printStackTrace();
+		
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	}
+	
+	
+	
+	
+	
+	
 
 }

@@ -1,0 +1,233 @@
+:root {
+  --backgorund-1: #1c1e2e;
+  --backgorund-2: #222637;
+  --backgorund-3: #33394b;
+  --primary: #6dd338;
+  --secondary: #fdfeff;
+  --tertiary: #696e88;
+}
+
+/* ________NAVBAR________ */
+
+.header {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  /* border: 1px solid red; */
+  justify-content: center;
+  align-items: center;
+
+  color: var(--secondary);
+  background-color: var(--backgorund-1);
+}
+
+.header__actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  /* border: 1px solid green; */
+  width: 100%;
+  height: 67px;
+  padding: 0 20px;
+}
+.header__sections {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  /* border: 1px solid yellow; */
+  width: 100%;
+
+  background-color: var(--backgorund-2);
+  height: 54px;
+
+  column-gap: 20px;
+}
+
+.header__user {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  /* border: 1px solid blue; */
+  column-gap: 20px;
+}
+
+.header__userName {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid var(--secondary);
+  width: 100px;
+  background-color: var(--backgorund-1);
+  border-radius: 20px;
+  padding: 8px 20px;
+}
+.header__saldo {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  /* border: 2px solid green; */
+  background-color: var(--secondary);
+  color: #1c1e2e;
+  width: 230px;
+  border-radius: 20px;
+}
+
+.hero__logo {
+  width: 150px;
+}
+/* ________________________ */
+
+/* ________TABELLE________ */
+
+.mainView {
+  display: flex;
+  flex-direction: row;
+  background-color: var(--backgorund-1);
+  justify-content: space-around;
+
+  align-items: center;
+}
+
+.tables {
+  /* border: 2px solid green; */
+  width: 100%;
+  background-color: var(--backgorund-3);
+}
+
+
+.tables__evento {
+  min-width: 470px;
+  height: 100%;
+}
+
+.tables > div {
+  display: none;
+}
+
+.tables > div {
+  transition: display 0.3s ease-in-out;
+  opacity: 0;
+}
+
+.tables > div.active {
+  display: block;
+  opacity: 1;
+}
+
+#quoteForm {
+  margin-top: 20px;
+}
+
+#quoteForm input {
+  margin-right: 10px;
+}
+
+tr > th {
+  height: 100px;
+  padding: 10px 30px;
+}
+
+
+/* ________________________ */
+
+/* ________SCHEDINA________ */
+
+.schedina {
+  /* border: 2px solid yellow; */
+  background-color: var(--tertiary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 0 20px;
+  margin: 0;
+}
+.schedina__form {
+  /* border: 2px solid red; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  row-gap: 20px;
+}
+
+.schedina__input {
+  /* border: 2px solid green; */
+  background-color: var(--secondary);
+  border-radius: 30px;
+  height: 500px;
+  width: 300px;
+
+  padding: 40px 40px;
+}
+
+.schedina__rowInput {
+  display: flex;
+  flex-direction: row;
+  background-color: transparent;
+}
+
+.schedina__field {
+  width: 100%;
+  border: none;
+  background-color: transparent;
+}
+.schedina__importo {
+  width: 100%;
+  border: 2px solid var(--backgorund-1);
+  background-color: transparent;
+  border-radius: 10px;
+}
+.schedina__button {
+  background-color: transparent;
+  color: var(--secondary);
+}
+
+.schedina__title {
+  background-color: transparent;
+}
+
+/* ________________________ */
+
+/* ________BUTTONS________ */
+
+.btn-rounded {
+  border-radius: 20px;
+}
+
+.btn--bet {
+  width: 140px;
+  height: 66px;
+  border-radius: 13px;
+  color: var(--secondary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  transition: transform 0.4s ease, background-color 0.3s ease, color 0.3s ease;
+  
+  font-weight: light;
+}
+
+.btn--bet:hover {
+  transform: scale(1.1);
+  background-color: var(--primary);
+  color: var(--secondary);
+  cursor: pointer;
+}
+
+.btn--bet:active {
+  background-color: var(--tertiary);
+}
+
+/* ________________________ */
+
+p {
+  background-color: transparent;
+}
