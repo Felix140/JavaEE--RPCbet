@@ -5,7 +5,24 @@
   --primary: #6dd338;
   --secondary: #fdfeff;
   --tertiary: #696e88;
+
+  --font-family: 'Orbitron';
 }
+
+@font-face {
+  font-family: 'Orbiton';
+  src: url('../fonts/Orbitron/Orbitron-Medium.ttf') format('ttf');
+  src: url('../fonts/Orbitron/Orbitron-Bold.ttf') format('ttf')
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+
+
 
 /* ________NAVBAR________ */
 
@@ -42,7 +59,7 @@
   background-color: var(--backgorund-2);
   height: 54px;
 
-  column-gap: 20px;
+  column-gap: 40px;
 }
 
 .header__user {
@@ -79,6 +96,22 @@
 
 .hero__logo {
   width: 150px;
+}
+
+
+
+.section {
+  padding: 10px 20px;
+  background-color: transparent;
+  border: none;
+  color: var(--secondary);
+  font-family: var(--font-family);
+}
+
+.section:hover {
+  background-color: transparent;
+  border: 2px solid var(--primary);
+  color: var(--primary);
 }
 /* ________________________ */
 
@@ -181,37 +214,57 @@ tr > th {
 .schedina__importo {
   display: flex;
   flex-direction: row;
+  justify-content: space-around;
   width: 100%;
   background-color: transparent;
+  border: 2px solid red;
 
 }
 .schedina__importofield {
-  width: 50%;
+  width: 80%;
   border: 2px solid var(--backgorund-1);
   background-color: transparent;
   border-radius: 10px;
+  text-align: center;
 }
 .schedina__button {
-  background-color: transparent;
+  background-color: var(--primary);
   color: var(--secondary);
+  font-family: var(--font-family);
 }
 
 .schedina__title {
   background-color: transparent;
+  font-family: var(--font-family);
+  font-size: 20px;
 }
 
 .schedina__vincita {
   background-color: transparent;
+  display: flex;
+  flex-direction: row;
+  font-weight: 700;
+  margin-top: 30px;
+
+}
+
+.schedina__vincitaInput {
+  background-color: white;
+  border: none;
 }
 
 .schedina__valoreVincita {
   background-color: transparent;
   color: var(--tertiary);
+  margin-top: 40px;
+
 }
 
 .schedina__valoreVincita > input{
   background-color: transparent;
   color: var(--tertiary);
+  display: flex;
+  flex-direction: row;
 }
 
 /* ________________________ */
@@ -232,12 +285,18 @@ tr > th {
   align-items: center;
 
   transition: transform 0.4s ease, background-color 0.3s ease, color 0.3s ease;
-  
   font-weight: light;
+  cursor: pointer;
 }
 
 .btn--bet:hover {
   transform: scale(1.1);
+  background-color: var(--primary);
+  color: var(--secondary);
+  cursor: pointer;
+}
+
+.btn--pressed {
   background-color: var(--primary);
   color: var(--secondary);
   cursor: pointer;

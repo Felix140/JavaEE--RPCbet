@@ -49,9 +49,9 @@
 				</nav>
 
 				<nav class="header__sections">
-					<button class="btn btn-secondary">Calcio</button>
-					<button class="btn btn-secondary">Tennis</button>
-					<button class="btn btn-secondary">Boxe</button>
+					<button class="btn btn-secondary section">Calcio</button>
+					<button class="btn btn-secondary  section">Tennis</button>
+					<button class="btn btn-secondary section">Boxe</button>
 				</nav>
 
 			</div>
@@ -274,65 +274,65 @@
 
 							<div class="schedina__rowInput">
 								<input type="text" name="evento1_codice" id="eventoCodiceInput1" class="schedina__field"
-									readonly>
+								disabled readonly>
 								<input type="text" name="evento1_colonna" id="eventoColonnaInput1"
-									class="schedina__field" readonly>
+									class="schedina__field" disabled readonly>
 							</div>
 							
 							<div class="schedina__rowInput">
 								<input type="text" name="evento2_codice" id="eventoCodiceInput2" class="schedina__field"
-									readonly>
+								disabled readonly>
 								<input type="text" name="evento2_colonna" id="eventoColonnaInput2"
-									class="schedina__field" readonly>
+									class="schedina__field"  disabled readonly>
 							</div>
 							
 							<div class="schedina__rowInput">
 								<input type="text" name="evento3_codice" id="eventoCodiceInput3" class="schedina__field"
-									readonly>
+								disabled readonly>
 								<input type="text" name="evento3_colonna" id="eventoColonnaInput3"
-									class="schedina__field" readonly>
+									class="schedina__field" disabled readonly>
 							</div>
 							
 							<div class="schedina__rowInput">
 								<input type="text" name="evento4_codice" id="eventoCodiceInput4" class="schedina__field"
-									readonly>
+								disabled readonly>
 								<input type="text" name="evento4_colonna" id="eventoColonnaInput4"
-									class="schedina__field" readonly>
+									class="schedina__field" disabled readonly>
 							</div>
 							
 							<div class="schedina__rowInput">
 								<input type="text" name="evento5_codice" id="eventoCodiceInput5" class="schedina__field"
-									readonly>
+								disabled readonly>
 								<input type="text" name="evento5_colonna" id="eventoColonnaInput5"
-									class="schedina__field" readonly>
+									class="schedina__field" disabled readonly>
 							</div>
 							
 							<div class="schedina__rowInput">
 								<input type="text" name="evento6_codice" id="eventoCodiceInput6" class="schedina__field"
-									readonly>
+								disabled readonly>
 								<input type="text" name="evento6_colonna" id="eventoColonnaInput6"
-									class="schedina__field" readonly>
+									class="schedina__field" disabled readonly>
 							</div>
 							
 							<div class="schedina__rowInput">
 								<input type="text" name="evento7_codice" id="eventoCodiceInput7" class="schedina__field"
-									readonly>
+								disabled readonly>
 								<input type="text" name="evento7_colonna" id="eventoColonnaInput7"
-									class="schedina__field" readonly>
+									class="schedina__field" disabled readonly>
 							</div>
 							
 							<div class="schedina__rowInput">
 								<input type="text" name="evento8_codice" id="eventoCodiceInput8" class="schedina__field"
-									readonly>
+								disabled readonly>
 								<input type="text" name="evento8_colonna" id="eventoColonnaInput8"
-									class="schedina__field" readonly>
+									class="schedina__field" disabled readonly>
 							</div>
 							
 							<div class="schedina__rowInput">
 								<input type="text" name="evento9_codice" id="eventoCodiceInput9" class="schedina__field"
-									readonly>
+								disabled readonly>
 								<input type="text" name="evento9_colonna" id="eventoColonnaInput9"
-									class="schedina__field" readonly>
+									class="schedina__field" disabled readonly>
 							</div>
 							
 							<!-- IMPORTO -->
@@ -346,7 +346,11 @@
 							<div class="schedina__valoreVincita">
 								<p>Possibile vincita: </p>
 								<input type="text" name="" id="valoriQuote" readonly>
-								<input type="text" name="" id="vincita" class="schedina__vincita" readonly>
+
+								<div class="schedina__vincita">
+									€
+									<input type="text" name="" id="vincita"  class="schedina__vincitaInput d-block m-auto" disabled readonly>
+								</div>
 							</div>
 
 
@@ -354,9 +358,9 @@
 							<input type="text" name="NomeUser" value="<%=usernameUtente%>" hidden>
 						</div>
 
-						<div class="schedina__button">
-							<input type="submit" value="Gioca schedina" class="btn btn-primary btn-rounded">
-						</div>
+						
+							<input type="submit" value="Gioca schedina" class="btn btn-primary schedina__button btn-rounded">
+						
 
 					</form>
 				</div>
@@ -364,54 +368,62 @@
 			</div>
 
 
-
 			<script>
-				$(document).ready(function() {
+				$(document).ready(function () {
 					var valoriQuote = ""; // Variabile per memorizzare i valori delle quote
-			
-					$(".btn--bet").click(function() {
+
+					$(".btn--bet").click(function () {
 						var quota = $(this).attr("data-quota");
-			
+
 						if (valoriQuote.split(" ").length < 9) {
-							// Aggiungi il valore della quota alla variabile valoriQuote
-							valoriQuote += quota + " ";
-			
+							// Rimuovi il valore dalla variabile valoriQuote se il pulsante è già stato premuto
+							if ($(this).hasClass("btn--pressed")) {
+								valoriQuote = valoriQuote.replace(quota + " ", "");
+								$(this).removeClass("btn--pressed");
+							} else {
+								// Aggiungi il valore della quota alla variabile valoriQuote solo se non è già presente
+								if (!valoriQuote.includes(quota)) {
+									valoriQuote += quota + " ";
+								}
+								$(this).addClass("btn--pressed");
+							}
+
 							// Imposta il valore aggiornato nel campo di testo
 							$("#valoriQuote").val(valoriQuote.trim());
-			
+
 							// Calcola il prodotto dei valori delle quote
-							var valoriArray = valoriQuote.trim().split(" ").map(function(valore) {
+							var valoriArray = valoriQuote.trim().split(" ").map(function (valore) {
 								return parseFloat(valore);
 							});
-			
+
 							// Ottieni l'importo inserito dall'utente
 							var importoGiocato = parseFloat($("[name='importogiocato']").val());
-			
+
 							// Verifica se l'importo inserito è un numero valido
 							if (!isNaN(importoGiocato)) {
 								// Calcola il risultato moltiplicando il prodotto per l'importo
-								var risultato = importoGiocato * valoriArray.reduce(function(acc, valore) {
+								var risultato = importoGiocato * valoriArray.reduce(function (acc, valore) {
 									return acc * valore;
 								}, 1);
-			
+
 								// Imposta il risultato della moltiplicazione nel campo di testo
 								$("#vincita").val(risultato.toFixed(2));
 							}
 						}
 					});
-			
+
 					// Aggiorna il campo vincita quando l'importo viene modificato
-					$("[name='importogiocato']").on("input", function() {
+					$("[name='importogiocato']").on("input", function () {
 						var importoGiocato = parseFloat($(this).val());
 						if (!isNaN(importoGiocato) && valoriQuote.trim() !== "") {
-							var valoriArray = valoriQuote.trim().split(" ").map(function(valore) {
+							var valoriArray = valoriQuote.trim().split(" ").map(function (valore) {
 								return parseFloat(valore);
 							});
-			
-							var risultato = importoGiocato * valoriArray.reduce(function(acc, valore) {
+
+							var risultato = importoGiocato * valoriArray.reduce(function (acc, valore) {
 								return acc * valore;
 							}, 1);
-			
+
 							$("#vincita").val(risultato.toFixed(2));
 						} else {
 							$("#vincita").val("");
@@ -419,6 +431,7 @@
 					});
 				});
 			</script>
+			
 
 			<script>
 				const eventiSelezionati = []; // Dichiarazione dell'array eventiSelezionati
@@ -474,7 +487,6 @@
 					const selectedTable = document.querySelector(".tables__" + selectedTableName);
 					selectedTable.classList.add("active");
 				});
-
 			</script>
 
 
