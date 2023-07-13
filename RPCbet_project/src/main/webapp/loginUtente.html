@@ -4,55 +4,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <!-- <link rel="stylesheet" href="assets/css/style.css"> -->
+    <title>Login</title>
+    <link rel="stylesheet" href="assets/css/style.css">
 
 </head>
 
-<body>
+<body class="body-login">
+    <header class="navbar navbar--login">
+        <img src="assets/img/logo/rpcbet-logo-2.svg" alt="" class="hero__logo hero--login">
+    </header>
 
-    <div style="height: 200px;"></div>
+    <div class="login">
 
-    <div class="container d-flex align-items-center justify-content-center ">
-        <div class="row align-items-center">
-            <h1> Login page</h1>
+        <h1 class="form-title">LOGIN UTENTE</h1>
 
-            <form class="w-100" action="Servlet_LoginUtente" method="POST">
-                <!-- Campo input username -->
-                <div class="w-100">
-                    <label for="validationServerUsername" class="form-label">Username</label>
-                    <div class="input-group has-validation">
-                        <span class="input-group-text form-control" id="inputGroupPrepend3">@</span>
-                        <input type="text" class="form-control" id="validationServerUsername"
-                            aria-describedby="inputGroupPrepend3 validationServerUsernameFeedback" name="usernameUtente"
-                            placeholder="mario.rossi" required>
-                        <!-- <div id="validationServerUsernameFeedback" class="invalid-feedback">
-                        Please choose a username.
-                    </div> -->
-                    </div>
-                </div>
+        <form action="Servlet_LoginUtente" method="POST" class="form">
 
-                <!-- Campo input password -->
-                <div class="w-100">
-                    <label for="password" class="form-label">Password</label>
-                    <div class="input-group has-validation">
-                        <input type="password" class="form-control" id="validationServerUsername"
-                            aria-describedby="inputGroupPrepend3 validationServerUsernameFeedback" name="passwordUtente"
-                            placeholder="mario.rossi25" required>
-                    </div>
-                </div>
+            <!-- Campo input username -->
 
-                <!-- Button -->
-                <div class="w-100">
-                    <input class="btn btn-primary" type="submit" value="Login">
-                </div>
 
-                <p>Non hai ancora effetturato la registrazione? <a href="registrazioneUtente.html">CLICCA QUI</a></p>
+            <div class="username">
 
-            </form>
-        </div>
+                <label for="validationServerUsername" class="form-label">Username</label>
+                <input type="text" class="form-control form__input" id="validationServerUsername"
+                    aria-describedby="inputGroupPrepend3 validationServerUsernameFeedback" name="usernameUtente"
+                    placeholder="Inserisci nome utente" required>
+
+            </div>
+
+
+            <!-- Campo input password -->
+            <div class="password">
+
+                <label for="password" class="form-label">Password</label>
+
+                <input type="password" class="form-control form__input" id="validationServerUsername"
+                    aria-describedby="inputGroupPrepend3 validationServerUsernameFeedback" name="passwordUtente"
+                    placeholder="Inserisci la password" required>
+
+            </div>
+
+            <!-- Button -->
+
+            <input class="primary__btn btn--login" type="submit" value="Login">
+
+
+
+        </form>
+
+        <p class="link">Non hai ancora effettuato la registrazione? <a href="registrazioneUtente.html">CLICCA QUI</a>
+        </p>
+
     </div>
-
 
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"

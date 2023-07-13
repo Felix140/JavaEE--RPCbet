@@ -177,11 +177,11 @@ tr > th {
   justify-content: center;
   align-items: center;
   height: 100%;
-  padding: 0 20px;
+  padding: 50px 20px;
   margin: 0;
 }
 .schedina__form {
-  /* border: 2px solid red; */
+  /* border: 4px solid red; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -197,7 +197,7 @@ tr > th {
   height: 500px;
   width: 300px;
 
-  padding: 40px 40px;
+  padding:  40px;
 }
 
 .schedina__rowInput {
@@ -217,7 +217,7 @@ tr > th {
   justify-content: space-around;
   width: 100%;
   background-color: transparent;
-  border: 2px solid red;
+  /* border: 2px solid red; */
 
 }
 .schedina__importofield {
@@ -226,11 +226,6 @@ tr > th {
   background-color: transparent;
   border-radius: 10px;
   text-align: center;
-}
-.schedina__button {
-  background-color: var(--primary);
-  color: var(--secondary);
-  font-family: var(--font-family);
 }
 
 .schedina__title {
@@ -279,6 +274,7 @@ tr > th {
   width: 140px;
   height: 66px;
   border-radius: 13px;
+  background-color: var(--backgorund-1);
   color: var(--secondary);
   display: flex;
   justify-content: center;
@@ -304,6 +300,24 @@ tr > th {
 
 .btn--bet:active {
   background-color: var(--tertiary);
+}
+
+.schedina__button {
+  background-color: var(--primary);
+  color: var(--secondary);
+  font-family: var(--font-family);
+  width: 250px;
+  font-weight: 600;
+  transition: transform 0.5s ease, background-color 0.3s ease, color 0.3s ease;
+}
+.schedina__button:hover {
+  transform: scale(1.1);
+  background-color:  var(--secondary);
+  color:  var(--primary);
+}
+.schedina__button:active {
+  background-color: var(--tertiary);
+  color: var(--primary);
 }
 
 /* _________TAGS_______________ */

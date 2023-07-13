@@ -345,7 +345,7 @@
 							<!-- VINCITA -->
 							<div class="schedina__valoreVincita">
 								<p>Possibile vincita: </p>
-								<input type="text" name="" id="valoriQuote" readonly>
+								<input type="text" name="" id="valoriQuote" hidden>
 
 								<div class="schedina__vincita">
 									€
@@ -374,6 +374,7 @@
 
 					$(".btn--bet").click(function () {
 						var quota = $(this).attr("data-quota");
+						var evento = $(this).closest("tr").find(".tables__evento").text().trim();
 
 						if (valoriQuote.split(" ").length < 9) {
 							// Rimuovi il valore dalla variabile valoriQuote se il pulsante è già stato premuto
@@ -381,6 +382,13 @@
 								valoriQuote = valoriQuote.replace(quota + " ", "");
 								$(this).removeClass("btn--pressed");
 							} else {
+								// Rimuovi la classe "btn--pressed" da tutti gli altri pulsanti dello stesso evento sportivo
+								$(".tables__evento").each(function () {
+									if ($(this).text().trim() === evento) {
+										$(this).closest("tr").find(".btn--pressed").removeClass("btn--pressed");
+									}
+								});
+
 								// Aggiungi il valore della quota alla variabile valoriQuote solo se non è già presente
 								if (!valoriQuote.includes(quota)) {
 									valoriQuote += quota + " ";
@@ -432,7 +440,7 @@
 				});
 			</script>
 			
-
+			
 			<script>
 				const eventiSelezionati = []; // Dichiarazione dell'array eventiSelezionati
 
