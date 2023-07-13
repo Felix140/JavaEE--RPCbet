@@ -5,6 +5,9 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import jakarta.servlet.ServletRequest;
+
 import java.net.URL;
 import java.sql.*;
 import java.io.File;
@@ -27,8 +30,8 @@ public class ConnessioneDB {
 	String password_admin;
 
 	// aumento importo
-	private int idu;
-	private float imp;
+	
+	float imp;
 
 	ClasseEstrapolazioneTXT oggettotxt = new ClasseEstrapolazioneTXT();
 
@@ -85,7 +88,7 @@ public class ConnessioneDB {
 
 	}
 
-//	LOGIN ADMIN
+//	*****************LOGIN ADMIN**********************
 	public boolean login_admin(String nome_admin, String password_admin) throws SQLException {
 
 		try {
@@ -120,7 +123,7 @@ public class ConnessioneDB {
 		return false;
 	}
 
-//	LOGIN USER
+//	**************LOGIN USER********************
 	public boolean login_user(String username_utente, String password_user) throws SQLException {
 
 		try {
@@ -157,22 +160,24 @@ public class ConnessioneDB {
 
 	// ***********************GET SALDO****************************
 
-	public float getSaldo(int idUtente) {
+	public float getSaldo(String username_utente) {
 
-		float saldo = 0.0f;
-
+		this.username_utente = username_utente;
 		try {
 			Class.forName(driver);
 			Connection conn = DriverManager.getConnection(url, usernameDb, passwordDb);
-			String query = "SELECT saldo FROM rpcbet.utente WHERE id = ? ";
+			String query = "SELECT Saldo FROM rpcbet.utente WHERE Username_Utente = ?";
 			PreparedStatement stat = conn.prepareStatement(query);
-			stat.setInt(1, idUtente);
+			
+			stat.setString(1, username_utente);
 			ResultSet rs = stat.executeQuery();
 
 			if (rs.next()) {
 				saldo = rs.getFloat("saldo");
+				System.out.println(saldo);
+				
 			}
-
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
@@ -181,28 +186,23 @@ public class ConnessioneDB {
 		return saldo;
 	}
 
-//			public static void main (String [] args) {
-//				int idUtente = 1;
-//				ConnessioneDB conn = new ConnessioneDB();
-//				float saldo = conn.getSaldo(1);
-//				System.out.println("Saldo:" + saldo);
-	//
-//			}
-
+	
+	
 	// *********************SET SALDO*****************************
-	public void incrementaSaldo(int idUtente, float importo) {
-		this.idu = idUtente;
-		this.imp = importo;
+	public void incrementaSaldo(String username_utente) {
+//	
+		this.username_utente = username_utente;
+	
 		try {
 			Class.forName(driver);
 			Connection conn = DriverManager.getConnection(url, usernameDb, passwordDb);
-			String query = "UPDATE utente SET saldo = saldo + ? WHERE id = ? ";
+			String query = "UPDATE rpcbet.utente SET Saldo = Saldo + 1000 WHERE Username_Utente = ?;";
 			PreparedStatement stat = conn.prepareStatement(query);
 
-			stat.setFloat(1, this.imp);
-			stat.setInt(2, this.idu);
-
+			stat.setString(1, username_utente);
 			stat.executeUpdate();
+			System.out.println("Saldo incrementato");
+
 			conn.close();
 
 		} catch (ClassNotFoundException | SQLException e) {
@@ -213,7 +213,6 @@ public class ConnessioneDB {
 	}
 	
 
-	
 	//**********************INSERIMENTO SCHEDINA***********************
 	int Codice_Partita;
 	int Codice_Schedina;
@@ -245,12 +244,6 @@ public class ConnessioneDB {
 			stat.setString(5,this.Esito_Utente);
 			stat.setBoolean(6, this.risultatopartita);
 			stat.setFloat(7, this.importogiocato);
-			
-			
-			
-			
-			
-			
 			
 			
 			stat.executeUpdate();
