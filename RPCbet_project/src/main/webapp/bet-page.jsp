@@ -153,12 +153,12 @@
 	
 					<form action="Servlet_IncrementaSaldo" method="POST" class="header__saldo">
 						<p>Saldo Corrente</p>
-						<p>
-							<%=request.getAttribute("saldo")%>
-						</p>
+						<p><%=request.getAttribute("saldo")%></p>
 						<input type="hidden" name="aumentosaldo">
-						<button name="buttonSaldo" class="btn btn-danger " type="submit">Desposita</button>
+						<button class="btn btn-danger" type="submit">Deposita</button>
 					</form>
+					
+					
 					<% String usernameUtente=(String) session.getAttribute("NomeUser"); %>
 					<p>
 						Benvenuto/a

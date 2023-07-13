@@ -7,6 +7,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import jakarta.servlet.http.Cookie;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -23,9 +24,6 @@ public class Servlet_LoginUtente extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String usernameUtente = request.getParameter("usernameUtente");
-		request.setAttribute ("user", usernameUtente);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("Servlet_IncrementaSaldo");
-		dispatcher.forward(request, response);
 		String passwordUtente = request.getParameter("passwordUtente");
 		
 		ConnessioneDB connect = new ConnessioneDB();
@@ -35,11 +33,18 @@ public class Servlet_LoginUtente extends HttpServlet {
 			boolean checkLogin = connect.login_user(usernameUtente, passwordUtente);
 			if (checkLogin) {
 				
+//				request.setAttribute ("user", usernameUtente);
 				session.setAttribute("NomeUser", usernameUtente);
-				// Spedisci verso Servlet_GenerazioneEventi 
-				RequestDispatcher dispatch = request.getRequestDispatcher("Servlet_GenerazioneEventi");
-				dispatch.forward(request, response);
 			
+		        Cookie cookie = new Cookie("a", usernameUtente);
+		        cookie.setMaxAge(3600); 
+		        cookie.setPath("/"); 
+		        response.addCookie(cookie);
+				float saldo = connect.getSaldo(usernameUtente);
+
+//				Spedisci verso Servlet_Incrementa_Saldo 
+				RequestDispatcher dispatch = request.getRequestDispatcher("Servlet_IncrementaSaldo");
+				dispatch.forward(request, response);
 			} else {
 				
 				response.sendRedirect("loginUtente.html");
