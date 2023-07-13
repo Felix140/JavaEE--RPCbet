@@ -274,65 +274,65 @@
 
 							<div class="schedina__rowInput">
 								<input type="text" name="evento1_codice" id="eventoCodiceInput1" class="schedina__field"
-								disabled readonly>
+									readonly>
 								<input type="text" name="evento1_colonna" id="eventoColonnaInput1"
-									class="schedina__field" disabled readonly>
+									class="schedina__field" readonly>
 							</div>
-							
+
 							<div class="schedina__rowInput">
 								<input type="text" name="evento2_codice" id="eventoCodiceInput2" class="schedina__field"
-								disabled readonly>
+									readonly>
 								<input type="text" name="evento2_colonna" id="eventoColonnaInput2"
-									class="schedina__field"  disabled readonly>
+									class="schedina__field" readonly>
 							</div>
-							
+
 							<div class="schedina__rowInput">
 								<input type="text" name="evento3_codice" id="eventoCodiceInput3" class="schedina__field"
-								disabled readonly>
+									readonly>
 								<input type="text" name="evento3_colonna" id="eventoColonnaInput3"
-									class="schedina__field" disabled readonly>
+									class="schedina__field" readonly>
 							</div>
-							
+
 							<div class="schedina__rowInput">
 								<input type="text" name="evento4_codice" id="eventoCodiceInput4" class="schedina__field"
-								disabled readonly>
+									readonly>
 								<input type="text" name="evento4_colonna" id="eventoColonnaInput4"
-									class="schedina__field" disabled readonly>
+									class="schedina__field" readonly>
 							</div>
-							
+
 							<div class="schedina__rowInput">
 								<input type="text" name="evento5_codice" id="eventoCodiceInput5" class="schedina__field"
-								disabled readonly>
+									readonly>
 								<input type="text" name="evento5_colonna" id="eventoColonnaInput5"
-									class="schedina__field" disabled readonly>
+									class="schedina__field" readonly>
 							</div>
-							
+
 							<div class="schedina__rowInput">
 								<input type="text" name="evento6_codice" id="eventoCodiceInput6" class="schedina__field"
-								disabled readonly>
+									readonly>
 								<input type="text" name="evento6_colonna" id="eventoColonnaInput6"
-									class="schedina__field" disabled readonly>
+									class="schedina__field" readonly>
 							</div>
-							
+
 							<div class="schedina__rowInput">
 								<input type="text" name="evento7_codice" id="eventoCodiceInput7" class="schedina__field"
-								disabled readonly>
+									readonly>
 								<input type="text" name="evento7_colonna" id="eventoColonnaInput7"
-									class="schedina__field" disabled readonly>
+									class="schedina__field" readonly>
 							</div>
-							
+
 							<div class="schedina__rowInput">
 								<input type="text" name="evento8_codice" id="eventoCodiceInput8" class="schedina__field"
-								disabled readonly>
+									readonly>
 								<input type="text" name="evento8_colonna" id="eventoColonnaInput8"
-									class="schedina__field" disabled readonly>
+									class="schedina__field" readonly>
 							</div>
 							
 							<div class="schedina__rowInput">
 								<input type="text" name="evento9_codice" id="eventoCodiceInput9" class="schedina__field"
-								disabled readonly>
+									readonly>
 								<input type="text" name="evento9_colonna" id="eventoColonnaInput9"
-									class="schedina__field" disabled readonly>
+									class="schedina__field" readonly>
 							</div>
 							
 							<!-- IMPORTO -->
