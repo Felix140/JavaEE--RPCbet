@@ -46,7 +46,7 @@ public class Servlet_LoginUtente extends HttpServlet {
 			        session.setAttribute("NomeUser", usernameUtente);
 			        
 	//				Spedisci verso Servlet_Incrementa_Saldo
-					RequestDispatcher dispatch = request.getRequestDispatcher("Servlet_IncrementaSaldo");
+					RequestDispatcher dispatch = request.getRequestDispatcher("Servlet_MostraEventi");
 					dispatch.forward(request, response);					
 				}
 				 else {

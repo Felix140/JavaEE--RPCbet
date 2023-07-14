@@ -20,7 +20,7 @@ public class Evento_Sportivo {
 	String url = "jdbc:mysql://localhost:3306/rpcbet";
 	String usernameDb = "root";
 	// INSERISCI LA TUA PASSWORD
-	String passwordDb = oggettotxt.MetodoEstrapolazioneFile();
+	String passwordDb = "ciao";
 
 	private ArrayList<Evento_Sportivo> eventosportivo = new ArrayList<>();
 

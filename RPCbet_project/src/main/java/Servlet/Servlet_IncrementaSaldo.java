@@ -1,5 +1,6 @@
 package Servlet;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.Cookie;
@@ -19,35 +20,43 @@ public class Servlet_IncrementaSaldo extends HttpServlet {
 	//INCREMENTA SALDO E VISUALIZZA
 		protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-			//INIZIO COOKIE******************
-			Cookie[] cookies = request.getCookies();
-		 	String nomeCookie = "a";
-		 	String nomeUtente = "";
-		 	
-		 	if (cookies != null) 
-		 	{
-		 		for (Cookie cookie : cookies) 
-		 		{
-		 			if (cookie.getName().equals(nomeCookie)) 
-		 			{
-		 				nomeUtente = cookie.getValue();
-		 				break;
-		 			}
-		 		}
-		 	}
-		 	//FINE COOKIE*******************
-		 	
-		 	System.out.println(nomeUtente);
-		 	
-			ConnessioneDB connessioneDB = new ConnessioneDB();
-			connessioneDB.incrementaSaldo(nomeUtente);
-			float saldo = connessioneDB.getSaldo(nomeUtente);
-			System.out.println("Hai " + saldo + "euro");
-			request.setAttribute("saldo", saldo);
-			request.getRequestDispatcher("Servlet_MostraEventi").forward(request, response);
-//			response.sendRedirect("Servlet_MostraEventi");
+		     String opzione = request.getParameter("opzione");
+			    Cookie[] cookies = request.getCookies();
+			 	String nomeCookie = "a";
+			 	String nomeUtente = "";
+			 	
+			 	if (cookies != null) 
+			 	{
+			 		for (Cookie cookie : cookies) 
+			 		{
+			 			if (cookie.getName().equals(nomeCookie)) 
+			 			{
+			 				nomeUtente = cookie.getValue();
+			 				break;
+			 			}
+			 		}
+			 	}
+			 	 
+			 	 
+		         int numeroIntero = Integer.parseInt(opzione);
+		         ConnessioneDB connessioneDB = new ConnessioneDB();
+			
+			    	 connessioneDB.incrementaSaldo(nomeUtente, numeroIntero);
+			 
+				
+				
+				
+				
+				float saldo = connessioneDB.getSaldo(nomeUtente);
+				System.out.println("Hai " + saldo + "euro");
+				request.setAttribute("saldo", saldo);
+		        
+				
+				RequestDispatcher dispatch = request.getRequestDispatcher("Servlet_MostraEventi");
+				dispatch.forward(request, response);
+				
+			 	
 			
 		}
-		
+}	
 	
-}
