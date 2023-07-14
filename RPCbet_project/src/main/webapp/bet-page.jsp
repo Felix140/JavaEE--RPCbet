@@ -342,7 +342,15 @@
 							<!-- IMPORTO -->
 							<div class="schedina__importo d-block m-auto">
 								€
-								<input type="number" name="importogiocato"  placeholder="importo" class="schedina__importofield">
+							<input style="display:none" id="inputSchedina" type="number" name="importogiocato"  placeholder="importo" class="schedina__importofield" value ="">
+								
+								<select name="opzione" id="selectSchedina" class="form-control">
+                            
+                            		<option value="0">Deposita</option>
+                            		<option value="5">5</option>
+                            		<option value="10">10</option>
+                            
+                            </select>
 							
 							<% if (request.getAttribute("errore") != null) { %>
     						<p class="m-auto">€ <%=request.getAttribute("errore")%></p>
@@ -531,6 +539,53 @@
             });
 
             </script>
+            
+            
+               <script>
+            $(document).ready(function() {
+                $('#selectSchedina').change(function() {
+                    var selectedValue = $(this).val();
+                    
+                    $.ajax({
+                        url: 'Servlet_Schedina',  
+                        type: 'POST',
+                        data: {opzione: selectedValue},
+                        success: function(response) {
+                            // Gestisci la risposta dalla servlet
+                            console.log(response);
+                        },
+                        error: function(xhr, status, error) {
+                            // Gestisci l'errore
+                            console.log(error);
+                        }
+                    });
+                });
+            });
+            </script>
+            
+            
+            
+            <script>
+//*************RIEMPI INPUT SCHEDINA CON VALORE PRESO DALLA SELECT***************
+
+            // Funzione per gestire il cambio nella select
+            function updateInput() {
+              var select = document.getElementById("selectSchedina");
+              var input = document.getElementById("inputSchedina");
+
+              // Ottieni il valore selezionato nella select
+              var selectedValue = select.value;
+
+              // Imposta il valore nel campo di input
+              input.value = selectedValue;
+            }
+
+            // Aggiungi il gestore di eventi alla select
+            var select = document.getElementById("selectSchedina");
+            select.addEventListener("change", updateInput);
+         
+            
+            </script> 
 
 			<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
 				integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"

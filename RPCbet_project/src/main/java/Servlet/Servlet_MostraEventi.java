@@ -20,10 +20,6 @@ public class Servlet_MostraEventi extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-       
-
-		
-		
 		Evento_Sportivo eventCalcio = new Evento_Sportivo();
 		ArrayList<Evento_Sportivo> arrCalcio = eventCalcio.estrai_eventi("Calcio");
 		request.setAttribute("tableCalcio", arrCalcio);

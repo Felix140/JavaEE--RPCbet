@@ -265,13 +265,14 @@ public class Servlet_Schedina extends HttpServlet {
 		ConnessioneDB connection = new ConnessioneDB();
 		float saldo = connection.getSaldo(nomeUtente);
 
-		if (importoGiocato <=  saldo) {
+		if (importoGiocato <= saldo) {
 
 			connection.decrementaSaldo(importoGiocato, user);
 			String scommessaRiuscita = "Scommessa piazzata";
 			request.setAttribute("messaggioScommessa", scommessaRiuscita);
-			 request.getRequestDispatcher("Servlet_MostraEventi").forward(request,
-			 response);
+			request.getRequestDispatcher("Servlet_MostraEventi").forward(request,
+			response);
+			
 		} else {
 
 			String errore = "Saldo non sufficiente";
