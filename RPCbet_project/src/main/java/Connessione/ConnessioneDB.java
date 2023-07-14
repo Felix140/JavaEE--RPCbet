@@ -40,7 +40,7 @@ public class ConnessioneDB {
 	String url = "jdbc:mysql://localhost:3306/rpcbet";
 	String usernameDb = "root";
 	// INSERISCI LA TUA PASSWORD
-	String passwordDb = oggettotxt.MetodoEstrapolazioneFile();;
+	String passwordDb = "Zinni.17";
 
 // 	REGISTRAZIONE USER
 	public boolean inserimento_user(String a, String b, String c, String d, String f, String g, String h, float i,
@@ -69,7 +69,7 @@ public class ConnessioneDB {
 			stat.setString(5, this.numero_documento);
 			stat.setString(6, this.email);
 			stat.setString(7, this.password_user);
-			stat.setFloat(8, this.saldo);
+			stat.setFloat (8, this.saldo);
 			stat.setString(9, this.data_nascita);
 
 			stat.executeUpdate();
@@ -162,7 +162,7 @@ public class ConnessioneDB {
 
 	public float getSaldo(String username_utente) {
 
-		this.username_utente = username_utente;
+//		this.username_utente = username_utente;
 		try {
 			Class.forName(driver);
 			Connection conn = DriverManager.getConnection(url, usernameDb, passwordDb);
@@ -184,14 +184,17 @@ public class ConnessioneDB {
 			e.printStackTrace();
 		}
 		return saldo;
+		
 	}
+	
+	
 
 	
 	
 	// *********************SET SALDO*****************************
 	public void incrementaSaldo(String username_utente) {
 //	
-		this.username_utente = username_utente;
+//		this.username_utente = username_utente;
 	
 		try {
 			Class.forName(driver);
@@ -201,7 +204,7 @@ public class ConnessioneDB {
 
 			stat.setString(1, username_utente);
 			stat.executeUpdate();
-			System.out.println("Saldo incrementato");
+			System.out.println("Saldo incrementato. Il tuo salto attuale è: " + saldo);
 
 			conn.close();
 
@@ -211,6 +214,53 @@ public class ConnessioneDB {
 		}
 
 	}
+	
+	
+	//**************DECREMENTA SALDO CON IMPORTO SCHEDINA*****************
+	
+	public void decrementaSaldo (int importoGiocato, String username_utente) {
+		
+		
+		try {
+			Class.forName(driver);
+			Connection conn = DriverManager.getConnection(url, usernameDb, passwordDb);
+			String query = "UPDATE rpcbet.utente SET Saldo = Saldo - ? WHERE Username_Utente = ?;";
+			PreparedStatement stat = conn.prepareStatement(query);
+			
+			stat.setInt(1, importoGiocato);
+			stat.setString(2, username_utente);
+
+			stat.executeUpdate();
+			System.out.println("Saldo decrementato. Il tuo salto attuale è: " + saldo);
+
+			conn.close();
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 
 	//**********************INSERIMENTO SCHEDINA***********************

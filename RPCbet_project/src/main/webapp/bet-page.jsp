@@ -27,25 +27,22 @@
 
 
 					<div class="header__user">
-
-
 						<form action="Servlet_IncrementaSaldo" method="POST" class="header__saldo">
-
+					
 							<p class="m-auto">
-								€
-								<%=request.getAttribute("saldo")%>
+								€ <%=request.getAttribute("saldo")%>
 							</p>
 							<input type="hidden" name="aumentosaldo">
-							<button class="btn btn-danger btn-rounded" type="submit">Deposita</button>
+							<button class="btn btn-danger" type="submit">Deposita</button> 
 						</form>
-
+						
 						<div class="header__userName">
 							<% String usernameUtente=(String) session.getAttribute("NomeUser"); %>
 								<a href="profilo-utente.jsp"><%=usernameUtente%></a>
 						</div>
 
 					</div>
-
+				
 				</nav>
 
 				<nav class="header__sections">
@@ -339,6 +336,11 @@
 							<div class="schedina__importo d-block m-auto">
 								€
 								<input type="number" name="importogiocato"  placeholder="importo" class="schedina__importofield">
+							
+							<% if (request.getAttribute("errore") != null) { %>
+    						<p class="m-auto">€ <%=request.getAttribute("errore")%></p>
+							<% } %>
+							
 							</div>
 
 

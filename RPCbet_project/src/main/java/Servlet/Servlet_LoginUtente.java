@@ -27,34 +27,40 @@ public class Servlet_LoginUtente extends HttpServlet {
 		String passwordUtente = request.getParameter("passwordUtente");
 		
 		ConnessioneDB connect = new ConnessioneDB();
-		HttpSession session = request.getSession();
+		
 		
 		try {
-			boolean checkLogin = connect.login_user(usernameUtente, passwordUtente);
-			if (checkLogin) {
+		
+				boolean checkLogin = connect.login_user(usernameUtente, passwordUtente);
 				
-//				request.setAttribute ("user", usernameUtente);
-				session.setAttribute("NomeUser", usernameUtente);
+				if (checkLogin) {
+					
+					//Imposto i cookie
+			        Cookie cookie = new Cookie("a", usernameUtente);
+			        cookie.setMaxAge(3600); 
+			        cookie.setPath("/"); 
+			        response.addCookie(cookie);
+					float saldo = connect.getSaldo(usernameUtente);
+					
+					HttpSession session = request.getSession();
+			        session.setAttribute("NomeUser", usernameUtente);
+			        
+	//				Spedisci verso Servlet_Incrementa_Saldo
+					RequestDispatcher dispatch = request.getRequestDispatcher("Servlet_IncrementaSaldo");
+					dispatch.forward(request, response);					
+				}
+				 else {
+					
+					response.sendRedirect("loginUtente.html");
+					
+				}
 			
-		        Cookie cookie = new Cookie("a", usernameUtente);
-		        cookie.setMaxAge(3600); 
-		        cookie.setPath("/"); 
-		        response.addCookie(cookie);
-				float saldo = connect.getSaldo(usernameUtente);
-
-//				Spedisci verso Servlet_Incrementa_Saldo 
-				RequestDispatcher dispatch = request.getRequestDispatcher("Servlet_IncrementaSaldo");
-				dispatch.forward(request, response);
-			} else {
-				
-				response.sendRedirect("loginUtente.html");
-				
 			}
-			
-		} catch (SQLException e){
+		 catch (SQLException e){
 			e.printStackTrace();
 			System.out.println("Errore servlet");
-		}
+		
+		 }
+		
 	}
-
 }
