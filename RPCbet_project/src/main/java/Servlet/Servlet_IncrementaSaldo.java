@@ -16,48 +16,38 @@ import Servlet.Servlet_LoginUtente;
 public class Servlet_IncrementaSaldo extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	
 	//INCREMENTA SALDO E VISUALIZZA
 		protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-	
+			//INIZIO COOKIE******************
 			Cookie[] cookies = request.getCookies();
 		 	String nomeCookie = "a";
-		 	String valoreCookie = "";
-
+		 	String nomeUtente = "";
+		 	
 		 	if (cookies != null) 
 		 	{
 		 		for (Cookie cookie : cookies) 
 		 		{
 		 			if (cookie.getName().equals(nomeCookie)) 
 		 			{
-		 				valoreCookie = cookie.getValue();
+		 				nomeUtente = cookie.getValue();
 		 				break;
 		 			}
 		 		}
 		 	}
-		
+		 	//FINE COOKIE*******************
+		 	
+		 	System.out.println(nomeUtente);
+		 	
+			ConnessioneDB connessioneDB = new ConnessioneDB();
+			connessioneDB.incrementaSaldo(nomeUtente);
+			float saldo = connessioneDB.getSaldo(nomeUtente);
+			System.out.println("Hai " + saldo + "euro");
+			request.setAttribute("saldo", saldo);
+			request.getRequestDispatcher("Servlet_MostraEventi").forward(request, response);
+//			response.sendRedirect("Servlet_MostraEventi");
 			
-			
-//		String usernameUtentee = (String)request.getAttribute("user");
-		ConnessioneDB connessioneDB = new ConnessioneDB();
-		connessioneDB.incrementaSaldo(valoreCookie);
-		float saldo = connessioneDB.getSaldo(valoreCookie);
-		
-//		String incrementaSaldoParam = request.getParameter("aumentosaldo");
-		request.setAttribute("saldo", saldo);
-		request.getRequestDispatcher("Servlet_MostraEventi").forward(request, response);
-
-		
-
-	    	
-	    
-	    	
-	    
-		
-		
-		
 		}
-
-
+		
+	
 }

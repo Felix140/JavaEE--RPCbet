@@ -40,16 +40,12 @@ public class Servlet_Schedina extends HttpServlet {
 		String evento9Codice = request.getParameter("evento9_codice");
 		boolean risultatoschedina = true;
 		String user = request.getParameter("NomeUser");
-		int generacodiceschedina =GeneraCodiceSchedina();
+		int generacodiceschedina = GeneraCodiceSchedina();
 		int codiceschedina =  generacodiceschedina;
 
 		String importogiocato = request.getParameter("importogiocato");
 		
-		
-		
-		
-		
-		 {
+//		 {
 			//EVENTO 1
 			if (evento1Codice == null || evento1Codice.isEmpty()) {
 				
@@ -112,6 +108,7 @@ public class Servlet_Schedina extends HttpServlet {
 			
 	
 			}
+	
 	//EVENTO 4
 	if (evento4Codice == null || evento4Codice.isEmpty()) {
 		   
@@ -131,6 +128,7 @@ public class Servlet_Schedina extends HttpServlet {
 	
 
 	}
+	
 	//EVENTO 5
 	if (evento5Codice == null || evento5Codice.isEmpty()) {
 		   
@@ -150,6 +148,7 @@ public class Servlet_Schedina extends HttpServlet {
 	
 
 	}
+	
 	//EVENTO 6
 	if (evento6Codice == null || evento6Codice.isEmpty()) {
 		   
@@ -169,6 +168,7 @@ public class Servlet_Schedina extends HttpServlet {
 	
 
 	}
+	
 	//EVENTO 7
 	if (evento7Codice == null || evento7Codice.isEmpty()) {
 		   
@@ -182,12 +182,13 @@ public class Servlet_Schedina extends HttpServlet {
     	boolean risultatoconfronto;
     	if(evento7Colonna.equals(esitopartita))
     	{risultatoconfronto = true; }
+    	
     	else
+    		
     	{risultatoconfronto = false;risultatoschedina =false;}
     	conn1.InserimentoSchedina(codiceschedina,parametro,user,esitopartita,evento7Colonna,risultatoconfronto,importogiocatofloat);
-	
-
 	}
+	
 	//EVENTO 8
 	if (evento8Codice == null || evento8Codice.isEmpty()) {
 		   
@@ -207,6 +208,7 @@ public class Servlet_Schedina extends HttpServlet {
 	
 
 	}
+	
 	//EVENTO 9
 	if (evento9Codice == null || evento9Codice.isEmpty()) {
 		   
@@ -226,19 +228,37 @@ public class Servlet_Schedina extends HttpServlet {
 	
 
 	}
-	ConnessioneDB conn1 = new ConnessioneDB();
-	conn1.InserimentoStoricoSchedina(user,codiceschedina,risultatoschedina); 
+	
+	
+	//DECREMENTA SALDO CON IMPORTO GIOCATO
+//	public void giocaScommessa() 
+		
+	
+	int importoGiocato = Integer.parseInt(request.getParameter("importogiocato"));
+	ConnessioneDB connection = new ConnessioneDB();
+	float saldo = connection.getSaldo(user);
+	
+	if(importoGiocato<saldo) {
+		
+		connection.decrementaSaldo(importoGiocato, user);
+//		request.getRequestDispatcher("Servlet_MostraEventi").forward(request, response);
+	} else {
+		
+		String errore = "Saldo non sufficiente";
+		request.setAttribute("errore", errore);
+		request.getRequestDispatcher("Servlet_MostraEventi").forward(request, response);
 
-			
-			
-	}	
 	}
 	
+
 	
+	//STORICO SCHEDINA
+	ConnessioneDB conn1 = new ConnessioneDB();
+	conn1.InserimentoStoricoSchedina(user,codiceschedina,risultatoschedina); 
 	
-	
-	
-	
+	}
+		
+//	}
 	
 	public int GeneraCodiceSchedina() {
 		Random random = new Random();
@@ -258,6 +278,9 @@ public class Servlet_Schedina extends HttpServlet {
             return "2";
         }
 	
+	}
+
 	
 
-}}
+
+}
