@@ -40,7 +40,7 @@ public class ConnessioneDB {
 	String url = "jdbc:mysql://localhost:3306/rpcbet";
 	String usernameDb = "root";
 	// INSERISCI LA TUA PASSWORD
-	String passwordDb = "ciao";
+	String passwordDb = "user_mysql_14";
 
 // 	REGISTRAZIONE USER
 	public boolean inserimento_user(String a, String b, String c, String d, String f, String g, String h, float i,

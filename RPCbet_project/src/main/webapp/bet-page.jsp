@@ -340,7 +340,7 @@
 							<!-- IMPORTO -->
 							<div class="schedina__importo d-block m-auto">
 								€
-								<input type="number" name="importogiocato"  placeholder="importo" class="schedina__importofield">
+								<input type="number" name="importogiocato"  placeholder="importo" class="schedina__importofield" required>
 							
 							<% if (request.getAttribute("errore") != null) { %>
     						<p class="m-auto">€ <%=request.getAttribute("errore")%></p>

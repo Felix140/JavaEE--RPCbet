@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/profilo-utente__style.css">
 
 <style>
 	.header__userName  {
@@ -14,7 +15,7 @@
 </style>
 
 </head>
-<body>
+<body class="body-profilo-utente">
     <h1>Profilo utente</h1>
 	<a href="">Torna indietro</a>
 

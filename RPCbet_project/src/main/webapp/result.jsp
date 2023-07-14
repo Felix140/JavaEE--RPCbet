@@ -1,58 +1,60 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" import="java.util.*" %>
+<div%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" import="java.util.*" %>
     <!DOCTYPE html>
     <html>
 
     <head>
         <title>Esempio Contatore</title>
-        <style>
-            .container {
-                width: 300px;
-                height: 200px;
-                background-color: lightgray;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            }
 
-            .card {
-                width: 300px;
-                height: 200px;
-                background-color: lightblue;
-                display: none;
-                text-align: center;
-                font-size: 24px;
-                padding-top: 80px;
-                margin: 0 auto;
-            }
-        </style>
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/result_style.css">
     </head>
 
-    <body>
-        <div class="container" id="container">
-            <span id="counter">5</span>
+    <body class="body-result">
+        <header class="navbar navbar--login">
+            <img src="assets/img/logo/rpcbet-logo-2.svg" alt="" class="hero__logo hero--login">
+        </header>
+
+
+        <div class="contatore">
+        
+            <p> Attendi a breve i risultati...</p>
+            <p id="countdown"></p>
         </div>
 
-        <div class="card" id="card">
-            Compliment! Hai vinto stocazzo
+
+
+
+        <div class="container" id="container" style="display: none;">
+            <div class="card" id="card">Risultato della schedina:
+                <div class="result">
+                    <% out.println("Campo Vincita"); %>
+                </div>
+                <!-- <p>
+                    Ritorna al tuo profilo <a href="profilo-utente.jsp" style="color: white;">CLICCA QUI</a>
+                </p> -->
+            </div>
         </div>
+
 
         <script>
-            setTimeout(function () {
-                var counter = 5;
-                var container = document.getElementById('container');
-                var card = document.getElementById('card');
-                var counterElement = document.getElementById('counter');
-                var interval = setInterval(function () {
-                    counterElement.innerHTML = counter;
-                    counter--;
-                    if (counter < 0) {
-                        clearInterval(interval);
-                        container.style.display = 'none';
-                        card.style.display = 'block';
-                    }
-                }, 1000);
-            }, 5000);
+            const countdownText = document.getElementById("countdown");
+            let countdown = 5;
+
+            const countdownInterval = setInterval(() => {
+                countdownText.textContent = countdown;
+                countdown--;
+
+                if (countdown === 0) {
+                    clearInterval(countdownInterval);
+                    const contatore = document.querySelector(".contatore");
+                    const container = document.getElementById("container");
+                    contatore.style.display = "none";
+                    container.style.display = "block";
+                }
+            }, 1000);
         </script>
+
+
     </body>
 
     </html>

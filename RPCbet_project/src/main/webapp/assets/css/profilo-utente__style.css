@@ -19,68 +19,18 @@
     src: url('../fonts/Orbitron/.ttf') format('ttf');
     src: url('../fonts/Orbitron/Orbitron-Bold.ttf') format('ttf')
   }
-
+  
+  
   * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-}
+  }
 
-  .body-result {
+
+.body-profilo-utente {
     overflow: hidden;
     color: var(--secondary);
     background-image: linear-gradient(105deg, hsl(100deg 43% 27%) 0%, hsl(115deg 17% 21%) 1%, hsl(233deg 24% 15%) 41%);
     height: 100vh;
-  }
-
-
-.navbar {
-
-    width: 100%;
-    padding: 0 40px;
-    margin: 0 auto;
-    max-width: 1500px;
-    height: 100px;
-    margin-top: 10px;
-}
-
-
-img {
-    width: 200px;
-}
-.container {
-	width: 600px;
-	height: 400px;
-	background-color: lightgray;
-
-
-
-	display: flex;
-    flex-direction: column;
-	justify-content: center;
-	align-items: center;
-
-
-    margin: 0 auto;
-
-    /* border: 2px solid red; */
-    background-color: var(--primary);
-    border-radius: 30px;
-
-    margin-top: 100px;
-
-    
-
-}
-
-p {
-	font-family: "Poppins";
-}
-
-.card {
-	
-}
-
-.contatore {
-    margin: 0 auto;
 }
