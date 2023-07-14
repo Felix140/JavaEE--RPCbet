@@ -341,6 +341,10 @@
     						<p class="m-auto">€ <%=request.getAttribute("errore")%></p>
 							<% } %>
 							
+							<% if (request.getAttribute("messaggioScommessa") != null) { %>
+    						<p class="m-auto">€ <%=request.getAttribute("messaggioScommessa")%></p>
+							<% } %>
+							
 							</div>
 
 

@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import Classi.Evento_Sportivo;
+import Connessione.ConnessioneDB;
 
 
 public class Servlet_MostraEventi extends HttpServlet {
@@ -33,6 +34,12 @@ public class Servlet_MostraEventi extends HttpServlet {
 		Evento_Sportivo eventBoxe = new Evento_Sportivo();
 		ArrayList<Evento_Sportivo> arrBoxe = eventBoxe.estrai_eventi("Boxe");
 		request.setAttribute("tableBoxe", arrBoxe);
+		
+		String user = request.getParameter("NomeUser");
+		ConnessioneDB connection = new ConnessioneDB();
+		float saldo = connection.getSaldo(user);
+
+		
 		
 		// Spedisci verso bet-page
 		RequestDispatcher dispatch = request.getRequestDispatcher("bet-page.jsp");

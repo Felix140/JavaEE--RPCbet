@@ -5,6 +5,7 @@ import java.util.Random;
 
 import Connessione.ConnessioneDB;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -243,16 +244,34 @@ public class Servlet_Schedina extends HttpServlet {
 
 		// DECREMENTA SALDO CON IMPORTO GIOCATO
 		// public void giocaScommessa()
-
+		Cookie[] cookies = request.getCookies();
+	 	String nomeCookie = "a";
+	 	String nomeUtente = "";
+	 	
+	 	if (cookies != null) 
+	 	{
+	 		for (Cookie cookie : cookies) 
+	 		{
+	 			if (cookie.getName().equals(nomeCookie)) 
+	 			{
+	 				nomeUtente = cookie.getValue();
+	 				break;
+	 			}
+	 		}
+	 	}
+		
+		
 		int importoGiocato = Integer.parseInt(request.getParameter("importogiocato"));
 		ConnessioneDB connection = new ConnessioneDB();
-		float saldo = connection.getSaldo(user);
+		float saldo = connection.getSaldo(nomeUtente);
 
-		if (importoGiocato < saldo) {
+		if (importoGiocato <=  saldo) {
 
 			connection.decrementaSaldo(importoGiocato, user);
-			// request.getRequestDispatcher("Servlet_MostraEventi").forward(request,
-			// response);
+			String scommessaRiuscita = "Scommessa piazzata";
+			request.setAttribute("messaggioScommessa", scommessaRiuscita);
+			 request.getRequestDispatcher("Servlet_MostraEventi").forward(request,
+			 response);
 		} else {
 
 			String errore = "Saldo non sufficiente";
