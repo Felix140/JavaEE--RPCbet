@@ -7,6 +7,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import jakarta.servlet.http.Cookie;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -26,27 +27,40 @@ public class Servlet_LoginUtente extends HttpServlet {
 		String passwordUtente = request.getParameter("passwordUtente");
 		
 		ConnessioneDB connect = new ConnessioneDB();
-		HttpSession session = request.getSession();
+		
 		
 		try {
-			boolean checkLogin = connect.login_user(usernameUtente, passwordUtente);
-			if (checkLogin) {
+		
+				boolean checkLogin = connect.login_user(usernameUtente, passwordUtente);
 				
-				session.setAttribute("NomeUser", usernameUtente);
-				// Spedisci verso Servlet_GenerazioneEventi 
-				RequestDispatcher dispatch = request.getRequestDispatcher("Servlet_GenerazioneEventi");
-				dispatch.forward(request, response);
+				if (checkLogin) {
+					
+					//Imposto i cookie
+			        Cookie cookie = new Cookie("a", usernameUtente);
+			        cookie.setMaxAge(3600); 
+			        cookie.setPath("/"); 
+			        response.addCookie(cookie);
+					float saldo = connect.getSaldo(usernameUtente);
+					
+					HttpSession session = request.getSession();
+			        session.setAttribute("NomeUser", usernameUtente);
+			        
+	//				Spedisci verso Servlet_Incrementa_Saldo
+					RequestDispatcher dispatch = request.getRequestDispatcher("Servlet_IncrementaSaldo");
+					dispatch.forward(request, response);					
+				}
+				 else {
+					
+					response.sendRedirect("loginUtente.html");
+					
+				}
 			
-			} else {
-				
-				response.sendRedirect("loginUtente.html");
-				
 			}
-			
-		} catch (SQLException e){
+		 catch (SQLException e){
 			e.printStackTrace();
 			System.out.println("Errore servlet");
-		}
+		
+		 }
+		
 	}
-
 }

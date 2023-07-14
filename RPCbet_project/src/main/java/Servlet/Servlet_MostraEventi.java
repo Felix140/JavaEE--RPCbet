@@ -33,11 +33,12 @@ public class Servlet_MostraEventi extends HttpServlet {
 		Evento_Sportivo eventBoxe = new Evento_Sportivo();
 		ArrayList<Evento_Sportivo> arrBoxe = eventBoxe.estrai_eventi("Boxe");
 		request.setAttribute("tableBoxe", arrBoxe);
-
 		
 		// Spedisci verso bet-page
 		RequestDispatcher dispatch = request.getRequestDispatcher("bet-page.jsp");
 		dispatch.forward(request, response);
+		
+//		response.sendRedirect("bet-page.jsp");
 
 	}
 

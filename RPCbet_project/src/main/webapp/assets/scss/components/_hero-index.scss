@@ -15,14 +15,14 @@
     
 
     &__main {
-        // border: 2px solid yellow;
+        // border: 2px solid red;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: start;
         background-color: transparent;
         row-gap: 60px;
-
+        height: 600px;
         z-index: 1;
     }
     &__button {
@@ -34,14 +34,13 @@
     }
 
     &__loginBtn {
+
         display: flex;
         justify-content: center;
-        align-items: center;
-
         background-color: $backgorund-1;
         width: 156px;
-        height: 45;
-        padding: 12px 24px;
+        height: 45px;
+        
         border-radius: 10px;
 
         border: 2px solid $primary;
@@ -51,6 +50,9 @@
             text-decoration: none;
             color: $primary;
             font-weight: 600;
+            // border: 2px solid red;
+            display: flex;
+            align-items: center;
         }
         &:hover {
             transform: scale(1.1);
@@ -65,12 +67,13 @@
 
     &__registrazioneBtn {
         display: flex;
+        flex-direction: row;
         justify-content: center;
         align-items: center;
 
         background-color: $primary;
         width: 156px;
-        height: 45;
+        height: 45px;
         padding: 12px 24px;
 
         border-radius: 10px;
@@ -93,15 +96,28 @@
         }
     }
 
+
+    &--login {
+        width: 200px;
+        
+    }
+
 }
 
 .images {
     position: relative;
     background-color: transparent;
     width: 1000px;
+    height: 100%;
+    // border: 2px solid blue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
 
     &__img {
         background-color: transparent;
         height: 800px;
+        // border: 2px solid blue;
     }
 }

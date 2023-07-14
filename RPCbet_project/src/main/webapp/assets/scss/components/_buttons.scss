@@ -1,2 +1,33 @@
 // index.html
 
+.btn {
+    &--login {
+        margin-top: 40px;
+    }
+}
+
+
+.primary__btn {
+    background-color: $primary;
+    width: 333px;
+    height: 48px;
+    border-radius: 40px;
+    font-family: "orbitron";
+    font-weight: 700;
+    color: $secondary;
+    border: none;
+    transition: transform 0.5s ease, background-color 0.3s ease, color 0.3s ease;
+
+    &:hover {
+        transform: scale(1.1);
+        background-color: $secondary;
+        color: $primary;
+    }
+    &:active {
+        background-color: $tertiary;
+        color: $primary;
+    }
+}
+
+
+
