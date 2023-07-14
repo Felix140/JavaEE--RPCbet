@@ -27,14 +27,19 @@
 
 
 					<div class="header__user">
-						<form action="Servlet_IncrementaSaldo" method="POST" class="header__saldo">
+						<div class="header__saldo">
 					
 							<p class="m-auto">
 								€ <%=request.getAttribute("saldo")%>
 							</p>
-							<input type="hidden" name="aumentosaldo">
-							<button class="btn btn-danger" type="submit">Deposita</button> 
-						</form>
+							
+							<select name="opzione" id="opzioneSelect">
+                            <option value="0">Deposita</option>
+                            <option value="5">5</option>
+                            <option value="10">10</option>
+                            </select>
+							
+						</div>
 						
 						<div class="header__userName">
 							<% String usernameUtente=(String) session.getAttribute("NomeUser"); %>
@@ -498,7 +503,28 @@
 					selectedTable.classList.add("active");
 				});
 			</script>
+            <script>
+            $(document).ready(function() {
+                $('#opzioneSelect').change(function() {
+                    var selectedValue = $(this).val();
+                    
+                    $.ajax({
+                        url: 'Servlet_IncrementaSaldo',  // Sostituisci 'NOME_SERVLET' con il percorso corretto per la tua servlet
+                        type: 'POST',
+                        data: {opzione: selectedValue},
+                        success: function(response) {
+                            // Gestisci la risposta dalla servlet
+                            console.log(response);
+                        },
+                        error: function(xhr, status, error) {
+                            // Gestisci l'errore
+                            console.log(error);
+                        }
+                    });
+                });
+            });
 
+            </script>
 
 			<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
 				integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"

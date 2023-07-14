@@ -40,7 +40,7 @@ public class ConnessioneDB {
 	String url = "jdbc:mysql://localhost:3306/rpcbet";
 	String usernameDb = "root";
 	// INSERISCI LA TUA PASSWORD
-	String passwordDb = "Zinni.17";
+	String passwordDb = "ciao";
 
 // 	REGISTRAZIONE USER
 	public boolean inserimento_user(String a, String b, String c, String d, String f, String g, String h, float i,
@@ -192,17 +192,17 @@ public class ConnessioneDB {
 	
 	
 	// *********************SET SALDO*****************************
-	public void incrementaSaldo(String username_utente) {
+	public void incrementaSaldo(String username_utente , int valore) {
 //	
 //		this.username_utente = username_utente;
 	
 		try {
 			Class.forName(driver);
 			Connection conn = DriverManager.getConnection(url, usernameDb, passwordDb);
-			String query = "UPDATE rpcbet.utente SET Saldo = Saldo + 1000 WHERE Username_Utente = ?;";
+			String query = "UPDATE rpcbet.utente SET Saldo = Saldo + ? WHERE Username_Utente = ?;";
 			PreparedStatement stat = conn.prepareStatement(query);
-
-			stat.setString(1, username_utente);
+            stat.setInt(1, valore);
+			stat.setString(2, username_utente);
 			stat.executeUpdate();
 			System.out.println("Saldo incrementato. Il tuo salto attuale è: " + saldo);
 
