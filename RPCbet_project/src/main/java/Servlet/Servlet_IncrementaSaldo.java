@@ -41,15 +41,13 @@ public class Servlet_IncrementaSaldo extends HttpServlet {
 		         int numeroIntero = Integer.parseInt(opzione);
 		         ConnessioneDB connessioneDB = new ConnessioneDB();
 			
-			    	 connessioneDB.incrementaSaldo(nomeUtente, numeroIntero);
+			     connessioneDB.incrementaSaldo(nomeUtente, numeroIntero);
 			 
 				
 				
 				
 				
-				float saldo = connessioneDB.getSaldo(nomeUtente);
-				System.out.println("Hai " + saldo + "euro");
-				request.setAttribute("saldo", saldo);
+			
 		        
 				
 				RequestDispatcher dispatch = request.getRequestDispatcher("Servlet_MostraEventi");
