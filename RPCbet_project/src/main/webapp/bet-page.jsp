@@ -84,11 +84,11 @@
 					<div class="tables__calcio">
 						<table class="table table-hover">
 							<thead>
-								<tr>
-									<th scope="col">Evento</th>
-									<th scope="col">1</th>
-									<th scope="col">X</th>
-									<th scope="col">2</th>
+								<tr class="tables__head">
+									<th scope="col text-center">Evento</th>
+									<th scope="col text-center">1</th>
+									<th scope="col text-center">X</th>
+									<th scope="col text-center">2</th>
 									<th scope="col">Codice</th>
 								</tr>
 							</thead>
@@ -104,21 +104,21 @@
 									<td class="tables__evento">
 										<%= evento.getSq1() + " - " + evento.getSq2() %>
 									</td>
-									<td>
+									<td class="tables__quota">
 										<div class="btn--bet"
 											onclick="returnQuota('<%= evento.getCodice_partita() %>','<%= evento.getQuota_1() %>','1', this)"
 											data-quota="<%= evento.getQuota_1() %>">
 											<%= evento.getQuota_1() %>
 										</div>
 									</td>
-									<td>
+									<td class="tables__quota">
 										<div class="btn--bet"
 											onclick="returnQuota('<%= evento.getCodice_partita() %>','<%= evento.getQuota_x() %>','x', this)"
 											data-quota="<%= evento.getQuota_x() %>">
 											<%= evento.getQuota_x() %>
 										</div>
 									</td>
-									<td>
+									<td class="tables__quota">
 										<div class="btn--bet"
 											onclick="returnQuota('<%= evento.getCodice_partita() %>','<%= evento.getQuota_2() %>','2', this)"
 											data-quota="<%= evento.getQuota_2() %>">
@@ -143,7 +143,7 @@
 						<table class="table table-hover">
 
 							<thead>
-								<tr>
+								<tr class="tables__head">
 									<th scope="col">Evento</th>
 									<th scope="col">1</th>
 									<th scope="col">X</th>
@@ -164,29 +164,29 @@
 													<%=evento.getSq1() + " - " + evento.getSq2()%>
 												</td>
 
-												<th>
+												<td class="tables__quota">
 													<div class="btn--bet"
 														onclick="returnQuota('<%=evento.getCodice_partita() %>','<%=evento.getQuota_1()%>', '1', this)"
 														data-quota="<%= evento.getQuota_1() %>">
 														<%=evento.getQuota_1()%>
 													</div>
-												</th>
+												</td>
 
-												<th>
+												<td class="tables__quota">
 													<div class="btn--bet"
 														onclick="returnQuota('<%=evento.getCodice_partita() %>','<%=evento.getQuota_x()%>', 'x', this)"
 														data-quota="<%= evento.getQuota_x() %>">
 														<%=evento.getQuota_x()%>
 													</div>
-												</th>
+												</td>
 
-												<th>
+												<td class="tables__quota">
 													<div class="btn--bet"
 														onclick="returnQuota('<%=evento.getCodice_partita() %>','<%=evento.getQuota_2()%>', '2', this)"
 														data-quota="<%= evento.getQuota_2() %>">
 														<%=evento.getQuota_2()%>
 													</div>
-												</th>
+												</td>
 
 												<th>
 													<%=evento.getCodice_partita() %>
@@ -205,7 +205,7 @@
 						<table class="table table-hover">
 
 							<thead>
-								<tr>
+								<tr class="tables__head">
 									<th scope="col">Evento</th>
 									<th scope="col">1</th>
 									<th scope="col">X</th>
@@ -227,29 +227,29 @@
 													<%=evento.getSq1() + " - " + evento.getSq2()%>
 												</td>
 
-												<th>
+												<td class="tables__quota">
 													<div class="btn--bet"
 														onclick="returnQuota('<%=evento.getCodice_partita() %>','<%=evento.getQuota_1()%>', '1', this)"
 														data-quota="<%=evento.getQuota_1()%>">
 														<%=evento.getQuota_1()%>
 													</div>
-												</th>
+												</td>
 
-												<th>
+												<td class="tables__quota">
 													<div class="btn--bet"
 														onclick="returnQuota('<%=evento.getCodice_partita() %>','<%=evento.getQuota_x()%>', 'x', this)"
 														data-quota="<%= evento.getQuota_x() %>">
 														<%=evento.getQuota_x()%>
 													</div>
-												</th>
+												</td>
 
-												<th>
+												<td class="tables__quota">
 													<div class="btn--bet"
 														onclick="returnQuota('<%=evento.getCodice_partita() %>','<%=evento.getQuota_2()%>', '2', this)"
 														data-quota="<%= evento.getQuota_1() %>">
 														<%=evento.getQuota_2()%>
 													</div>
-												</th>
+												</td>
 
 												<th>
 													<%=evento.getCodice_partita() %>

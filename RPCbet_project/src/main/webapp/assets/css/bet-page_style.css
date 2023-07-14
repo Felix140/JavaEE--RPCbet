@@ -14,6 +14,12 @@
   src: url('../fonts/Orbitron/Orbitron-Medium.ttf') format('ttf');
   src: url('../fonts/Orbitron/Orbitron-Bold.ttf') format('ttf')
 }
+@font-face {
+  font-family: 'Poppins';
+  src: url('../fonts/Orbitron/.ttf') format('ttf');
+  src: url('../fonts/Orbitron/Orbitron-Bold.ttf') format('ttf')
+}
+
 
 * {
   padding: 0;
@@ -29,7 +35,7 @@
 .header {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 100vw;
   /* border: 1px solid red; */
   justify-content: center;
   align-items: center;
@@ -54,7 +60,7 @@
   justify-content: center;
   align-items: center;
   /* border: 1px solid yellow; */
-  width: 100%;
+  width: 100vw;
 
   background-color: var(--backgorund-2);
   height: 54px;
@@ -122,20 +128,47 @@
   flex-direction: row;
   background-color: var(--backgorund-1);
   justify-content: space-around;
-
+  height: 100vh;
   align-items: center;
+
 }
 
 .tables {
-  /* border: 2px solid green; */
+  
   width: 100%;
   background-color: var(--backgorund-3);
+  height: 100vh;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  font-family: var(--font-family);
+  font-size: 15px;
+  font-weight: 500;
+  
+}
+
+.tables__head {
+  border: 30px solid var(--backgorund-3);
+}
+
+.table tbody {
+	background-color: var(--backgorund-2);
+	height: 50vh;
+	border: 30px solid var(--backgorund-3);
 }
 
 
+
 .tables__evento {
-  min-width: 470px;
-  height: 100%;
+  width: 100vh;
+  height: 150px;
+  
+}
+.tables__quota {
+	
+	width: 320px;
 }
 
 .tables > div {
@@ -163,6 +196,11 @@
 tr > th {
   height: 100px;
   padding: 10px 30px;
+}
+
+
+.table-dark {
+  background-color: var(--backgorund-3);
 }
 
 
@@ -307,6 +345,7 @@ tr > th {
   color: var(--secondary);
   font-family: var(--font-family);
   width: 250px;
+  border: 2.5px solid var(--primary);
   font-weight: 600;
   transition: transform 0.5s ease, background-color 0.3s ease, color 0.3s ease;
 }
