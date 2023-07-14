@@ -7,11 +7,11 @@ public class ClasseEstrapolazioneTXT
 {
 	 private String  contenutoFile = "";
 	
+	
+	
 	public String MetodoEstrapolazioneFile()
 	{
-
-		try (BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\Hp\\OneDrive - uniroma1.it\\Desktop\\Progetto RPCbet\\RPCbet\\Password.txt"))) {
-
+		try (BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\laptop rpctech\\Desktop\\github\\RPCbet\\Password.txt"))) {
 		    String linea;
 		    while ((linea = br.readLine()) != null) {
 		        contenutoFile += linea;

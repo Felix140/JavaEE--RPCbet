@@ -99,24 +99,4 @@
     <servlet-name>Servlet_Schedina</servlet-name>
     <url-pattern>/Servlet_Schedina</url-pattern>
   </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>Servlet_GetSaldo</display-name>
-    <servlet-name>Servlet_GetSaldo</servlet-name>
-    <servlet-class>Servlet.Servlet_GetSaldo</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>Servlet_GetSaldo</servlet-name>
-    <url-pattern>/Servlet_GetSaldo</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>Servlet_RiccardoGay</display-name>
-    <servlet-name>Servlet_RiccardoGay</servlet-name>
-    <servlet-class>Servlet.Servlet_RiccardoGay</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>Servlet_RiccardoGay</servlet-name>
-    <url-pattern>/Servlet_RiccardoGay</url-pattern>
-  </servlet-mapping>
 </web-app>

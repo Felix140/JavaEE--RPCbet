@@ -34,6 +34,7 @@ public class Servlet_MostraEventi extends HttpServlet {
 		Evento_Sportivo eventBoxe = new Evento_Sportivo();
 		ArrayList<Evento_Sportivo> arrBoxe = eventBoxe.estrai_eventi("Boxe");
 		request.setAttribute("tableBoxe", arrBoxe);
+
 		
 		String user = request.getParameter("NomeUser");
 		ConnessioneDB connection = new ConnessioneDB();
@@ -44,8 +45,6 @@ public class Servlet_MostraEventi extends HttpServlet {
 		// Spedisci verso bet-page
 		RequestDispatcher dispatch = request.getRequestDispatcher("bet-page.jsp");
 		dispatch.forward(request, response);
-		
-//		response.sendRedirect("bet-page.jsp");
 
 	}
 

@@ -3,7 +3,6 @@
 	<%@ page import="Connessione.ConnessioneDB" import="Classi.*" import="Classi.Evento_Sportivo"
 		import="Servlet.Servlet_GenerazioneEventi" import="Servlet.Servlet_MostraEventi"
 		import="Servlet.Servlet_IncrementaSaldo" import="java.util.*" %>
-	
 
 		<!DOCTYPE html>
 		<html>
@@ -13,7 +12,6 @@
 			<title>Insert title here</title>
 			<link rel="stylesheet" href="assets/css/style.css">
 			<link rel="stylesheet" href="assets/css/bet-page_style.css">
-			<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 		</head>
 
@@ -27,28 +25,31 @@
 
 
 					<div class="header__user">
+
+
 						<form action="Servlet_IncrementaSaldo" method="POST" class="header__saldo">
-					
+
 							<p class="m-auto">
-								€ <%=request.getAttribute("saldo")%>
+								€
+								<%=request.getAttribute("saldo")%>
 							</p>
 							<input type="hidden" name="aumentosaldo">
-							<button class="btn btn-danger" type="submit">Deposita</button> 
+							<button class="btn btn-danger btn-rounded" type="submit">Deposita</button>
 						</form>
-						
+
 						<div class="header__userName">
 							<% String usernameUtente=(String) session.getAttribute("NomeUser"); %>
 								<a href="profilo-utente.jsp"><%=usernameUtente%></a>
 						</div>
 
 					</div>
-				
+
 				</nav>
 
 				<nav class="header__sections">
-					<button class="btn btn-secondary section">Calcio</button>
-					<button class="btn btn-secondary  section">Tennis</button>
-					<button class="btn btn-secondary section">Boxe</button>
+					<button class="btn btn-secondary">Calcio</button>
+					<button class="btn btn-secondary">Tennis</button>
+					<button class="btn btn-secondary">Boxe</button>
 				</nav>
 
 			</div>
@@ -63,8 +64,8 @@
  <%
 			/* boolean ciccio = (boolean) request.getAttribute("ForzaMagggggica");
 
-			out.println(ciccio); */
-			%>
+			out.println(ciccio); */ 
+			%> 			
 		</tbody>
 	</table> -->
 
@@ -80,56 +81,57 @@
 					<!-- -----------------CALCIO---------------------- -->
 					<div class="tables__calcio">
 						<table class="table table-hover">
+
 							<thead>
-								<tr class="tables__head">
-									<th scope="col text-center">Evento</th>
-									<th scope="col text-center">1</th>
-									<th scope="col text-center">X</th>
-									<th scope="col text-center">2</th>
+								<tr>
+									<th scope="col">Evento</th>
+									<th scope="col">1</th>
+									<th scope="col">X</th>
+									<th scope="col">2</th>
 									<th scope="col">Codice</th>
 								</tr>
 							</thead>
 							<tbody>
-								<%
-								ArrayList<Evento_Sportivo> eventCalcio = (ArrayList<Evento_Sportivo>) request.getAttribute("tableCalcio");
-					
-								for (int i = 0; i < eventCalcio.size(); i++) {
-									Evento_Sportivo evento = eventCalcio.get(i);
-									if (evento.getSport().equals("Calcio")) {
-								%>
-								<tr>
-									<td class="tables__evento">
-										<%= evento.getSq1() + " - " + evento.getSq2() %>
-									</td>
-									<td class="tables__quota">
-										<div class="btn--bet"
-											onclick="returnQuota('<%= evento.getCodice_partita() %>','<%= evento.getQuota_1() %>','1', this)"
-											data-quota="<%= evento.getQuota_1() %>">
-											<%= evento.getQuota_1() %>
-										</div>
-									</td>
-									<td class="tables__quota">
-										<div class="btn--bet"
-											onclick="returnQuota('<%= evento.getCodice_partita() %>','<%= evento.getQuota_x() %>','x', this)"
-											data-quota="<%= evento.getQuota_x() %>">
-											<%= evento.getQuota_x() %>
-										</div>
-									</td>
-									<td class="tables__quota">
-										<div class="btn--bet"
-											onclick="returnQuota('<%= evento.getCodice_partita() %>','<%= evento.getQuota_2() %>','2', this)"
-											data-quota="<%= evento.getQuota_2() %>">
-											<%= evento.getQuota_2() %>
-										</div>
-									</td>
-									<td>
-										<%= evento.getCodice_partita() %>
-									</td>
-								</tr>
-								<%
-									}
-								}
-								%>
+								<% ArrayList<Evento_Sportivo> eventCalcio = (ArrayList<Evento_Sportivo>)
+										request.getAttribute("tableCalcio");
+
+										for (int i = 0; i < eventCalcio.size(); i++) { Evento_Sportivo
+											evento=eventCalcio.get(i); if (evento.getSport().equals("Calcio")) { %>
+
+											<tr>
+												<td class="tables__evento">
+													<%=evento.getSq1() + " - " + evento.getSq2()%>
+												</td>
+
+												<th>
+													<div class="btn--bet"
+														onclick="returnQuota('<%=evento.getCodice_partita() %>','<%=evento.getQuota_1()%>', '1', this)">
+														<%=evento.getQuota_1()%>
+													</div>
+												</th>
+
+												<th>
+													<div class="btn--bet"
+														onclick="returnQuota('<%=evento.getCodice_partita() %>','<%=evento.getQuota_x()%>', 'x', this)">
+														<%=evento.getQuota_x()%>
+													</div>
+												</th>
+
+
+												<th>
+													<div class="btn--bet"
+														onclick="returnQuota('<%=evento.getCodice_partita() %>','<%=evento.getQuota_2()%>', '2', this)">
+														<%=evento.getQuota_2()%>
+													</div>
+												</th>
+
+												<th>
+													<%=evento.getCodice_partita() %>
+												</th>
+											</tr>
+
+
+											<% } } %>
 							</tbody>
 						</table>
 					</div>
@@ -140,7 +142,7 @@
 						<table class="table table-hover">
 
 							<thead>
-								<tr class="tables__head">
+								<tr>
 									<th scope="col">Evento</th>
 									<th scope="col">1</th>
 									<th scope="col">X</th>
@@ -153,37 +155,33 @@
 										request.getAttribute("tableTennis");
 
 										for (int i = 0; i < eventTennis.size(); i++) { Evento_Sportivo
-											evento=eventTennis.get(i);
-											if (evento.getSport().equals("Tennis")) { %>
+											evento=eventTennis.get(i); if (evento.getSport().equals("Tennis")) { %>
 
 											<tr>
 												<td class="tables__evento">
 													<%=evento.getSq1() + " - " + evento.getSq2()%>
 												</td>
 
-												<td class="tables__quota">
+												<th>
 													<div class="btn--bet"
-														onclick="returnQuota('<%=evento.getCodice_partita() %>','<%=evento.getQuota_1()%>', '1', this)"
-														data-quota="<%= evento.getQuota_1() %>">
+														onclick="returnQuota('<%=evento.getCodice_partita() %>','<%=evento.getQuota_1()%>', '1', this)">
 														<%=evento.getQuota_1()%>
 													</div>
-												</td>
+												</th>
 
-												<td class="tables__quota">
+												<th>
 													<div class="btn--bet"
-														onclick="returnQuota('<%=evento.getCodice_partita() %>','<%=evento.getQuota_x()%>', 'x', this)"
-														data-quota="<%= evento.getQuota_x() %>">
+														onclick="returnQuota('<%=evento.getCodice_partita() %>','<%=evento.getQuota_x()%>', 'x', this)">
 														<%=evento.getQuota_x()%>
 													</div>
-												</td>
+												</th>
 
-												<td class="tables__quota">
+												<th>
 													<div class="btn--bet"
-														onclick="returnQuota('<%=evento.getCodice_partita() %>','<%=evento.getQuota_2()%>', '2', this)"
-														data-quota="<%= evento.getQuota_2() %>">
+														onclick="returnQuota('<%=evento.getCodice_partita() %>','<%=evento.getQuota_2()%>', '2', this)">
 														<%=evento.getQuota_2()%>
 													</div>
-												</td>
+												</th>
 
 												<th>
 													<%=evento.getCodice_partita() %>
@@ -202,7 +200,7 @@
 						<table class="table table-hover">
 
 							<thead>
-								<tr class="tables__head">
+								<tr>
 									<th scope="col">Evento</th>
 									<th scope="col">1</th>
 									<th scope="col">X</th>
@@ -216,37 +214,33 @@
 										request.getAttribute("tableBoxe");
 
 										for (int i = 0; i < eventBoxe.size(); i++) { Evento_Sportivo
-											evento=eventBoxe.get(i);
-											if (evento.getSport().equals("Boxe")) { %>
+											evento=eventBoxe.get(i); if (evento.getSport().equals("Boxe")) { %>
 
 											<tr>
 												<td class="tables__evento">
 													<%=evento.getSq1() + " - " + evento.getSq2()%>
 												</td>
 
-												<td class="tables__quota">
+												<th>
 													<div class="btn--bet"
-														onclick="returnQuota('<%=evento.getCodice_partita() %>','<%=evento.getQuota_1()%>', '1', this)"
-														data-quota="<%=evento.getQuota_1()%>">
+														onclick="returnQuota('<%=evento.getCodice_partita() %>','<%=evento.getQuota_1()%>', '1', this)">
 														<%=evento.getQuota_1()%>
 													</div>
-												</td>
+												</th>
 
-												<td class="tables__quota">
+												<th>
 													<div class="btn--bet"
-														onclick="returnQuota('<%=evento.getCodice_partita() %>','<%=evento.getQuota_x()%>', 'x', this)"
-														data-quota="<%= evento.getQuota_x() %>">
+														onclick="returnQuota('<%=evento.getCodice_partita() %>','<%=evento.getQuota_x()%>', 'x', this)">
 														<%=evento.getQuota_x()%>
 													</div>
-												</td>
+												</th>
 
-												<td class="tables__quota">
+												<th>
 													<div class="btn--bet"
-														onclick="returnQuota('<%=evento.getCodice_partita() %>','<%=evento.getQuota_2()%>', '2', this)"
-														data-quota="<%= evento.getQuota_1() %>">
+														onclick="returnQuota('<%=evento.getCodice_partita() %>','<%=evento.getQuota_2()%>', '2', this)">
 														<%=evento.getQuota_2()%>
 													</div>
-												</td>
+												</th>
 
 												<th>
 													<%=evento.getCodice_partita() %>
@@ -268,63 +262,54 @@
 					<form id="quoteForm" action="Servlet_Schedina" method="post" class="schedina__form">
 						<div class="schedina__input">
 							<h3 class="schedina__title">La tua schedina</h3>
-
 							<div class="schedina__rowInput">
 								<input type="text" name="evento1_codice" id="eventoCodiceInput1" class="schedina__field"
 									readonly>
 								<input type="text" name="evento1_colonna" id="eventoColonnaInput1"
 									class="schedina__field" readonly>
 							</div>
-
 							<div class="schedina__rowInput">
 								<input type="text" name="evento2_codice" id="eventoCodiceInput2" class="schedina__field"
 									readonly>
 								<input type="text" name="evento2_colonna" id="eventoColonnaInput2"
 									class="schedina__field" readonly>
 							</div>
-
 							<div class="schedina__rowInput">
 								<input type="text" name="evento3_codice" id="eventoCodiceInput3" class="schedina__field"
 									readonly>
 								<input type="text" name="evento3_colonna" id="eventoColonnaInput3"
 									class="schedina__field" readonly>
 							</div>
-
 							<div class="schedina__rowInput">
 								<input type="text" name="evento4_codice" id="eventoCodiceInput4" class="schedina__field"
 									readonly>
 								<input type="text" name="evento4_colonna" id="eventoColonnaInput4"
 									class="schedina__field" readonly>
 							</div>
-
 							<div class="schedina__rowInput">
 								<input type="text" name="evento5_codice" id="eventoCodiceInput5" class="schedina__field"
 									readonly>
 								<input type="text" name="evento5_colonna" id="eventoColonnaInput5"
 									class="schedina__field" readonly>
 							</div>
-
 							<div class="schedina__rowInput">
 								<input type="text" name="evento6_codice" id="eventoCodiceInput6" class="schedina__field"
 									readonly>
 								<input type="text" name="evento6_colonna" id="eventoColonnaInput6"
 									class="schedina__field" readonly>
 							</div>
-
 							<div class="schedina__rowInput">
 								<input type="text" name="evento7_codice" id="eventoCodiceInput7" class="schedina__field"
 									readonly>
 								<input type="text" name="evento7_colonna" id="eventoColonnaInput7"
 									class="schedina__field" readonly>
 							</div>
-
 							<div class="schedina__rowInput">
 								<input type="text" name="evento8_codice" id="eventoCodiceInput8" class="schedina__field"
 									readonly>
 								<input type="text" name="evento8_colonna" id="eventoColonnaInput8"
 									class="schedina__field" readonly>
 							</div>
-							
 							<div class="schedina__rowInput">
 								<input type="text" name="evento9_codice" id="eventoCodiceInput9" class="schedina__field"
 									readonly>
@@ -347,26 +332,15 @@
 							
 							</div>
 
+							<input type="number" name="importogiocato"  placeholder="Inserisci la cifra giocata" class="schedina__importo">
 
-							<!-- VINCITA -->
-							<div class="schedina__valoreVincita">
-								<p>Possibile vincita: </p>
-								<input type="text" name="" id="valoriQuote" hidden>
-
-								<div class="schedina__vincita">
-									€
-									<input type="text" name="" id="vincita"  class="schedina__vincitaInput d-block m-auto" disabled readonly>
-								</div>
-							</div>
-
-
-							<!-- PRENDE IL NOME USER CHE INVIA IL FORM -->
 							<input type="text" name="NomeUser" value="<%=usernameUtente%>" hidden>
+
 						</div>
 
-						
-							<input type="submit" value="Gioca schedina" class="btn btn-primary schedina__button btn-rounded">
-						
+						<div class="schedina__button">
+							<input type="submit" value="Gioca schedina" class="btn btn-primary btn-rounded">
+						</div>
 
 					</form>
 				</div>
@@ -374,79 +348,13 @@
 			</div>
 
 
-			<script>
-				$(document).ready(function () {
-					var valoriQuote = ""; // Variabile per memorizzare i valori delle quote
 
-					$(".btn--bet").click(function () {
-						var quota = $(this).attr("data-quota");
-						var evento = $(this).closest("tr").find(".tables__evento").text().trim();
 
-						if (valoriQuote.split(" ").length < 9) {
-							// Rimuovi il valore dalla variabile valoriQuote se il pulsante è già stato premuto
-							if ($(this).hasClass("btn--pressed")) {
-								valoriQuote = valoriQuote.replace(quota + " ", "");
-								$(this).removeClass("btn--pressed");
-							} else {
-								// Rimuovi la classe "btn--pressed" da tutti gli altri pulsanti dello stesso evento sportivo
-								$(".tables__evento").each(function () {
-									if ($(this).text().trim() === evento) {
-										$(this).closest("tr").find(".btn--pressed").removeClass("btn--pressed");
-									}
-								});
 
-								// Aggiungi il valore della quota alla variabile valoriQuote solo se non è già presente
-								if (!valoriQuote.includes(quota)) {
-									valoriQuote += quota + " ";
-								}
-								$(this).addClass("btn--pressed");
-							}
 
-							// Imposta il valore aggiornato nel campo di testo
-							$("#valoriQuote").val(valoriQuote.trim());
 
-							// Calcola il prodotto dei valori delle quote
-							var valoriArray = valoriQuote.trim().split(" ").map(function (valore) {
-								return parseFloat(valore);
-							});
 
-							// Ottieni l'importo inserito dall'utente
-							var importoGiocato = parseFloat($("[name='importogiocato']").val());
 
-							// Verifica se l'importo inserito è un numero valido
-							if (!isNaN(importoGiocato)) {
-								// Calcola il risultato moltiplicando il prodotto per l'importo
-								var risultato = importoGiocato * valoriArray.reduce(function (acc, valore) {
-									return acc * valore;
-								}, 1);
-
-								// Imposta il risultato della moltiplicazione nel campo di testo
-								$("#vincita").val(risultato.toFixed(2));
-							}
-						}
-					});
-
-					// Aggiorna il campo vincita quando l'importo viene modificato
-					$("[name='importogiocato']").on("input", function () {
-						var importoGiocato = parseFloat($(this).val());
-						if (!isNaN(importoGiocato) && valoriQuote.trim() !== "") {
-							var valoriArray = valoriQuote.trim().split(" ").map(function (valore) {
-								return parseFloat(valore);
-							});
-
-							var risultato = importoGiocato * valoriArray.reduce(function (acc, valore) {
-								return acc * valore;
-							}, 1);
-
-							$("#vincita").val(risultato.toFixed(2));
-						} else {
-							$("#vincita").val("");
-						}
-					});
-				});
-			</script>
-			
-			
 			<script>
 				const eventiSelezionati = []; // Dichiarazione dell'array eventiSelezionati
 
@@ -485,6 +393,7 @@
 					}
 				}
 
+
 				// Aggiungi un event listener ai pulsanti di selezione
 				const section = document.querySelector(".header__sections");
 				section.addEventListener("click", function (event) {
@@ -501,6 +410,7 @@
 					const selectedTable = document.querySelector(".tables__" + selectedTableName);
 					selectedTable.classList.add("active");
 				});
+
 			</script>
 
 
@@ -511,7 +421,6 @@
 				integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS"
 				crossorigin="anonymous"></script>
 
-				
 		</body>
 
 		</html>
