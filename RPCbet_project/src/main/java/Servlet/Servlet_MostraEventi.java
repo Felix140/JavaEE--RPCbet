@@ -38,13 +38,32 @@ public class Servlet_MostraEventi extends HttpServlet {
 		ArrayList<Evento_Sportivo> arrBoxe = eventBoxe.estrai_eventi("Boxe");
 		request.setAttribute("tableBoxe", arrBoxe);
 		
-		// String user = request.getParameter("NomeUser");
-		// ConnessioneDB connection = new ConnessioneDB();
-		// float saldo = connection.getSaldo(user);
-
+		 Cookie[] cookies = request.getCookies();
+		 	String nomeCookie = "a";
+		 	String nomeUtente = "";
+		 	
+		 	if (cookies != null) 
+		 	{
+		 		for (Cookie cookie : cookies) 
+		 		{
+		 			if (cookie.getName().equals(nomeCookie)) 
+		 			{
+		 				nomeUtente = cookie.getValue();
+		 				break;
+		 			}
+		 		}
+		 	}
+		 	
+		ConnessioneDB connessioneDB = new ConnessioneDB();
+		
+   	    float saldo = connessioneDB.getSaldo(nomeUtente);
+	    System.out.println("Hai " + saldo + "euro");
+	    request.setAttribute("saldo", saldo);
 		
 		
-		// Spedisci verso bet-page
+		
+		
+		
 		RequestDispatcher dispatch = request.getRequestDispatcher("bet-page.jsp");
 		dispatch.forward(request, response);
 		
