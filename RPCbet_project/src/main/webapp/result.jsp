@@ -24,14 +24,14 @@
 
 
 
-        <div class="container" id="container" style="display: none;">
+        <div class="container" id="container" style="display:none;">
             <div class="card" id="card">Risultato della schedina:
                 <div class="result">
                     <% out.println("Campo Vincita"); %>
                 </div>
-                <!-- <p>
+                <p>
                     Ritorna al tuo profilo <a href="profilo-utente.jsp" style="color: white;">CLICCA QUI</a>
-                </p> -->
+                </p>
             </div>
         </div>
 
