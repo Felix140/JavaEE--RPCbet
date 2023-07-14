@@ -33,10 +33,12 @@
 								€ <%=request.getAttribute("saldo")%>
 							</p>
 							
-							<select name="opzione" id="opzioneSelect">
+							<select name="opzione" id="opzioneSelect" class="form-control">
+                            
                             <option value="0">Deposita</option>
                             <option value="5">5</option>
                             <option value="10">10</option>
+                            
                             </select>
 							
 						</div>
