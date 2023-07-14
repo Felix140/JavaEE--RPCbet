@@ -264,6 +264,11 @@ public class Servlet_Schedina extends HttpServlet {
 		// STORICO SCHEDINA
 		ConnessioneDB conn1 = new ConnessioneDB();
 		conn1.InserimentoStoricoSchedina(user, codiceschedina, risultatoschedina);
+		
+		
+		
+		// Reindirizzamento a result.jsp
+		response.sendRedirect("result.jsp");
 
 	}
 

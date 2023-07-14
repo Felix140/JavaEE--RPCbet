@@ -87,6 +87,10 @@
   border-radius: 20px;
   padding: 8px 20px;
 }
+.header__userName > a {
+	text-decoration: none;
+}
+
 .header__saldo {
   display: flex;
   flex-direction: row;
@@ -96,8 +100,19 @@
   /* border: 2px solid green; */
   background-color: var(--secondary);
   color: #1c1e2e;
-  width: 230px;
+  width: 250px;
   border-radius: 20px;
+  /* padding: 8px 20px; */
+}
+
+.header__deposita {
+	background-color: var(--primary);
+	color: var(--secondary);
+	border-radius: 20px;
+	width: 120px;
+	font-weight: 500;
+	border: none;
+	padding: 8px 20px;
 }
 
 .hero__logo {
@@ -124,6 +139,7 @@
 /* ________TABELLE________ */
 
 .mainView {
+	
   display: flex;
   flex-direction: row;
   background-color: var(--backgorund-1);

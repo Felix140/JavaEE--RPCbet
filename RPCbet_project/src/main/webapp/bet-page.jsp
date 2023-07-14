@@ -27,21 +27,24 @@
 
 
 					<div class="header__user">
+						<span style="font-size: 12px;"> Saldo corrente:</span>
 						<div class="header__saldo">
-					
+							
 							<p class="m-auto">
 								€ <%=request.getAttribute("saldo")%>
 							</p>
 							
-							<select name="opzione" id="opzioneSelect" class="form-control">
-                            
-                            <option value="0">Deposita</option>
-                            <option value="5">5</option>
-                            <option value="10">10</option>
-                            
-                            </select>
-							
+							<select name="opzione" id="opzioneSelect" class="form-control header__deposita">
+                        
+	                            <option value="0">Deposita</option>
+	                            <option value="5">5</option>
+	                            <option value="10">10</option>
+                        
+                      		</select>
+						
 						</div>
+						
+						
 						
 						<div class="header__userName">
 							<% String usernameUtente=(String) session.getAttribute("NomeUser"); %>
