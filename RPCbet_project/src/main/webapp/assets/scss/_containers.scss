@@ -1,35 +1,17 @@
 .index {
-    // border: 3px solid pink;
-    height: 1000px;
+    // border: 2px solid pink;
+    // height: 100%;
     background-color: transparent;
     position: relative;
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 
     &__star {
         position: absolute;
         background-color: transparent;
-        top: 20px;
+        top: 90px;
         left: 30px;
 
         width: 500px;
 
         z-index: 0;
     }
-}
-
-.login {
-    height: 100%;
-    background-color: transparent;
-    font-family: "poppins";
-    
-}
-
-.registrazione {
-    height: 100%;
-    background-color: transparent;
-    font-family: "poppins";
-    
 }

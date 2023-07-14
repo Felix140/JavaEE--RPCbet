@@ -4,47 +4,11 @@ $backgorund-1: #1c1e2e;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    // background-color: $backgorund-1;
-    // height: 100%;
+    background-color: $backgorund-1;
 }
 
 .body-index {
     overflow: hidden;
-    
-    background-image: linear-gradient(105deg, hsl(100deg 43% 27%) 0%, hsl(115deg 17% 21%) 1%, hsl(233deg 24% 15%) 41%);
     display: flex;
-    justify-content: center;
-    align-items: center;
-
-    // border: solid 2px yellow;
-}
-
-.body-login {
-    overflow: hidden;
-    
     background-image: linear-gradient(105deg, hsl(100deg 43% 27%) 0%, hsl(115deg 17% 21%) 1%, hsl(233deg 24% 15%) 41%);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    // border: solid 2px yellow;
-    height: 2000px;
-}
-
-.body-registrazione {
-    background-image: linear-gradient(105deg, hsl(100deg 43% 27%) 0%, hsl(115deg 17% 21%) 1%, hsl(233deg 24% 15%) 41%);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    // border: solid 2px yellow;
-    height: 2000px;
-}
-
-.link {
-    color: $secondary;
-    margin: 0 auto;
-    margin-top: 20px;
 }
