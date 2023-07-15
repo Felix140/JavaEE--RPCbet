@@ -1,6 +1,7 @@
 package Servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Random;
 
 import Connessione.ConnessioneDB;
@@ -28,10 +29,10 @@ public class Servlet_Schedina extends HttpServlet {
 		// ESTRAI DATI STORICO-SCHEDINA
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
 		String Vincita = request.getParameter("Vincita");
 		float cia = Float.parseFloat(Vincita);
+		PrintWriter pin = response.getWriter();
 		String evento1Codice = request.getParameter("evento1_codice");
 		String evento2Codice = request.getParameter("evento2_codice");
 		String evento3Codice = request.getParameter("evento3_codice");
@@ -45,9 +46,9 @@ public class Servlet_Schedina extends HttpServlet {
 		String user = request.getParameter("NomeUser");
 		int generacodiceschedina = GeneraCodiceSchedina();
 		int codiceschedina = generacodiceschedina;
-
+       
 		String importogiocato = request.getParameter("importogiocato");
-
+		
 		// {
 		// EVENTO 1
 		if (evento1Codice == null || evento1Codice.isEmpty()) {
@@ -262,6 +263,14 @@ public class Servlet_Schedina extends HttpServlet {
 	 		}
 	 	}
 		
+	 	
+		
+		// STORICO SCHEDINA
+		ConnessioneDB conn1 = new ConnessioneDB();
+		conn1.InserimentoStoricoSchedina(user, codiceschedina, risultatoschedina);
+		
+		
+		
 		
 		int importoGiocato = Integer.parseInt(request.getParameter("importogiocato"));
 		ConnessioneDB connection = new ConnessioneDB();
@@ -272,17 +281,23 @@ public class Servlet_Schedina extends HttpServlet {
 
 			connection.decrementaSaldo(importoGiocato, user);
 			connection.Risultato_Schedina(nomeUtente, cia, codiceschedina);
+		
 			
-			if(connection.isCheck() == true)
-			{
-				response.sendRedirect("https://xnxx.com");
-			}
-			else
-			{
-				response.sendRedirect("https://pornhub.com");
-			}
+			
+		
+		if(connection.isCheck() == true)
+		{
+			response.sendRedirect("https://xnxx.com");
+		}
+		else
+		{
+			response.sendRedirect("https://pornhub.com");
+		}
 			
 		} 
+		
+		
+		
 		else 
 		{
 
@@ -291,10 +306,6 @@ public class Servlet_Schedina extends HttpServlet {
 			
 			request.getRequestDispatcher("Servlet_MostraEventi").forward(request, response);
         }
-
-		// STORICO SCHEDINA
-		ConnessioneDB conn1 = new ConnessioneDB();
-		conn1.InserimentoStoricoSchedina(user, codiceschedina, risultatoschedina);
 
 	}
 
