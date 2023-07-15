@@ -33,7 +33,7 @@
 								€ <%=request.getAttribute("saldo")%>
 							</p>
 							
-							<select name="opzione" id="opzioneSelect" class="form-control">
+							<select name="opzione" id="opzioneSelect">
                             
                             <option value="0">Deposita</option>
                             <option value="5">5</option>
@@ -342,15 +342,11 @@
 							<!-- IMPORTO -->
 							<div class="schedina__importo d-block m-auto">
 								€
-							<input style="display:none" id="inputSchedina" type="number" name="importogiocato"  placeholder="importo" class="schedina__importofield" value ="">
-								
-								<select name="opzione" id="selectSchedina" class="form-control">
-                            
-                            		<option value="0">Deposita</option>
-                            		<option value="5">5</option>
-                            		<option value="10">10</option>
-                            
-                            </select>
+							<div class="schedina__vincita">
+							<input type="number" name="importogiocato"  placeholder="Inserisci la cifra giocata" class="schedina__importo">
+
+							<input type="text" name="NomeUser" value="<%=usernameUtente%>" hidden>
+							</div>
 							
 							<% if (request.getAttribute("errore") != null) { %>
     						<p class="m-auto">€ <%=request.getAttribute("errore")%></p>
@@ -361,22 +357,18 @@
 							<% } %>
 							
 							</div>
-
+                            
+                         
 
 							<!-- VINCITA -->
 							<div class="schedina__valoreVincita">
 								<p>Possibile vincita: </p>
-								<input type="text" name="" id="valoriQuote" hidden>
-
-								<div class="schedina__vincita">
-									€
-									<input type="text" name="" id="vincita"  class="schedina__vincitaInput d-block m-auto" disabled readonly>
-								</div>
-							</div>
+								<input type="text" name="Vincita1" id="valoriQuote" hidden>
+								<input type="text" name="Vincita" id="vincita"> 
+                            </div>
 
 
-							<!-- PRENDE IL NOME USER CHE INVIA IL FORM -->
-							<input type="text" name="NomeUser" value="<%=usernameUtente%>" hidden>
+							
 						</div>
 
 						
@@ -397,7 +389,8 @@
 						var quota = $(this).attr("data-quota");
 						var evento = $(this).closest("tr").find(".tables__evento").text().trim();
 
-						if (valoriQuote.split(" ").length < 9) {
+						if (valoriQuote.split(" ").length < 9) 
+						{
 							// Rimuovi il valore dalla variabile valoriQuote se il pulsante è già stato premuto
 							if ($(this).hasClass("btn--pressed")) {
 								valoriQuote = valoriQuote.replace(quota + " ", "");

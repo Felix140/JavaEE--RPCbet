@@ -32,7 +32,8 @@ public class ConnessioneDB {
 	// aumento importo
 	
 	float imp;
-
+	boolean check;
+	
 	ClasseEstrapolazioneTXT oggettotxt = new ClasseEstrapolazioneTXT();
 
 	// credenziali database
@@ -339,4 +340,74 @@ public class ConnessioneDB {
 				
 				}
 	}
+//*********************************************Vittoria Schedina*****************************************		
+
+
+public void Risultato_Schedina(String utente, float Possibile_Vincita, int Codice_Schedina)
+{
+	
+	
+	try {
+		Class.forName(driver);
+		Connection conn = DriverManager.getConnection(url, usernameDb, passwordDb);
+		String query = "SELECT * from storico_schedine WHERE Codice_Schedina = ?";
+		PreparedStatement stat = conn.prepareStatement(query);
+		stat.setInt(1, Codice_Schedina);
+		ResultSet rs = stat.executeQuery();
+		if(rs.next())
+		{
+			if(rs.getBoolean("Esito_Schedina") == false)
+			{
+				this.check = false;
+			}
+			else
+			{
+				String query2 = "UPDATE utente SET Saldo = Saldo + ? WHERE Username_Utente = ?";
+				PreparedStatement stat2 = conn.prepareStatement(query);
+				stat2.setFloat(1, Possibile_Vincita);
+				stat2.setString(2 , utente);
+				this.check = true;
+			}
+		}
+		
+		conn.close();
+		
+	} catch (ClassNotFoundException | SQLException e) {
+
+		e.printStackTrace();
+	
+	}
+	
+	
+	
+	
+	
+	
+	
+}
+
+public boolean isCheck() {
+	return check;
+}
+
+public void setCheck(boolean check) {
+	this.check = check;
+}
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
 }

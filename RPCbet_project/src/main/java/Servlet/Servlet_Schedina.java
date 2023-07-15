@@ -30,6 +30,8 @@ public class Servlet_Schedina extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		String Vincita = request.getParameter("Vincita");
+		float cia = Float.parseFloat(Vincita);
 		String evento1Codice = request.getParameter("evento1_codice");
 		String evento2Codice = request.getParameter("evento2_codice");
 		String evento3Codice = request.getParameter("evento3_codice");
@@ -265,21 +267,30 @@ public class Servlet_Schedina extends HttpServlet {
 		ConnessioneDB connection = new ConnessioneDB();
 		float saldo = connection.getSaldo(nomeUtente);
 
-		if (importoGiocato <= saldo) {
+		if (importoGiocato <= saldo) 
+		{
 
 			connection.decrementaSaldo(importoGiocato, user);
-			String scommessaRiuscita = "Scommessa piazzata";
-			request.setAttribute("messaggioScommessa", scommessaRiuscita);
-			request.getRequestDispatcher("Servlet_MostraEventi").forward(request,
-			response);
+			connection.Risultato_Schedina(nomeUtente, cia, codiceschedina);
 			
-		} else {
+			if(connection.isCheck() == true)
+			{
+				response.sendRedirect("https://xnxx.com");
+			}
+			else
+			{
+				response.sendRedirect("https://pornhub.com");
+			}
+			
+		} 
+		else 
+		{
 
 			String errore = "Saldo non sufficiente";
 			request.setAttribute("errore", errore);
+			
 			request.getRequestDispatcher("Servlet_MostraEventi").forward(request, response);
-
-		}
+        }
 
 		// STORICO SCHEDINA
 		ConnessioneDB conn1 = new ConnessioneDB();
