@@ -5,6 +5,7 @@ import java.util.Random;
 
 import Connessione.ConnessioneDB;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -29,6 +30,8 @@ public class Servlet_Schedina extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		String Vincita = request.getParameter("Vincita");
+		float cia = Float.parseFloat(Vincita);
 		String evento1Codice = request.getParameter("evento1_codice");
 		String evento2Codice = request.getParameter("evento2_codice");
 		String evento3Codice = request.getParameter("evento3_codice");
@@ -243,23 +246,51 @@ public class Servlet_Schedina extends HttpServlet {
 
 		// DECREMENTA SALDO CON IMPORTO GIOCATO
 		// public void giocaScommessa()
-
+		Cookie[] cookies = request.getCookies();
+	 	String nomeCookie = "a";
+	 	String nomeUtente = "";
+	 	
+	 	if (cookies != null) 
+	 	{
+	 		for (Cookie cookie : cookies) 
+	 		{
+	 			if (cookie.getName().equals(nomeCookie)) 
+	 			{
+	 				nomeUtente = cookie.getValue();
+	 				break;
+	 			}
+	 		}
+	 	}
+		
+		
 		int importoGiocato = Integer.parseInt(request.getParameter("importogiocato"));
 		ConnessioneDB connection = new ConnessioneDB();
-		float saldo = connection.getSaldo(user);
+		float saldo = connection.getSaldo(nomeUtente);
 
-		if (importoGiocato < saldo) {
+		if (importoGiocato <= saldo) 
+		{
 
 			connection.decrementaSaldo(importoGiocato, user);
-			// request.getRequestDispatcher("Servlet_MostraEventi").forward(request,
-			// response);
-		} else {
+			connection.Risultato_Schedina(nomeUtente, cia, codiceschedina);
+			
+			if(connection.isCheck() == true)
+			{
+				response.sendRedirect("https://xnxx.com");
+			}
+			else
+			{
+				response.sendRedirect("https://pornhub.com");
+			}
+			
+		} 
+		else 
+		{
 
 			String errore = "Saldo non sufficiente";
 			request.setAttribute("errore", errore);
+			
 			request.getRequestDispatcher("Servlet_MostraEventi").forward(request, response);
-
-		}
+        }
 
 		// STORICO SCHEDINA
 		ConnessioneDB conn1 = new ConnessioneDB();

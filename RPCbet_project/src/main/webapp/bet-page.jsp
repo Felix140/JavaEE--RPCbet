@@ -345,29 +345,34 @@
 							<!-- IMPORTO -->
 							<div class="schedina__importo d-block m-auto">
 								€
-								<input type="number" name="importogiocato"  placeholder="importo" class="schedina__importofield" required>
+								<div class="schedina__vincita">
+									<input type="number" name="importogiocato" placeholder="Inserisci la cifra giocata" class="schedina__importo">
 							
-							<% if (request.getAttribute("errore") != null) { %>
-    						<p class="m-auto">€ <%=request.getAttribute("errore")%></p>
-							<% } %>
+									<input type="text" name="NomeUser" value="<%=usernameUtente%>" hidden>
+								</div>
+							
+								<% if (request.getAttribute("errore") !=null) { %>
+									<p class="m-auto">€ <%=request.getAttribute("errore")%>
+									</p>
+									<% } %>
+							
+										<% if (request.getAttribute("messaggioScommessa") !=null) { %>
+											<p class="m-auto">€ <%=request.getAttribute("messaggioScommessa")%>
+											</p>
+											<% } %>
 							
 							</div>
-
+                         
 
 							<!-- VINCITA -->
 							<div class="schedina__valoreVincita">
 								<p>Possibile vincita: </p>
-								<input type="text" name="" id="valoriQuote" hidden>
-
-								<div class="schedina__vincita">
-									€
-									<input type="text" name="" id="vincita"  class="schedina__vincitaInput d-block m-auto" disabled readonly>
-								</div>
-							</div>
+								<input type="text" name="Vincita1" id="valoriQuote" hidden>
+								<input type="text" name="Vincita" id="vincita"> 
+                            </div>
 
 
-							<!-- PRENDE IL NOME USER CHE INVIA IL FORM -->
-							<input type="text" name="NomeUser" value="<%=usernameUtente%>" hidden>
+							
 						</div>
 
 						
@@ -388,7 +393,8 @@
 						var quota = $(this).attr("data-quota");
 						var evento = $(this).closest("tr").find(".tables__evento").text().trim();
 
-						if (valoriQuote.split(" ").length < 9) {
+						if (valoriQuote.split(" ").length < 9) 
+						{
 							// Rimuovi il valore dalla variabile valoriQuote se il pulsante è già stato premuto
 							if ($(this).hasClass("btn--pressed")) {
 								valoriQuote = valoriQuote.replace(quota + " ", "");
@@ -530,6 +536,53 @@
             });
 
             </script>
+            
+            
+               <script>
+            $(document).ready(function() {
+                $('#selectSchedina').change(function() {
+                    var selectedValue = $(this).val();
+                    
+                    $.ajax({
+                        url: 'Servlet_Schedina',  
+                        type: 'POST',
+                        data: {opzione: selectedValue},
+                        success: function(response) {
+                            // Gestisci la risposta dalla servlet
+                            console.log(response);
+                        },
+                        error: function(xhr, status, error) {
+                            // Gestisci l'errore
+                            console.log(error);
+                        }
+                    });
+                });
+            });
+            </script>
+            
+            
+            
+            <script>
+//*************RIEMPI INPUT SCHEDINA CON VALORE PRESO DALLA SELECT***************
+
+            // Funzione per gestire il cambio nella select
+            function updateInput() {
+              var select = document.getElementById("selectSchedina");
+              var input = document.getElementById("inputSchedina");
+
+              // Ottieni il valore selezionato nella select
+              var selectedValue = select.value;
+
+              // Imposta il valore nel campo di input
+              input.value = selectedValue;
+            }
+
+            // Aggiungi il gestore di eventi alla select
+            var select = document.getElementById("selectSchedina");
+            select.addEventListener("change", updateInput);
+         
+            
+            </script> 
 
 			<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
 				integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
