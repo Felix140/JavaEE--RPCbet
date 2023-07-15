@@ -4,7 +4,12 @@
 		import="Servlet.Servlet_GenerazioneEventi" import="Servlet.Servlet_MostraEventi"
 		import="Servlet.Servlet_IncrementaSaldo" import="java.util.*" %>
 	
-
+  <script>
+    // Funzione per eseguire il refresh della pagina
+    function refreshPage() {
+      location.reload();
+    }
+  </script>
 		<!DOCTYPE html>
 		<html>
 
@@ -22,8 +27,6 @@
 			<div class="header">
 				<nav class="header__actions">
 					<img src="assets/img/logo/rpcbet-logo-2.svg" alt="" class="hero__logo">
-
-
 
 
 					<div class="header__user">
@@ -61,7 +64,7 @@
 
 			</div>
 
-
+          
 
 
 
@@ -86,10 +89,10 @@
 				<div class="tables">
 
 					<!-- -----------------CALCIO---------------------- -->
-					<div class="tables__calcio">
-						<table class="table table-hover">
+					<div class="tables__calcio rounded">
+						<table class="table table-hover rounded">
 							<thead>
-								<tr class="tables__head">
+								<tr class="tables__head rounded">
 									<th scope="col text-center">Evento</th>
 									<th scope="col text-center">1</th>
 									<th scope="col text-center">X</th>
@@ -275,7 +278,7 @@
 				<div class="schedina">
 					<form id="quoteForm" action="Servlet_Schedina" method="post" class="schedina__form">
 						<div class="schedina__input">
-							<h3 class="schedina__title">La tua schedina</h3>
+							<h3 class="schedina__title text-center">La tua schedina</h3>
 
 							<div class="schedina__rowInput">
 								<input type="text" name="evento1_codice" id="eventoCodiceInput1" class="schedina__field"
@@ -342,9 +345,9 @@
 							
 							<!-- IMPORTO -->
 							<div class="schedina__importo d-block m-auto">
-								€
+								
 							<div class="schedina__vincita">
-							<input type="number" name="importogiocato"  placeholder="Inserisci la cifra giocata" class="schedina__importo">
+							<input type="number" name="importogiocato"  placeholder="€" class="schedina__importo form-control">
 
 							<input type="text" name="NomeUser" value="<%=usernameUtente%>" hidden>
 							</div>
@@ -363,9 +366,9 @@
 
 							<!-- VINCITA -->
 							<div class="schedina__valoreVincita">
-								<p>Possibile vincita: </p>
+								<p class="text-center">Possibile vincita: </p>
 								<input type="text" name="Vincita1" id="valoriQuote" hidden>
-								<input type="text" name="Vincita" id="vincita"> 
+								<input type="text" class="form-control" placeholder="Possibile vincita" name="Vincita" id="vincita" readonly> 
                             </div>
 
 

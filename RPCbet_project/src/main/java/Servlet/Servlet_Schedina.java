@@ -287,11 +287,12 @@ public class Servlet_Schedina extends HttpServlet {
 		
 		if(connection.isCheck() == true)
 		{
-			response.sendRedirect("https://xnxx.com");
+			response.sendRedirect("Servlet_MostraEventi");
+		    
 		}
 		else
 		{
-			response.sendRedirect("https://pornhub.com");
+			response.sendRedirect("Servlet_MostraEventi");
 		}
 			
 		} 

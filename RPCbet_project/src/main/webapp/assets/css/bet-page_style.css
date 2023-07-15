@@ -74,7 +74,7 @@
   justify-content: center;
   align-items: center;
   /* border: 1px solid blue; */
-  column-gap: 20px;
+  column-gap: 80px;
 }
 
 .header__userName {
@@ -96,8 +96,8 @@
   /* border: 2px solid green; */
   background-color: var(--secondary);
   color: #1c1e2e;
-  width: 230px;
-  border-radius: 20px;
+  width: 1000px;
+  border-radius: 8px;
 }
 
 .hero__logo {
