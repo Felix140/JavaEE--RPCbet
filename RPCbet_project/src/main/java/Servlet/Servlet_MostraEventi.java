@@ -50,12 +50,6 @@ public class Servlet_MostraEventi extends HttpServlet {
 		 		}
 		 	}
 		 	
-		ConnessioneDB connessioneDB = new ConnessioneDB();
-		
-   	    float saldo = connessioneDB.getSaldo(nomeUtente);
-	    System.out.println("Hai " + saldo + "euro");
-	    request.setAttribute("saldo", saldo);
-		
 		
 		
 		

@@ -12,18 +12,33 @@
   </script>
 		<!DOCTYPE html>
 		<html>
-
+        
 		<head>
 			<meta charset="UTF-8">
 			<title>Insert title here</title>
 			<link rel="stylesheet" href="assets/css/style.css">
 			<link rel="stylesheet" href="assets/css/bet-page_style.css">
 			<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
+           
 		</head>
 
 		<body>
+<script>
+  function getSaldo() {
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState === 4 && xhr.status === 200) {
+        var saldo = parseFloat(xhr.responseText);
+        document.getElementById("saldo").textContent = saldo;
+      }
+    };
+    xhr.open("GET", "Servlet_SaldoUtente", true);
+    xhr.send();
+  }
 
+  // Chiama la funzione getSaldo all'avvio della pagina
+  getSaldo();
+</script>
 			<div class="header">
 				<nav class="header__actions">
 					<img src="assets/img/logo/rpcbet-logo-2.svg" alt="" class="hero__logo">
@@ -32,9 +47,14 @@
 					<div class="header__user">
 						<div class="header__saldo">
 					
-							<p class="m-auto">
+						<%-- 	<p class="m-auto">
 								€ <%=request.getAttribute("saldo")%>
-							</p>
+							</p> --%>
+							
+							
+							
+						    <span id="saldo"></span>
+							
 							
 							<select name="opzione" id="opzioneSelect">
                             
@@ -591,7 +611,26 @@
 				integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS"
 				crossorigin="anonymous"></script>
 
-				
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).ready(function() {
+    $.ajax({
+      url: "Servlet_MostraEventi", // Sostituisci "servletURL" con l'URL effettivo della tua servlet
+      type: "POST",
+      dataType: "text", // Imposta il tipo di dati che ci si aspetta come risposta
+      success: function(response) {
+        var datoIntero = parseInt(response); // Converti la risposta in un intero
+
+        // Esegui le operazioni desiderate con il dato intero
+        console.log(datoIntero);
+      },
+      error: function(xhr, status, error) {
+        console.log("Errore nella chiamata AJAX:", error);
+      }
+    });
+  });
+</script>
+
 		</body>
 
 		</html>

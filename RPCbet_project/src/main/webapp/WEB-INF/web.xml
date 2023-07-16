@@ -129,4 +129,24 @@
     <servlet-name>Servlet_Risultato_Schedina</servlet-name>
     <url-pattern>/Servlet_Risultato_Schedina</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Servlet_MostraSaldo</display-name>
+    <servlet-name>Servlet_MostraSaldo</servlet-name>
+    <servlet-class>Servlet.Servlet_MostraSaldo</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Servlet_MostraSaldo</servlet-name>
+    <url-pattern>/Servlet_MostraSaldo</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Servlet_SaldoUtente</display-name>
+    <servlet-name>Servlet_SaldoUtente</servlet-name>
+    <servlet-class>Servlet.Servlet_SaldoUtente</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Servlet_SaldoUtente</servlet-name>
+    <url-pattern>/Servlet_SaldoUtente</url-pattern>
+  </servlet-mapping>
 </web-app>
