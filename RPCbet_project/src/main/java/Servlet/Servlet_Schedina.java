@@ -29,7 +29,8 @@ public class Servlet_Schedina extends HttpServlet {
 		// ESTRAI DATI STORICO-SCHEDINA
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		String Vincita = request.getParameter("Vincita");
 		float cia = Float.parseFloat(Vincita);
 		PrintWriter pin = response.getWriter();
@@ -46,9 +47,9 @@ public class Servlet_Schedina extends HttpServlet {
 		String user = request.getParameter("NomeUser");
 		int generacodiceschedina = GeneraCodiceSchedina();
 		int codiceschedina = generacodiceschedina;
-       
+
 		String importogiocato = request.getParameter("importogiocato");
-		
+
 		// {
 		// EVENTO 1
 		if (evento1Codice == null || evento1Codice.isEmpty()) {
@@ -248,65 +249,47 @@ public class Servlet_Schedina extends HttpServlet {
 		// DECREMENTA SALDO CON IMPORTO GIOCATO
 		// public void giocaScommessa()
 		Cookie[] cookies = request.getCookies();
-	 	String nomeCookie = "a";
-	 	String nomeUtente = "";
-	 	
-	 	if (cookies != null) 
-	 	{
-	 		for (Cookie cookie : cookies) 
-	 		{
-	 			if (cookie.getName().equals(nomeCookie)) 
-	 			{
-	 				nomeUtente = cookie.getValue();
-	 				break;
-	 			}
-	 		}
-	 	}
-		
-	 	
-		
+		String nomeCookie = "a";
+		String nomeUtente = "";
+
+		if (cookies != null) {
+			for (Cookie cookie : cookies) {
+				if (cookie.getName().equals(nomeCookie)) {
+					nomeUtente = cookie.getValue();
+					break;
+				}
+			}
+		}
+
 		// STORICO SCHEDINA
 		ConnessioneDB conn1 = new ConnessioneDB();
 		conn1.InserimentoStoricoSchedina(user, codiceschedina, risultatoschedina);
-		
-		
-		
-		
+
 		int importoGiocato = Integer.parseInt(request.getParameter("importogiocato"));
 		ConnessioneDB connection = new ConnessioneDB();
 		float saldo = connection.getSaldo(nomeUtente);
 
-		if (importoGiocato <= saldo) 
-		{
+		if (importoGiocato <= saldo) {
 
 			connection.decrementaSaldo(importoGiocato, user);
 			connection.Risultato_Schedina(nomeUtente, cia, codiceschedina);
-		
-			
-			
-		
-		if(connection.isCheck() == true)
-		{
-			request.getRequestDispatcher("Servlet_MostraEventi").forward(request, response);
-		    
+
+			if (connection.isCheck() == true) {
+				response.sendRedirect("Vittoria.html");
+
+			} else {
+				response.sendRedirect("Sconfitta.html");
+			}
+
 		}
-		else
-		{
-			request.getRequestDispatcher("Servlet_MostraEventi").forward(request, response);
-		}
-			
-		} 
-		
-		
-		
-		else 
-		{
+
+		else {
 
 			String errore = "Saldo non sufficiente";
 			request.setAttribute("errore", errore);
-			
+
 			request.getRequestDispatcher("Servlet_MostraEventi").forward(request, response);
-        }
+		}
 
 	}
 
