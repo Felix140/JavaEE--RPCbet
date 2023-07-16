@@ -129,4 +129,14 @@
     <servlet-name>Servlet_Risultato_Schedina</servlet-name>
     <url-pattern>/Servlet_Risultato_Schedina</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Servlet_StoricoSchedina</display-name>
+    <servlet-name>Servlet_StoricoSchedina</servlet-name>
+    <servlet-class>Servlet.Servlet_StoricoSchedina</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Servlet_StoricoSchedina</servlet-name>
+    <url-pattern>/Servlet_StoricoSchedina</url-pattern>
+  </servlet-mapping>
 </web-app>
