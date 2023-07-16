@@ -1,0 +1,122 @@
+:root {
+  --backgorund-1: #1c1e2e;
+  --backgorund-2: #222637;
+  --backgorund-3: #33394b;
+  --primary: #6dd338;
+  --primary-2: rgba(109, 211, 56, 0.2);
+  --secondary: #fdfeff;
+  --tertiary: #696e88;
+
+  --font-family: "Orbitron";
+}
+
+@font-face {
+  font-family: "Orbiton";
+  src: url("../fonts/Orbitron/Orbitron-Medium.ttf") format("ttf");
+  src: url("../fonts/Orbitron/Orbitron-Bold.ttf") format("ttf");
+}
+@font-face {
+  font-family: "Poppins";
+  src: url("../fonts/Orbitron/.ttf") format("ttf");
+  src: url("../fonts/Orbitron/Orbitron-Bold.ttf") format("ttf");
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.body-result {
+  overflow: hidden;
+  color: var(--secondary);
+  background-image: linear-gradient(105deg, hsl(100deg 43% 27%) 0%, hsl(115deg 17% 21%) 1%, hsl(233deg 24% 15%) 41%);
+  height: 100vh;
+}
+
+.navbar {
+  width: 100%;
+  padding: 0 40px;
+  margin: 0 auto;
+  max-width: 1500px;
+  height: 100px;
+  margin-top: 10px;
+}
+
+img {
+  width: 200px;
+}
+.container {
+  width: 600px;
+  height: 400px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+
+  margin: 0 auto;
+  padding: 30px 40px;
+  backdrop-filter: blur(20px);
+  background-color: var(--primary-2);
+  border-radius: 30px;
+
+  margin-top: 100px;
+
+  border: 2px solid var(--primary);
+}
+
+p {
+  font-family: "Poppins";
+}
+
+.card {
+
+  
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+
+  background-color: transparent;
+  color: var(--secondary);
+
+  font-size: 20px;
+  border: none;
+}
+
+.contatore {
+  
+  text-align: center;
+  width: 100vw;
+}
+
+.result {
+  font-family: "Orbitron";
+  font-size: 50px;
+}
+
+
+/* BUTTON */
+
+.schedina__button {
+  background-color: var(--primary);
+  color: var(--secondary);
+  font-family: var(--font-family);
+  width: 250px;
+  border: 2.5px solid var(--primary);
+  font-weight: 600;
+  transition: transform 0.5s ease, background-color 0.3s ease, color 0.3s ease;
+}
+.schedina__button:hover {
+  transform: scale(1.1);
+  background-color:  var(--secondary);
+  color:  var(--primary);
+}
+.schedina__button:active {
+  background-color: var(--tertiary);
+  color: var(--primary);
+}
