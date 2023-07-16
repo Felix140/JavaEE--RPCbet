@@ -287,12 +287,12 @@ public class Servlet_Schedina extends HttpServlet {
 		
 		if(connection.isCheck() == true)
 		{
-			response.sendRedirect("Servlet_MostraEventi");
+			response.sendRedirect("Vittoria.html");
 		    
 		}
 		else
 		{
-			response.sendRedirect("Servlet_MostraEventi");
+			response.sendRedirect("Sconfitta.html");
 		}
 			
 		} 
