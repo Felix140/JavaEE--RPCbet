@@ -36,7 +36,7 @@
 								€ <%=request.getAttribute("saldo")%>
 							</p>
 							
-							<select name="opzione" id="opzioneSelect">
+							<select name="opzione" id="opzioneSelect" class="form-control header__deposita">
                             
                             <option value="0">Deposita</option>
                             <option value="5">5</option>
@@ -133,9 +133,9 @@
 											<%= evento.getQuota_2() %>
 										</div>
 									</td>
-									<td>
+									<th>
 										<%= evento.getCodice_partita() %>
-									</td>
+									</th>
 								</tr>
 								<%
 									}
@@ -347,18 +347,19 @@
 							<div class="schedina__importo d-block m-auto">
 								
 							<div class="schedina__vincita">
-							<input type="number" name="importogiocato"  placeholder="€" class="schedina__importo form-control" required>
-
-							<input type="text" name="NomeUser" value="<%=usernameUtente%>" hidden>
-							</div>
-							
-							<% if (request.getAttribute("errore") != null) { %>
-    						<p class="m-auto">€ <%=request.getAttribute("errore")%></p>
-							<% } %>
-							
-							<% if (request.getAttribute("messaggioScommessa") != null) { %>
-    						<p class="m-auto">€ <%=request.getAttribute("messaggioScommessa")%></p>
-							<% } %>
+								<p class="text-center">Inserisci l'importo: </p>
+								<input type="number" name="importogiocato"  placeholder="€" class="schedina__importo form-control" required>
+	
+								<input type="text" name="NomeUser" value="<%=usernameUtente%>" hidden>
+								</div>
+								
+								<% if (request.getAttribute("errore") != null) { %>
+	    						<p class="m-auto">€ <%=request.getAttribute("errore")%></p>
+								<% } %>
+								
+								<% if (request.getAttribute("messaggioScommessa") != null) { %>
+	    						<p class="m-auto">€ <%=request.getAttribute("messaggioScommessa")%></p>
+								<% } %>
 							
 							</div>
                             
