@@ -347,7 +347,7 @@
 							<div class="schedina__importo d-block m-auto">
 								
 							<div class="schedina__vincita">
-							<input type="number" name="importogiocato"  placeholder="€" class="schedina__importo form-control">
+							<input type="number" name="importogiocato"  placeholder="€" class="schedina__importo form-control" required>
 
 							<input type="text" name="NomeUser" value="<%=usernameUtente%>" hidden>
 							</div>

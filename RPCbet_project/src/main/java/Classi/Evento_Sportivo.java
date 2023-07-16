@@ -20,7 +20,7 @@ public class Evento_Sportivo {
 	String url = "jdbc:mysql://localhost:3306/rpcbet";
 	String usernameDb = "root";
 	// INSERISCI LA TUA PASSWORD
-	String passwordDb = "ciao1234";
+	String passwordDb = "user_mysql_14";
 
 	private ArrayList<Evento_Sportivo> eventosportivo = new ArrayList<>();
 
