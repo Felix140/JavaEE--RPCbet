@@ -40,36 +40,14 @@ Cookie[] cookies = request.getCookies();
   </a>
 
   <ul class="nav nav-pills flex-column mb-auto">
+  
     <li class="nav-item">
       <a href="#" class="nav-link active" aria-current="page">
         <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"/></svg>
         Home
       </a>
     </li>
-    <li>
-      <a href="#" class="nav-link text-white">
-        <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
-        Dashboard
-      </a>
-    </li>
-    <li>
-      <a href="#" class="nav-link text-white">
-        <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"/></svg>
-        Orders
-      </a>
-    </li>
-    <li>
-      <a href="#" class="nav-link text-white">
-        <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"/></svg>
-        Products
-      </a>
-    </li>
-    <li>
-      <a href="#" class="nav-link text-white">
-        <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"/></svg>
-        Customers
-      </a>
-    </li>
+   
   </ul>
 
 
@@ -85,9 +63,10 @@ Cookie[] cookies = request.getCookies();
     </thead>
     <tbody>
       <tr>
-        <td>Mario</td>
-        <td>Rossi</td>
-        <td>30</td>
+        <td>132453</td>
+        <td>Vinta</td>
+        <td>50€</td>
+        <td>250€</td>
       </tr>
     </tbody>
 </table>
